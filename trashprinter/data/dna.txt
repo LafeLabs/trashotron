@@ -1,0 +1,45 @@
+{
+    "html": [
+        "README.md",
+        "animationtest.html",
+        "bipm.html",
+        "board.html",
+        "control-p5js.html",
+        "control2response.html",
+        "fork.html",
+        "forkdestroyer.html",
+        "geometron.js",
+        "icon.html",
+        "index.html",
+        "measure.py",
+        "readme.html",
+        "readmeeditor.html",
+        "temperature-circuitplayground.py",
+        "trashmagic.css",
+        "trashmagic.html",
+        "trashmagic.js",
+        "trashrobot.html",
+        "webdestroyer.html",
+        "webeditor.html"
+    ],
+    "data": [
+        "currentjson.txt",
+        "dna.txt",
+        "plotlyjson.txt",
+        "sensordata.txt"
+    ],
+    "php": [
+        "copy.txt",
+        "deletefile.txt",
+        "dir.txt",
+        "dnagenerator.txt",
+        "editor.txt",
+        "fileloader.txt",
+        "filesaver.txt",
+        "mkdir.txt",
+        "rdelete.txt",
+        "rdir.txt",
+        "replicator.txt",
+        "text2php.txt"
+    ]
+}
