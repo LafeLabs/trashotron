@@ -5026,6 +5026,14 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <junction x="187.96" y="120.65"/>
 </segment>
 </net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="R6" gate="G$1" pin="2"/>
+<pinref part="IC2" gate="D" pin="OUT"/>
+<wire x1="198.12" y1="113.03" x2="203.2" y2="113.03" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="113.03" x2="203.2" y2="123.19" width="0.1524" layer="91"/>
+</segment>
+</net>
 <net name="N$9" class="0">
 <segment>
 <pinref part="R5" gate="G$1" pin="1"/>
@@ -5219,13 +5227,6 @@ Commonly used for small ceramic capacitors. Like our 0.1uF (http://www.sparkfun.
 <pinref part="J4" gate="G$1" pin="5"/>
 <wire x1="48.26" y1="109.22" x2="53.34" y2="109.22" width="0.1524" layer="91"/>
 <label x="52.07" y="109.22" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R6" gate="G$1" pin="2"/>
-<pinref part="IC2" gate="D" pin="OUT"/>
-<wire x1="198.12" y1="113.03" x2="203.2" y2="113.03" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="113.03" x2="203.2" y2="123.19" width="0.1524" layer="91"/>
-<label x="203.2" y="121.92" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIR1" class="0">
