@@ -1236,7 +1236,7 @@ design rules under a new name.</description>
 <wire x1="70.902103125" y1="12.065" x2="69.10605" y2="12.80895" width="1.27" layer="1" curve="-45"/>
 <wire x1="69.10605" y1="12.80895" x2="64.13499375" y2="17.78" width="1.27" layer="1"/>
 <wire x1="62.865" y1="17.78" x2="64.13499375" y2="17.78" width="1.27" layer="1"/>
-<wire x1="62.865" y1="17.78" x2="67.31" y2="17.78" width="0" layer="19" extent="1-1"/>
+<wire x1="62.865" y1="17.78" x2="67.31" y2="17.78" width="0.508" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

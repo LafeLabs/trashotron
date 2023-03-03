@@ -189,10 +189,10 @@
 </layers>
 <board>
 <plain>
-<wire x1="76.2" y1="0" x2="76.2" y2="63.5" width="0.2032" layer="20"/>
-<wire x1="76.2" y1="63.5" x2="0" y2="63.5" width="0.2032" layer="20"/>
+<wire x1="82.55" y1="0" x2="82.55" y2="63.5" width="0.2032" layer="20"/>
+<wire x1="82.55" y1="63.5" x2="0" y2="63.5" width="0.2032" layer="20"/>
 <wire x1="0" y1="63.5" x2="0" y2="0" width="0.2032" layer="20"/>
-<wire x1="0" y1="0" x2="76.2" y2="0" width="0.2032" layer="20"/>
+<wire x1="0" y1="0" x2="82.55" y2="0" width="0.2032" layer="20"/>
 <wire x1="15.494" y1="0.508" x2="15.494" y2="29.21" width="0.0762" layer="51"/>
 <text x="-7.62" y="-5.08" size="2.286" layer="27">Arduino Wee v1.3</text>
 <text x="2.54" y="-2.54" size="1.778" layer="27">Tent Vias!</text>
@@ -203,6 +203,12 @@
 <text x="43.18" y="56.515" size="1.27" layer="21">12V</text>
 <text x="43.18" y="12.065" size="1.27" layer="21">12V</text>
 <text x="21.59" y="33.655" size="1.27" layer="21">12V</text>
+<text x="81.28" y="7.62" size="1.27" layer="21" rot="R90">MOTOR3</text>
+<text x="81.28" y="27.94" size="1.27" layer="21" rot="R90">MOTOR2</text>
+<text x="81.28" y="46.99" size="1.27" layer="21" rot="R90">MOTOR1</text>
+<text x="78.74" y="18.415" size="1.27" layer="21" rot="R180">Z</text>
+<text x="78.74" y="38.735" size="1.27" layer="21" rot="R180">Y</text>
+<text x="78.74" y="57.785" size="1.27" layer="21" rot="R180">X</text>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
@@ -633,20 +639,20 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="J3" library="SparkFun-Connectors" package="1X04" value="" x="73.66" y="54.61" smashed="yes" rot="R270">
-<attribute name="NAME" x="75.057" y="55.88" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="PROD_ID" value="CONN-09696" x="73.66" y="54.61" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="71.628" y="55.88" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
+<element name="J3" library="SparkFun-Connectors" package="1X04" value="" x="78.105" y="54.61" smashed="yes" rot="R270">
+<attribute name="NAME" x="79.502" y="55.88" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="PROD_ID" value="CONN-09696" x="78.105" y="54.61" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="VALUE" x="76.073" y="55.88" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
-<element name="J1" library="SparkFun-Connectors" package="1X04" value="" x="73.66" y="15.24" smashed="yes" rot="R270">
-<attribute name="NAME" x="75.057" y="16.51" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="PROD_ID" value="CONN-09696" x="63.5" y="15.24" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="71.628" y="16.51" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
+<element name="J1" library="SparkFun-Connectors" package="1X04" value="" x="78.105" y="15.24" smashed="yes" rot="R270">
+<attribute name="NAME" x="79.502" y="16.51" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="PROD_ID" value="CONN-09696" x="67.945" y="15.24" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="VALUE" x="76.073" y="16.51" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
-<element name="J7" library="SparkFun-Connectors" package="1X04" value="" x="73.66" y="35.56" smashed="yes" rot="R270">
-<attribute name="NAME" x="75.057" y="36.83" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="PROD_ID" value="CONN-09696" x="64.135" y="35.56" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="71.628" y="36.83" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
+<element name="J7" library="SparkFun-Connectors" package="1X04" value="" x="78.105" y="35.56" smashed="yes" rot="R270">
+<attribute name="NAME" x="79.502" y="36.83" size="0.6096" layer="25" font="vector" ratio="20" rot="R270"/>
+<attribute name="PROD_ID" value="CONN-09696" x="68.58" y="35.56" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="VALUE" x="76.073" y="36.83" size="0.6096" layer="27" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="IC1" library="pololu-stepper-driver" package="MP6500" value="2967-MP6500" x="62.23" y="50.8" smashed="yes">
 <attribute name="NAME" x="57.15" y="38.1" size="1.778" layer="25"/>
@@ -691,16 +697,16 @@ design rules under a new name.</description>
 </signal>
 <signal name="GND" class="1">
 <polygon width="0.254" layer="1" isolate="0.3048">
-<vertex x="76.2" y="0"/>
+<vertex x="82.55" y="0"/>
 <vertex x="0" y="0"/>
 <vertex x="0" y="63.5"/>
-<vertex x="76.2" y="63.5"/>
+<vertex x="82.55" y="63.5"/>
 </polygon>
 <polygon width="0.254" layer="16" isolate="0.3048">
-<vertex x="76.2" y="0"/>
+<vertex x="82.55" y="0"/>
 <vertex x="0" y="0"/>
 <vertex x="0" y="63.5"/>
-<vertex x="76.2" y="63.5"/>
+<vertex x="82.55" y="63.5"/>
 </polygon>
 <contactref element="IC1" pad="9"/>
 <contactref element="IC1" pad="15"/>
@@ -797,42 +803,42 @@ design rules under a new name.</description>
 <signal name="N$5">
 <contactref element="J3" pad="1"/>
 <contactref element="IC1" pad="14"/>
-<wire x1="73.66" y1="54.61" x2="68.58" y2="54.61" width="1.27" layer="1"/>
+<wire x1="78.105" y1="54.61" x2="68.58" y2="54.61" width="1.27" layer="1"/>
 </signal>
 <signal name="N$6">
 <contactref element="J3" pad="2"/>
 <contactref element="IC1" pad="13"/>
-<wire x1="68.58" y1="52.07" x2="73.66" y2="52.07" width="1.27" layer="1"/>
+<wire x1="68.58" y1="52.07" x2="78.105" y2="52.07" width="1.27" layer="1"/>
 </signal>
 <signal name="N$7">
 <contactref element="J3" pad="3"/>
 <contactref element="IC1" pad="12"/>
-<wire x1="73.66" y1="49.53" x2="68.58" y2="49.53" width="1.27" layer="1"/>
+<wire x1="78.105" y1="49.53" x2="68.58" y2="49.53" width="1.27" layer="1"/>
 </signal>
 <signal name="N$8">
 <contactref element="J3" pad="4"/>
 <contactref element="IC1" pad="11"/>
-<wire x1="68.58" y1="46.99" x2="73.66" y2="46.99" width="1.27" layer="1"/>
+<wire x1="68.58" y1="46.99" x2="78.105" y2="46.99" width="1.27" layer="1"/>
 </signal>
 <signal name="N$9">
 <contactref element="J1" pad="1"/>
 <contactref element="IC2" pad="14"/>
-<wire x1="73.66" y1="15.24" x2="68.58" y2="15.24" width="1.27" layer="1"/>
+<wire x1="78.105" y1="15.24" x2="68.58" y2="15.24" width="1.27" layer="1"/>
 </signal>
 <signal name="N$10">
 <contactref element="J1" pad="2"/>
 <contactref element="IC2" pad="13"/>
-<wire x1="73.66" y1="12.7" x2="68.58" y2="12.7" width="1.27" layer="1"/>
+<wire x1="78.105" y1="12.7" x2="68.58" y2="12.7" width="1.27" layer="1"/>
 </signal>
 <signal name="N$11">
 <contactref element="J1" pad="3"/>
 <contactref element="IC2" pad="12"/>
-<wire x1="68.58" y1="10.16" x2="73.66" y2="10.16" width="1.27" layer="1"/>
+<wire x1="68.58" y1="10.16" x2="78.105" y2="10.16" width="1.27" layer="1"/>
 </signal>
 <signal name="N$12">
 <contactref element="J1" pad="4"/>
 <contactref element="IC2" pad="11"/>
-<wire x1="68.58" y1="7.62" x2="73.66" y2="7.62" width="1.27" layer="1"/>
+<wire x1="68.58" y1="7.62" x2="78.105" y2="7.62" width="1.27" layer="1"/>
 </signal>
 <signal name="DIR2">
 <contactref element="IC3" pad="8"/>
@@ -846,22 +852,22 @@ design rules under a new name.</description>
 <signal name="N$1">
 <contactref element="IC3" pad="14"/>
 <contactref element="J7" pad="1"/>
-<wire x1="48.26" y1="35.56" x2="73.66" y2="35.56" width="1.27" layer="1"/>
+<wire x1="48.26" y1="35.56" x2="78.105" y2="35.56" width="1.27" layer="1"/>
 </signal>
 <signal name="N$4">
 <contactref element="IC3" pad="13"/>
 <contactref element="J7" pad="2"/>
-<wire x1="73.66" y1="33.02" x2="48.26" y2="33.02" width="1.27" layer="1"/>
+<wire x1="78.105" y1="33.02" x2="48.26" y2="33.02" width="1.27" layer="1"/>
 </signal>
 <signal name="N$13">
 <contactref element="IC3" pad="12"/>
 <contactref element="J7" pad="3"/>
-<wire x1="48.26" y1="30.48" x2="73.66" y2="30.48" width="1.27" layer="1"/>
+<wire x1="48.26" y1="30.48" x2="78.105" y2="30.48" width="1.27" layer="1"/>
 </signal>
 <signal name="N$14">
 <contactref element="IC3" pad="11"/>
 <contactref element="J7" pad="4"/>
-<wire x1="48.26" y1="27.94" x2="73.66" y2="27.94" width="1.27" layer="1"/>
+<wire x1="48.26" y1="27.94" x2="78.105" y2="27.94" width="1.27" layer="1"/>
 </signal>
 <signal name="5V">
 <contactref element="IC1" pad="6"/>
