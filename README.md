@@ -2,6 +2,8 @@
 
 ## [GITHUB.COM/LAFELABS/TRASHOTRON](https://github.com/lafelabs/trashotron)
 
+## [LOCALHOST](http://localhost/)
+
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-banner.svg)
 
 THIS IS THE UNIFICATION OF GEOMETRON AND TRASH MAGIC IN A SELF-REPLICATING SET
