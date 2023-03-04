@@ -1,5 +1,6 @@
 # TRASHOTRON
 
+## [GITHUB.COM/LAFELABS/TRASHOTRON](https://github.com/lafelabs/trashotron)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-banner.svg)
 
