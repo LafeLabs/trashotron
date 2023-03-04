@@ -212,7 +212,6 @@
 <wire x1="43.18" y1="12.7" x2="45.72" y2="12.7" width="0.1524" layer="21"/>
 <wire x1="45.72" y1="12.7" x2="48.26" y2="12.7" width="0.1524" layer="21"/>
 <wire x1="48.26" y1="12.7" x2="50.8" y2="12.7" width="0.1524" layer="21"/>
-<wire x1="50.8" y1="12.7" x2="53.34" y2="12.7" width="0.1524" layer="21"/>
 <wire x1="53.34" y1="12.7" x2="55.88" y2="12.7" width="0.1524" layer="21"/>
 <wire x1="55.88" y1="12.7" x2="58.42" y2="12.7" width="0.1524" layer="21"/>
 <wire x1="58.42" y1="12.7" x2="60.96" y2="12.7" width="0.1524" layer="21"/>
@@ -277,7 +276,7 @@
 <hole x="25.4" y="12.7" drill="2.54"/>
 <hole x="50.8" y="12.7" drill="2.54"/>
 <hole x="76.2" y="12.7" drill="2.54"/>
-<hole x="62.865" y="12.7" drill="2.54"/>
+<hole x="63.5" y="12.7" drill="2.54"/>
 <hole x="88.9" y="12.7" drill="2.54"/>
 <wire x1="0" y1="12.7" x2="38.1" y2="12.7" width="0.1524" layer="21"/>
 <wire x1="50.8" y1="12.7" x2="53.34" y2="12.7" width="0.1524" layer="21"/>
@@ -286,8 +285,7 @@
 <wire x1="38.1" y1="12.7" x2="38.1" y2="25.4" width="0.1524" layer="21"/>
 <wire x1="63.5" y1="12.7" x2="63.5" y2="24.765" width="0.1524" layer="21"/>
 <wire x1="88.9" y1="0" x2="88.9" y2="25.4" width="0.1524" layer="21"/>
-<text x="27.305" y="14.605" size="2.54" layer="21">GEOMETRON HYPERCUBE
-SELF-REPLIC ATING TRASH
+<text x="27.305" y="16.51" size="2.54" layer="21">TRASHOTRON HYPERCUBE
 GITHUB.COM/LAFELABS/TRASHOTRON</text>
 </plain>
 <libraries>
