@@ -236,6 +236,10 @@
 <text x="4.445" y="57.785" size="1.27" layer="21">5V</text>
 <text x="4.445" y="28.575" size="1.27" layer="21">GND</text>
 <text x="3.81" y="55.245" size="1.27" layer="21">GND</text>
+<text x="33.02" y="70.485" size="1.27" layer="21">0.1uF</text>
+<text x="22.225" y="74.295" size="1.27" layer="21">4.7k</text>
+<text x="17.78" y="74.295" size="1.27" layer="21">4.7k</text>
+<text x="13.97" y="74.295" size="1.27" layer="21">4.7k</text>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
@@ -1889,10 +1893,10 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value=" " x="19.685" y="69.215" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="20.701" y="69.215" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
-<element name="R5" library="SparkFun-Resistors" package="AXIAL-0.3" value=" " x="24.765" y="69.215" smashed="yes" rot="R270">
-<attribute name="NAME" x="25.781" y="69.215" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
-<attribute name="PROD_ID" value=" " x="24.765" y="69.215" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="23.749" y="69.215" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
+<element name="R5" library="SparkFun-Resistors" package="AXIAL-0.3" value=" " x="24.13" y="69.215" smashed="yes" rot="R270">
+<attribute name="NAME" x="25.146" y="69.215" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
+<attribute name="PROD_ID" value=" " x="24.13" y="69.215" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="VALUE" x="23.114" y="69.215" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
 </element>
 <element name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C050-050X075" package3d_urn="urn:adsk.eagle:package:23665/1" value="" x="29.845" y="70.485" smashed="yes" rot="R270">
 <attribute name="NAME" x="32.766" y="73.914" size="1.27" layer="25" ratio="10" rot="R270"/>
@@ -2169,7 +2173,7 @@ design rules under a new name.</description>
 <contactref element="R4" pad="P$1"/>
 <contactref element="R5" pad="P$2"/>
 <contactref element="U2" pad="5"/>
-<wire x1="19.685" y1="65.405" x2="24.765" y2="65.405" width="1.27" layer="1"/>
+<wire x1="19.685" y1="65.405" x2="24.13" y2="65.405" width="1.27" layer="1"/>
 <wire x1="19.685" y1="65.405" x2="19.685" y2="62.23" width="1.27" layer="1"/>
 <wire x1="19.685" y1="62.23" x2="10.16" y2="62.23" width="1.27" layer="1"/>
 <wire x1="10.16" y1="62.23" x2="10.16" y2="65.405" width="1.27" layer="1"/>

@@ -236,6 +236,10 @@
 <text x="4.445" y="57.785" size="1.27" layer="21">5V</text>
 <text x="4.445" y="28.575" size="1.27" layer="21">GND</text>
 <text x="3.81" y="55.245" size="1.27" layer="21">GND</text>
+<text x="33.02" y="70.485" size="1.27" layer="21">0.1uF</text>
+<text x="22.225" y="74.295" size="1.27" layer="21">10k</text>
+<text x="17.78" y="74.295" size="1.27" layer="21">10k</text>
+<text x="13.97" y="74.295" size="1.27" layer="21">10k</text>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
