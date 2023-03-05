@@ -8,26 +8,6 @@
 
 THIS IS THE UNIFICATION OF GEOMETRON AND TRASH MAGIC IN A SELF-REPLICATING SET
 
-
-![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-hypercube.png)
-
-![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-hypercube.svg)
-
- - [boards/trashotron-hypercube-v1.brd](boards/trashotron-hypercube.brd)
- - [boards/trashotron-hypercube-v1.sch](boards/trashotron-hypercube.sch) 
-
-![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/side.svg)
-
-![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/bottom.svg)
-
-![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardside.jpg)
-
-![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardbottom.jpg)
-
-![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardcorner.jpg)
-
-![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/touchgrass.jpg)
-
 # TRASHOTRON OPTICAL NEURON
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-optical-neuron.png)
@@ -53,3 +33,27 @@ THIS IS THE UNIFICATION OF GEOMETRON AND TRASH MAGIC IN A SELF-REPLICATING SET
 ## TRASHOTRON HOMESCREEN
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-homescreen.png)
+
+## TRASHOTRON HYPERCUBE
+
+self-replicating cubes from cardboard trash based on a 4 inch by 4 inch square.
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-hypercube.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-hypercube.svg)
+
+ - [boards/trashotron-hypercube-v1.brd](boards/trashotron-hypercube.brd)
+ - [boards/trashotron-hypercube-v1.sch](boards/trashotron-hypercube.sch) 
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/side.svg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/bottom.svg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardside.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardbottom.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardcorner.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/touchgrass.jpg)
+
