@@ -140,11 +140,10 @@ function GVM(canvas2d,width,height) {
 
     this.bytecode = function(start,stop) {
         var jsonarray = [];
-        for(var index = start;index < stop;index++) {
-            if(this.hypercube[index].length > 1) {
-                var bytecodestring = "0" + index.toString(8) + ":" + this.hypercube[index];
-                jsonarray.push(bytecodestring); 
-            }
+        for(var index = start;index <= stop;index++) {
+            var bytecodestring = "0" + index.toString(8) + ":" + this.hypercube[index];
+            jsonarray.push(bytecodestring); 
+            
         }
         return JSON.stringify(jsonarray,null,"    ");
     }
@@ -217,8 +216,6 @@ function GVM(canvas2d,width,height) {
         }
         glyph = localGlyph;
         this.side = this.unit;
-        this.x0 = this.unit;
-        this.y0 = this.unit*1.5;
 
         this.ctx.clearRect(0,0,this.width,this.height);
         this.ctx.strokeStyle = this.style.color0;
