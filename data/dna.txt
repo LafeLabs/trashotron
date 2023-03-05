@@ -5,7 +5,6 @@
         "fork.html",
         "forkdestroyer.html",
         "geometron.js",
-        "hypercube.html",
         "icon.html",
         "index.html",
         "readme.html",
