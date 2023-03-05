@@ -59,6 +59,9 @@ THIS IS THE UNIFICATION OF GEOMETRON AND TRASH MAGIC IN A SELF-REPLICATING SET
  - [boards/trashotron-slimezistor.sch](boards/trashotron-slimezistor.sch) 
  - [wikipedia link about relaxation oscillator](https://en.wikipedia.org/wiki/Relaxation_oscillator)
 
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-lid.svg)
+
+
 ## TRASHOTRON HOMESCREEN
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-homescreen.png)
