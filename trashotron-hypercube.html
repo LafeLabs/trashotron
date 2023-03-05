@@ -130,7 +130,7 @@ document.getElementById("actioninput").onkeypress = function(a) {
     localCursorAction = parseInt(mainGVM.hypercube[charCode],8);   
     gvmArray[canIndex].cursorAction(localCursorAction); 
     gvmArray[canIndex].clean();
-    gvmArray[canIndex].spellGlyph(gvmArray[canIndex].cleanGlyph);    
+    gvmArray[canIndex].spellGlyph(gvmArray[canIndex].glyph);    
     mainGVM.hypercube[0500 + canIndex] = gvmArray[canIndex].cleanGlyph;  
     this.value = "";
     savejson();
