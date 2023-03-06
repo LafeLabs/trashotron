@@ -59,6 +59,8 @@ THIS IS THE UNIFICATION OF GEOMETRON AND TRASH MAGIC IN A SELF-REPLICATING SET
  - [boards/trashotron-slimezistor.sch](boards/trashotron-slimezistor.sch) 
  - [wikipedia link about relaxation oscillator](https://en.wikipedia.org/wiki/Relaxation_oscillator)
 
+The board is 2x1 inch and it fits in a cavity centered in a 3 inch by 3 inch cardboard square with ports as shown.  Find USB and audio in the trash and another cable from the trash with two wires .  This can run on a direct solar panel, since it should work at random voltages.    
+
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-lid.svg)
 
 
