@@ -13,6 +13,7 @@
         "trashmagic.html",
         "trashmagic.js",
         "trashotron-hypercube.html",
+        "trashotron-loop.html",
         "trashotron.html",
         "webdestroyer.html",
         "webeditor.html"
