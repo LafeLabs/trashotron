@@ -64,6 +64,15 @@ The board is 2x1 inch and it fits in a cavity centered in a 3 inch by 3 inch car
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-lid.svg)
 
 
+## RESISTOR AND CAPACITOR ORDER
+
+ - [30M resistor](https://www.digikey.com/en/products/detail/yageo/HHV-25FR-52-30M/2813033)
+ - [10 k resistor](https://www.digikey.com/en/products/detail/stackpole-electronics-inc/CF18JT10K0/1741566)
+ - [0.1 uF capacitor](https://www.digikey.com/en/products/detail/kyocera-avx/SR211C104KARTR1/3066560)
+ - [0.47 uF capacitor](https://www.digikey.com/en/products/detail/kyocera-avx/SR215E474MAR/1836459)
+ - [10 uF capacitor](https://www.digikey.com/en/products/detail/kemet/C322C106K3R5TA/6562379)
+ - [link to whole digikey cart](https://www.digikey.com/short/1j5d058v)
+ 
 ## TRASHOTRON HOMESCREEN
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-homescreen.png)
