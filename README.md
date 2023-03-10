@@ -67,6 +67,8 @@ The board is 2x1 inch and it fits in a cavity centered in a 3 inch by 3 inch car
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-cutout-4inch.svg)
 
 
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-sand.png)
+
 ## RESISTOR AND CAPACITOR ORDER
 
  - [30M resistor](https://www.digikey.com/en/products/detail/yageo/HHV-25FR-52-30M/2813033)
