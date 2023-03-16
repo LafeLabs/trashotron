@@ -14,39 +14,22 @@ lsp = "0327,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,050
     
 glyph = "0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,";
 
-//glyph = star;
+glyph = star;
 
-glyph = glyph.replace(/0500,/g, "0406,0406,0403,0407,0405,0404,0407,");
-glyph = glyph.replace(/0501,/g, "0406,0406,0402,0407,0405,0404,0407,");
-glyph = glyph.replace(/0502,/g, "0406,0406,0401,0407,0405,0404,0407,");
-glyph = glyph.replace(/0503,/g, "0406,0406,0400,0407,0405,0404,0407,");
+//glyph = "0501,0501,0501,0503,0503,0503,0500,0500,0500,0502,0502,0502,"
+
+glyph = glyph.replace(/0500,/g, "0406,0406,0403,0407,0407,0407,0405,0404,0406,");
+glyph = glyph.replace(/0501,/g, "0406,0406,0402,0407,0407,0407,0405,0404,0406,");
+glyph = glyph.replace(/0502,/g, "0406,0406,0401,0407,0407,0407,0405,0404,0406,");
+glyph = glyph.replace(/0503,/g, "0406,0406,0400,0407,0407,0407,0405,0404,0406,");
 glyph = glyph.replace(/0504,/g, "0406,0406,0403,0407,0407,");
 glyph = glyph.replace(/0505,/g, "0406,0406,0402,0407,0407,");
 glyph = glyph.replace(/0506,/g, "0406,0406,0401,0407,0407,");
 glyph = glyph.replace(/0507,/g, "0406,0406,0400,0407,0407,");
 
 
-glyph = "0400,0401,0402,0403,0404,0405,0406,0400,0401,0402,0403,0404,0405,0406,0400,0401,0402,0403,0404,0405,";//one unit out and back in the 3 directions, repeated 3 times, with shorter movement each time
-
-//glyph = "0400,0401,";//left,right
-
-
-
-
-//microscope glyph set here:
-
-A = "0404,0405,0400,";
-B = "0404,0405,0401,";
-C = "0404,0405,0402,";
-D = "0404,0405,0403,";
-a = "0400,";
-b = "0401,";
-c = "0402,";
-d = "0403,";
-E = A+A+A+A+C+B+B+B+B+C+A+A+A+A+C+B+B+B+B+C+A+A+A+A+D+d+d+d+b+b+b+b;
-
-glyph = E;
-
+glyph = glyph.replace(/0407,0407,0406,0406,/g, "");
+glyph = glyph.replace(/0407,0406,/g, "");
 
 glyphStringArray = glyph.split(",");
 
@@ -74,7 +57,8 @@ cellSize  = 200;
 
 stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.
 
-framesPerSecond= 16;//this can be varied to control the pace of time on the glyph trajectory, which adds analog values to that trajectory.  this can be used as a real time feedback from the electrical probe, which can all be fed into a machine learning algorithm which evolves the geometry.  So the noise lives on top of the Geometron glyph trajectory.  We can also get an analog signal directly into the browser using a motor which as it spins pushes a key repeatedly. if we control the rate of keystrokes, that can feed back into p5js.
+framesPerSecond= 45;//this can be varied to control the pace of time on the glyph trajectory, which adds analog values to that trajectory.  this can be used as a real time feedback from the electrical probe, which can all be fed into a machine learning algorithm which evolves the geometry.  So the noise lives on top of the Geometron glyph trajectory.  We can also get an analog signal directly into the browser using a motor which as it spins pushes a key repeatedly. if we control the rate of keystrokes, that can feed back into p5js.
+
 unit = 8;//16 frames = 1 second = unit
 side = unit;//set to starting unit of 1 second
 sideIndex = 0;//step this from 0 to "side" as a side action is carried out
