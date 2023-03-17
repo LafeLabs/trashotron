@@ -50,6 +50,23 @@ THIS IS THE UNIFICATION OF GEOMETRON AND TRASH MAGIC IN A SELF-REPLICATING SET
 
  - [boards/trashotron-driver.brd](boards/trashotron-driver.brd)
  - [boards/trashotron-driver.sch](boards/trashotron-driver.sch) 
+ - [link to buy from pcbway.com](www.pcbway.com/project/shareproject/W224521BSI42_trashotron_driver_2023_03_06_1aff405c.html)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/driver-assembly.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/driver-pihat-assembly.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/driver-trash-assembly.png)
+
+Materials
+
+ - [3x$12 = $36 pololu robotics stepper driver](https://www.pololu.com/product/2966)
+ - [$15 bojack capacitor kit](https://www.amazon.com/BOJACK-Ceramic-Capacitor-Assortment-Capacitors/dp/B07P7HRGT9/)
+ - [$6.32 10k resistors 100 units](https://www.amazon.com/Projects-100EP51210K0-10k-Resistors-Pack/dp/B0185FIOTA/)
+ - [$10 50 pin 0.1 inch pitch right angle header strips](https://www.amazon.com/Yohii-Single-Right-Header-Connector/dp/B07C89T16T/)
+ - [$7 50 units LM358P op amps](https://www.amazon.com/BOJACK-LM358P-Operational-Amplifier-LM358N/dp/B07WQWPLSP/)
+ - [ribbon cable from amazon](https://www.amazon.com/Eowpower-16-5Ft-20Pin-Rainbow-Ribbon/dp/B01NC2L2WB/)
+
 
 
 # TRASHOTRON SLIMEZISTOR (ANALOG)
@@ -128,9 +145,11 @@ Fully assembled system with speaker connected to audio output and a solar panel 
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-sand.png)
 
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-board-photo.png)
 
 
-## TRASHOTRON SLIMEZISTOR(old)
+
+## TRASHOTRON SLIMEZISTOR(PCB)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-slimezistor.png)
 
