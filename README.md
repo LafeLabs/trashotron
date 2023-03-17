@@ -86,7 +86,7 @@ Here are links to buy the parts from amazon(enough for about 50 units for about 
  - [$10 50 pin 0.1 inch pitch right angle header strips](https://www.amazon.com/Yohii-Single-Right-Header-Connector/dp/B07C89T16T/)
  - [$7 50 units LM358P op amps](https://www.amazon.com/BOJACK-LM358P-Operational-Amplifier-LM358N/dp/B07WQWPLSP/)
 
-### [$90 Digikey cart link with part set for 100 units](https://www.digikey.com/short/dr55prcw)
+### [$90 Digikey cart link with part set for 100 units](https://www.digikey.com/short/44n3w1tp)
 
 
 The circuit board is a 1x2 inch rectangle cut out of thin cardboard like a cereal box:
@@ -149,7 +149,7 @@ Fully assembled system with speaker connected to audio output and a solar panel 
 
 
 
-## TRASHOTRON SLIMEZISTOR(PCB)
+## TRASHOTRON SLIMEZISTOR(ANALOG, PCB)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-slimezistor.png)
 
@@ -174,7 +174,7 @@ The board is 2x1 inch and it fits in a cavity centered in a 3 inch by 3 inch car
  - [0.1 uF capacitor](https://www.digikey.com/en/products/detail/kyocera-avx/SR211C104KARTR1/3066560)
  - [0.47 uF capacitor](https://www.digikey.com/en/products/detail/kyocera-avx/SR215E474MAR/1836459)
  - [10 uF capacitor](https://www.digikey.com/en/products/detail/kemet/C322C106K3R5TA/6562379)
- - [link to whole digikey cart](https://www.digikey.com/short/1j5d058v)
+ - [link to whole digikey cart](https://www.digikey.com/short/44n3w1tp)
  
 ## TRASHOTRON HOMESCREEN
 
