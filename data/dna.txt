@@ -2,6 +2,7 @@
     "html": [
         "README.md",
         "control-p5js.html",
+        "cssrobot.html",
         "cube-probe.html",
         "fork.html",
         "forkdestroyer.html",
@@ -10,8 +11,11 @@
         "iconprinter.html",
         "index.html",
         "microscope-scan.html",
+        "p5jsrobot.html",
+        "p5jsrobotsketch.js",
         "readme.html",
         "readmeeditor.html",
+        "robot.css",
         "scrolldelete.html",
         "scrollset.html",
         "star-probe.html",
@@ -51,7 +55,8 @@
         "user.txt"
     ],
     "scrolls": [
-        "home"
+        "home",
+        "slimezistor"
     ],
     "iconsymbols": [
         "chaos.svg",

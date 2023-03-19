@@ -2,13 +2,6 @@
 
 This is the [TRASHBOOK](https://github.com/LafeLabs/trashbook/) which replicates the [trashotron](https://github.com/LafeLabs/trashotron/) set.
 
- - [wallprinter.html](wallprinter.html)
- - [trashotron.html](trashotron.html)
- - [cube-probe.html](cube-probe.html)
- - [star-probe.html](star-probe.html)
- - [webeditor.html](webeditor.html)
- - [readme.html](readme.html)
-
 TRASHOTRON is a self-replicating set consisting of:
 
  - the geometron language and the books which document it
@@ -19,9 +12,21 @@ TRASHOTRON is a self-replicating set consisting of:
  - the spray paint wall printer
  - this document, the TRASHONOMICON which replicates the set
  - the trash magic server and web framework including CSS and js
+ - [CSS ROBOT](cssrobot.html)
+ - [P5JS ROBOT](p5jsrobot.html)
  - the trashotron optical neuron which converts pixels on a screen into digital outputs
  - the trashotron driver which translates digital signals to stepper motor control using an analog circuit for a clock
  - [the slimezistor synthesizer and electrical probe for both science and music and technology](scrolls/slimezistor)
 
+Some links:
+
+ - [wallprinter.html](wallprinter.html)
+ - [trashotron.html](trashotron.html)
+ - [cube-probe.html](cube-probe.html)
+ - [star-probe.html](star-probe.html)
+ - [webeditor.html](webeditor.html)
+ - [editor.php](editor.php)
+ - [readme.html](readme.html)
+ - [dnagenerator.php](dnagenerator.php)
 
 
