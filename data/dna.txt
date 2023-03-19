@@ -12,7 +12,10 @@
         "microscope-scan.html",
         "readme.html",
         "readmeeditor.html",
+        "scrolldelete.html",
+        "scrollset.html",
         "star-probe.html",
+        "trashmagic-list.html",
         "trashmagic.css",
         "trashmagic.html",
         "trashmagic.js",
@@ -27,6 +30,7 @@
     "data": [
         "currentjson.txt",
         "dna.txt",
+        "scrollset.txt",
         "trashotron-hypercube.txt"
     ],
     "php": [
@@ -41,6 +45,25 @@
         "rdelete.txt",
         "rdir.txt",
         "replicator.txt",
-        "text2php.txt"
+        "scrolleditor.txt",
+        "scrollsetreplicator.txt",
+        "text2php.txt",
+        "user.txt"
+    ],
+    "scrolls": [
+        "home"
+    ],
+    "iconsymbols": [
+        "chaos.svg",
+        "delete.svg",
+        "edit.svg",
+        "fork.svg",
+        "hidemenu.svg",
+        "home.svg",
+        "lightdark.svg",
+        "scroll.svg",
+        "showmenu.svg",
+        "uplink.svg",
+        "www.svg"
     ]
 }

@@ -5,15 +5,15 @@
 
     <!--
 
-        EVERYTHING IS PHYSICAL
+        EVERYTHING IS PHYSICAL 
         EVERYTHING IS FRACTAL
         EVERYTHING IS RECURSIVE
-        NO MONEY
-        MO MINING
+        NO MONEY 
+        MO MINING 
         NO PROPERTY
         LOOK AT THE INSECTS
         LOOK AT THE FUNGI
-        LANGUAGE IS HOW THE MIND PARSES REALITY
+        LANGUAGE IS HOW THE MIND PARSES REALITY 
 
     -->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
@@ -21,7 +21,7 @@
     <!--Stop Google:-->
     <META NAME="robots" CONTENT="noindex,nofollow">
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <!--       un comment to use math
 
@@ -119,6 +119,14 @@
     </tr>
 </table>
 
+<div class = "data" id = "scrolldiv"><?php
+    
+if(isset($_GET["scroll"])){
+    echo $_GET["scroll"];
+}
+
+?></div>
+
 <script>
 
 if(innerWidth > innerHeight){
@@ -147,7 +155,16 @@ converter.setOption('literalMidWordUnderscores', 'true');
 converter.setOption('tables', 'true')
     
 filename = "scrolls/home";
-loadscroll("scrolls/home");
+
+//loadscroll("scrolls/home");
+
+if(document.getElementById("scrolldiv").innerHTML.length > 0){
+    loadscroll(document.getElementById("scrolldiv").innerHTML);
+}
+else{
+    loadscroll("scrolls/home");
+}
+
 
 localfile = true;
 
@@ -162,7 +179,8 @@ function loadscroll(scrollname){
         localfile = false;
     }
     document.getElementById("scrolleditorlink").href = "scrolleditor.php?scroll=" + filename;
-    document.getElementById("scrolleditorlink2").href = "scrolleditor.php?scroll=" + filename;    
+    document.getElementById("scrolleditorlink2").href = "scrolleditor.php?scroll=" + filename;
+
 
     document.getElementById("scrollscroll").innerHTML = "";
     document.getElementById("scrollscroll").style.display = "block";
@@ -228,12 +246,10 @@ function convertscrollinks(){
 document.getElementById("modebutton").onclick = function(){
     modeswitch();
 }
+
 document.getElementById("modebutton2").onclick = function(){
     modeswitch();
 }
-
-
-    
 
 modeswitch();
 function modeswitch(){
@@ -257,8 +273,7 @@ function modeswitch(){
         document.getElementById("scrollinput").style.backgroundColor = "black";              
   
         document.getElementById("scrollsbox").style.backgroundColor = "#303030";
-        document.getElementById("scrollsbox").style.color = "#00ff00";          
-                
+        document.getElementById("scrollsbox").style.color = "#00ff00";  
 
     }
 }
@@ -277,7 +292,7 @@ httpc9.onreadystatechange = function() {
         newscrollbutton.onclick = function(){
             currentFile = this.innerHTML;
                 loadscroll(currentFile);
-        }        
+        }           
         for(var index = 0;index < scrolls.length;index++) {
             var newscrollbutton = document.createElement("P");
             newscrollbutton.className = "boxlink";
@@ -288,8 +303,6 @@ httpc9.onreadystatechange = function() {
                 loadscroll(currentFile);
             }
         }
-        
-        
     };
 }
 
@@ -302,6 +315,8 @@ document.getElementById("scrollinput").onchange = function(){
     loadscroll(this.value);
     this.value = "";
 }
+
+
 
 
 if(innerWidth > innerHeight){
@@ -354,24 +369,18 @@ document.getElementById("hidebutton").onclick = function(){
     }
 
 }
-
 </script>
 <style>
 .editlinks{
 /*    display:none;*/
-}
-a{
-    color:blue;
 }
 pre{
   overflow:scroll;
 }
 body{
     overflow:hidden;
-    background-color:black
     background-color:#9f8767;
     font-family:Comic Sans MS;
-
 }
 input{
     display:block;
@@ -379,7 +388,7 @@ input{
     width:90%;
     font-family:courier;
     font-size:1.2em;
-    background-color:white;
+    background-color:#9f8767;
     color:black;
     border-color:blue;
     border-width:8px;
@@ -407,7 +416,7 @@ input{
     padding-right:1em;
     position:absolute;
     overflow:scroll;
-    background-color:#9f8767;
+    background-color:black;
     color:#00ff00;
     font-size:2em;
 }

@@ -18,41 +18,48 @@ LANGUGE IS HOW THE MIND PARSES REALITY
 <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAABEAAREQAAABERABERAAAAEREAAREAAAAREAAAABAAAQAAAAAAAQAQAAAAAAAAEQAAAAAAAAEREAAAAAAAAREQAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAM/zAACH4QAAh+EAAMfjAAD73wAA/b8AAP5/AAD8PwAA/D8AAP5/AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
 <!--Stop Google:-->
 <META NAME="robots" CONTENT="noindex,nofollow">
-   <script src = "trashmagic.js"></script>
 </head>
 <body>
+    
+        <a href = "../">
+            <img alt = "uplink" src = "iconsymbols/uplink.svg"/>
+        </a>
+        <a href = "index.html">
+            <img alt = "home" src = "iconsymbols/home.svg">
+        </a>
 
-
-<div id = "mainscroll">
-    <h1>RECURSIVE WEB FORK ENGINE</h1>
-        <a href = "../">UP</a>
-        <a href = "index.html">HOME</a>
-        <a href = "forkdestroyer.html">FORK DESTROYER</a>
-        <a id = "tmmainbutton">LOAD MAIN TRASH MAGIC REPLICATOR</a>
-        <a id = "rewebbutton" class=  "button">LOAD RECURSIVE WEB REPLICATOR</a>
-        <a id = "pibrarybutton" class=  "button">LOAD PIBRARY REPLICATOR</a>
-        <a id = "thingbutton" class=  "button">LOAD GEOMETRON THING REPLICATOR</a>
-        <a id = "iconmagicbutton" class=  "button">LOAD ICON MAGIC REPLICATOR</a>
-        <a id = "symbolmagicbutton" class=  "button">LOAD SYMBOL MAGIC REPLICATOR</a>
-        <a id = "adventurereplicator" class = "button">LOAD TRASH MAGIC WEB ADVENTURE REPLICATOR</a>
-        <a id = "businessreplicator" class = "button">LOAD EXCITING FRANCHISE OPPORTUNITY GAME REPLICATOR</a>
-
-
-        
-</div>
 <table id = "newtable">
     <tr>
-        <td id = "label1">NEW FORK NAME:</td>
+        <td>new fork name:</td>
         <td><input/><a id = "dirlink"></a></td>
-
-        <td id = "label2">EXTERNAL REPLICATOR URL:</td>
+    </tr>
+    <tr id = "replicatorline">
+        <td>external replicator url</td>
         <td><input/></td>
     </tr>
+
 </table>
 
+<ul id = "mainlist">
 
+</ul>
+<div id = "deleteonbutton">DELETE MODE ON</div>
 <script>
+dirlink = document.getElementById("dirlink");
+dir = "";
+replicator = "";
 
+filesetreplicator = "https://raw.githubusercontent.com/LafeLabs/pibrary/main/fileset/php/replicator.txt";
+imagesetreplicator = "https://raw.githubusercontent.com/LafeLabs/pibrary/main/imageset/php/replicator.txt";
+codesetreplicator = "https://raw.githubusercontent.com/LafeLabs/pibrary/main/codeset/php/replicator.txt";
+symbolsetreplicator = "https://raw.githubusercontent.com/LafeLabs/pibrary/main/symbolset/php/replicator.txt";
+mapbookreplicator = "https://raw.githubusercontent.com/LafeLabs/pibrary/main/mapbook/php/replicator.txt";
+
+
+
+deleteprotect = true;//set to false to enable deletion of directories
+
+//deleteprotect = false;//set to ture to disable deletion of directories
 
 
 directories = [];
@@ -64,12 +71,13 @@ var httpc2 = new XMLHttpRequest();
             var newa = document.createElement("A");
             newa.innerHTML = directories[index] + "/";
             newa.href = directories[index] + "/";
-            newa.className = "dirlink";
-            document.getElementById("mainscroll").appendChild(newa);
+            var newli = document.createElement("LI");
+            newli.appendChild(newa);
+            document.getElementById("mainlist").appendChild(newli);
         }
-
-        rainbow(document.getElementsByTagName("A"));
-
+        if(!deleteprotect){
+            addDeleteButtons();
+        }
     }
 };
 
@@ -77,154 +85,75 @@ httpc2.open("GET", "dir.php?type=dir", true);
 httpc2.send();
 
 
-inputs = document.getElementById("newtable").getElementsByTagName("input");    
 
-inputs[0].onchange = function() {
-    var newa = document.getElementById("dirlink");
-    newa.innerHTML = "mkdir.php?dir=" + this.value;
-    newa.href = "mkdir.php?dir=" + this.value;
-    newa.style.color = "#ff2cb4";
-    newa.style.backgroundColor = "black";
-}
+inputs = document.getElementById("newtable").getElementsByTagName("input");    
 
 inputs[0].value = "";    
 inputs[1].value = "";
 
-inputs[1].onchange = function(){
-    var newa = document.getElementById("dirlink");
-    newa.innerHTML += "&replicator=" + this.value; 
-    newa.href += "&replicator=" + this.value; 
-    newa.style.color = "#ff2cb4";
-    newa.style.backgroundColor = "black";
+inputs[0].onchange = function() {
+    inputs[1].value = "";
+    dir = this.value;
+    dirlink.innerHTML = "mkdir.php?dir=" + this.value;
+    dirlink.href = "mkdir.php?dir=" + this.value;
+}
 
+
+inputs[1].onchange = function(){
+    dir = inputs[0].value;
+    dirlink.innerHTML = "mkdir.php?dir=" + dir + "&replicator=" + this.value; 
+    dirlink.href = "mkdir.php?dir=" + dir + "&replicator=" + this.value;
     
 }
 
-titles = document.getElementsByTagName("H1");
-for(var index = 0;index < titles.length;index++){
-    rainbowstring(titles[index]);    
+
+
+function addDeleteButtons(){
+    dirlist = document.getElementById("mainlist").getElementsByTagName("LI");
+    for(var index = 0;index < dirlist.length;index++){
+
+        var newdeletebutton = document.createElement("span");
+        newdeletebutton.innerHTML = "DELETE";
+        newdeletebutton.className = "button";
+        dirlist[index].appendChild(newdeletebutton);
+    }
+    
+    deletebuttons = document.getElementById("mainlist").getElementsByClassName("button");
+
+    for(var index = 0;index < deletebuttons.length;index++){
+        deletebuttons[index].onclick = function() {
+            thisdir = this.parentNode.getElementsByTagName("A")[0].innerHTML;
+            var httpc = new XMLHttpRequest();
+            var url = "rdelete.php";         
+            httpc.open("POST", url, true);
+            httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+            httpc.send("filename=" + thisdir);//send text to deletefile.php
+            this.parentNode.parentNode.removeChild(this.parentNode);
+
+        }
+    }
+
 }
 
-rainbowstring(document.getElementById("label1"));
-rainbowstring(document.getElementById("label2"));
-
-dirlink = document.getElementById("dirlink");
-
-replicator = "https://raw.githubusercontent.com/LafeLabs/trashmagic/main/web/php/replicator.txt";
-
-
-document.getElementById("tmmainbutton").onclick  = function(){
-    replicator = "https://raw.githubusercontent.com/LafeLabs/trashmagic/main/php/replicator.txt";
-    inputs[1].value = replicator;
-    dirlink.innerHTML += "&replicator=" + replicator; 
-    dirlink.href += "&replicator=" + replicator; 
+document.getElementById("deleteonbutton").onclick = function(){
+    addDeleteButtons();
+    this.style.display  = "none";
 }
-
-document.getElementById("rewebbutton").onclick  = function(){
-    rewebreplicator = "https://raw.githubusercontent.com/LafeLabs/trashmagic/main/web/php/replicator.txt";
-    inputs[1].value = rewebreplicator;
-    dirlink.innerHTML += "&replicator=" + rewebreplicator; 
-    dirlink.href += "&replicator=" + rewebreplicator; 
-}
-
-
-document.getElementById("pibrarybutton").onclick  = function(){
-    rewebreplicator = "https://raw.githubusercontent.com/LafeLabs/pibrary/main/php/replicator.txt";
-    inputs[1].value = rewebreplicator;
-    dirlink.innerHTML += "&replicator=" + rewebreplicator; 
-    dirlink.href += "&replicator=" + rewebreplicator; 
-}
-
-
-document.getElementById("thingbutton").onclick  = function(){
-    rewebreplicator = "https://raw.githubusercontent.com/LafeLabs/thing/master/php/replicator.txt";
-    inputs[1].value = rewebreplicator;
-    dirlink.innerHTML += "&replicator=" + rewebreplicator; 
-    dirlink.href += "&replicator=" + rewebreplicator; 
-}
-
-
-document.getElementById("iconmagicbutton").onclick  = function(){
-    rewebreplicator = "https://raw.githubusercontent.com/LafeLabs/trashmagic/main/web/geometronmagic/iconmagic/php/replicator.txt";
-    inputs[1].value = rewebreplicator;
-    dirlink.innerHTML += "&replicator=" + rewebreplicator; 
-    dirlink.href += "&replicator=" + rewebreplicator; 
-}
-
-
-document.getElementById("symbolmagicbutton").onclick  = function(){
-    rewebreplicator = "https://raw.githubusercontent.com/LafeLabs/trashmagic/main/web/geometronmagic/symbolmagic/php/replicator.txt";
-    inputs[1].value = rewebreplicator;
-    dirlink.innerHTML += "&replicator=" + rewebreplicator; 
-    dirlink.href += "&replicator=" + rewebreplicator; 
-}
-
-
-document.getElementById("adventurereplicator").onclick  = function(){
-    rewebreplicator = "https://raw.githubusercontent.com/LafeLabs/trashmagic/main/web/adventure/php/replicator.txt";
-    inputs[1].value = rewebreplicator;
-    dirlink.innerHTML += "&replicator=" + rewebreplicator; 
-    dirlink.href += "&replicator=" + rewebreplicator; 
-}
-
-
-document.getElementById("businessreplicator").onclick  = function(){
-    rewebreplicator = "https://raw.githubusercontent.com/LafeLabs/trashmagic/main/web/excitingfranchiseopportunity/php/replicator.txt";
-    inputs[1].value = rewebreplicator;
-    dirlink.innerHTML += "&replicator=" + rewebreplicator; 
-    dirlink.href += "&replicator=" + rewebreplicator; 
-}
-
-
-
 
 </script>
 <style>
-    #mainscroll{
-        position:absolute;
-        overflow:scroll;
-        left:0px;
-        right:0px;
-        background-color:black;
-        top:0px;
-        bottom:5em;
-        border-width:10px;
-    }
-    h1{
-        text-align:center;
-        font-size:4em;
-        font-family:helvetica;
-    }
-    #mainscroll a{
-        text-align:center;
-        font-family:helvetica;
-        font-size:3em;
-        width:80%;
-        margin:auto;
-        display:block;
-        border:solid;
-        border-radius:0.5em;
-        border-width:0.5em;
-        color:black;
-        margin-top:1em;
-        margin-bottom:0.5em;
-        overflow-x:scroll;
-    }
-
     body{
-        background-color:black;
-        color:#00ff00;
-        overflow:hidden;
+        font-size:2em;
+        background-color:#9f8767;
+        font-family:Comic Sans MS;
     }
     input{
-        border-color:#00ff00;
-        color:#00ff00;
-        background-color:black;
-        font-family:courier;
-        font-size:18px;
+        background-color:#9f8767;
+        font-family:Comic Sans MS;
+        
     }
     table{
-        font-family:courier;
+
     }
     .button{
         cursor:pointer;
@@ -239,25 +168,16 @@ document.getElementById("businessreplicator").onclick  = function(){
     .button{
         cursor:pointer;
         color:red;
-        font-family:courier;
-        font-size:1.5em;
+        text-align:center;
+        border:solid;
     }
     #deleteonbutton{
         cursor:pointer;
-        font-family:arial;
         border:solid;
         border-radius:0.3em;
         width:10em;
-        position:absolute;
-        right:5px;
-        bottom:5px;
     }
-    #newtable{
-        position:absolute;
-        left:5px;
-        bottom:5px;
-        font-size:2em;
-    }
+
 </style>
 </body>
 </html>

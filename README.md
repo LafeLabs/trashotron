@@ -14,6 +14,7 @@ THIS IS THE UNIFICATION OF GEOMETRON AND TRASH MAGIC IN A SELF-REPLICATING SET
 
  - [boards/trashotron-optical-neuron.brd](boards/trashotron-optical-neuron.brd)
  - [boards/trashotron-optical-neuron.sch](boards/trashotron-optical-neuron.sch) 
+ - [buy pcb's at pcbway.com](https://www.pcbway.com/project/shareproject/W224521BSI37_trashotron_optical_neuron_2023_03_06_ae2b0405.html)
 
 ### FOR THE LID CUT OUT A 3"X4.5" CARDBOARD RECTANGLE, PAINT AS SHOWN  WITH 1.5 INCH SQURES:
 
@@ -155,6 +156,7 @@ Fully assembled system with speaker connected to audio output and a solar panel 
 
  - [boards/trashotron-slimezistor.brd](boards/trashotron-slimezistor.brd)
  - [boards/trashotron-slimezistor.sch](boards/trashotron-slimezistor.sch) 
+ - [buy boards from pcbway.com](https://www.pcbway.com/project/shareproject/SlimeZistor_d6c918ee.html)
  - [wikipedia link about relaxation oscillator](https://en.wikipedia.org/wiki/Relaxation_oscillator)
 
 The board is 2x1 inch and it fits in a cavity centered in a 3 inch by 3 inch cardboard square with ports as shown.  Find USB and audio in the trash and another cable from the trash with two wires .  This can run on a direct solar panel, since it should work at random voltages.    
