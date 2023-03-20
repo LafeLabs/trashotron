@@ -1,7 +1,13 @@
 {
     "server": "https://raw.githubusercontent.com/LafeLabs/trashotron/main/",
     "scrolls": [
+        "actiongeometry",
+        "books",
+        "cybermagic",
         "home",
-        "slimezistor"
+        "philosophy",
+        "skeletron",
+        "slimezistor",
+        "srs"
     ]
 }

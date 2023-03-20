@@ -7,7 +7,11 @@ This is the [TRASHBOOK](https://github.com/LafeLabs/trashbook/) which replicates
 
 TRASHOTRON is a self-replicating set consisting of:
 
- - [the geometron language and the books which document it](scrolls/geometron)
+ - [Philosophy](scrolls/philosophy)
+ - [Books](scrolls/books) 
+ - [Zines](scrolls/zines)
+ - [Music](scrolls/music)
+ - [Fashion](scrolls/fashion)
  - [action geometry, self-replicating geometric constructions in trash using geometron](scrolls/actiongeometry)
  - [the trash magic philosophy and books documenting it](scrolls/trashmagicphilosophy)
  - [cybermagic self-replicating code](scrolls/cybermagic)
