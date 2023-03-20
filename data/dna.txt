@@ -77,6 +77,16 @@
         "textfeed.txt",
         "trashotron-hypercube.txt"
     ],
+    "javascript": [
+        "geometron.js",
+        "hyperlink.js",
+        "lasercutfont.js",
+        "mapfactory.js",
+        "robotfont.js",
+        "tarot.js",
+        "trashmagic.js",
+        "trashrobotfont.js"
+    ],
     "php": [
         "artistupload.txt",
         "copy.txt",
@@ -106,6 +116,7 @@
         "cybermagic",
         "geometron",
         "home",
+        "iconfactory",
         "neuron",
         "philosophy",
         "skeletron",

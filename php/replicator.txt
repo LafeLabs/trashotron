@@ -16,6 +16,9 @@ mkdir("php");
 mkdir("scrolls");
 mkdir("iconsymbols");
 mkdir("jscode");
+mkdir("symbolfeed");
+mkdir("images");
+
 //mkdir("css");
 
 
