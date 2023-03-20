@@ -15,8 +15,7 @@ mkdir("data");
 mkdir("php");
 mkdir("scrolls");
 mkdir("iconsymbols");
-
-//mkdir("jscode");
+mkdir("jscode");
 //mkdir("css");
 
 
@@ -57,20 +56,10 @@ foreach($dna->iconsymbols as $value){
 
 }
 
-
-/*
-foreach($dna->css as $value){
- 
-    copy($baseurl."css/".$value,"css/".$value);
-
-}
-
-
     
 foreach($dna->javascript as $value){
     copy($baseurl."jscode/".$value,"jscode/".$value);
 }
-*/
 
 
 ?>
