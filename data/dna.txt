@@ -117,7 +117,9 @@
     "scrolls": [
         "actiongeometry",
         "books",
+        "cssrobot",
         "cybermagic",
+        "driver",
         "geometron",
         "home",
         "iconfactory",

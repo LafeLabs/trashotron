@@ -1,0 +1,9 @@
+
+## [HOME](scrolls/home)
+
+# cssrobot
+ 
+This is a pure CSS robot.  Edit the CSS to flash pixels which control the robot. Set the size to match the 3x4.5 inch rectangle with an array of 2x3 squares each 1.5 inch on a side which the [trashotron optical neuron](scrolls/neuron) will pick up.
+
+ - [cssrobot.html](cssrobot.html)
+ - [webeditor.html](webeditor.html)

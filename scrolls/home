@@ -6,9 +6,12 @@ This is a [TRASHBOOK](https://github.com/LafeLabs/trashbook/) which replicates t
 
 TRASHOTRON is a self-replicating set consisting of:
 
- - [optical neuron](scrolls/neuron)
+ - [Optical Neuron](scrolls/neuron)
+ - [Trashotron Driver](scrolls/driver)
  - [trashotron.html](trashotron.html)
  - [Philosophy](scrolls/philosophy)
+ - [Arduino microscope robot](scrolls/microscope)
+ - [Arduino icon printer](scrolls/iconprinter)
  - [ICON FACTORY](scrolls/iconfactory)
  - [Geometron](scrolls/geometron)
  - [Books](scrolls/books) 
@@ -23,7 +26,7 @@ TRASHOTRON is a self-replicating set consisting of:
  - [the spray paint wall printer](scrolls/wallprinter)
  - this document, the TRASHONOMICON which replicates the set
  - the trash magic server and web framework including CSS and js
- - [CSS ROBOT](cssrobot.html)
+ - [CSS ROBOT](scrolls/cssrobot)
  - [P5JS ROBOT](p5jsrobot.html)
  - [the trashotron optical neuron which converts pixels on a screen into digital outputs](scrolls/neuron)
  - [the trashotron driver which translates digital signals to stepper motor control using an analog circuit for a clock](scrolls/driver)

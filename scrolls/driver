@@ -3,6 +3,8 @@
  
 # TRASHOTRON DRIVER
 
+This connects driver board takes power from USB and possibly other voltages for power and drives both the [optical neuron board](scrolls/neuron) and whatever motors are connected to it.
+
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-driver.png)
 
  - [boards/trashotron-driver.brd](boards/trashotron-driver.brd)
@@ -14,6 +16,10 @@
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/driver-pihat-assembly.png)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/driver-trash-assembly.png)
+
+trash board layout of clock:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashclock.svg)
 
 Materials
 
