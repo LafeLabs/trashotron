@@ -1,11 +1,9 @@
 
 ## [HOME](scrolls/home)
 
-# trashotron optical neuron
-
-
- 
 # TRASHOTRON OPTICAL NEURON
+
+The Trashotron Optical Neuron connects to the [trashotron driver](scrolls/driver) by way of a 8 pin ribbon cable.
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-optical-neuron.png)
 

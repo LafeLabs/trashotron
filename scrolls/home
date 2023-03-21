@@ -6,6 +6,7 @@ This is a [TRASHBOOK](https://github.com/LafeLabs/trashbook/) which replicates t
 
 TRASHOTRON is a self-replicating set consisting of:
 
+ - [optical neuron](scrolls/neuron)
  - [trashotron.html](trashotron.html)
  - [Philosophy](scrolls/philosophy)
  - [ICON FACTORY](scrolls/iconfactory)
