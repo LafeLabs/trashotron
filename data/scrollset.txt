@@ -6,6 +6,7 @@
         "cybermagic",
         "geometron",
         "home",
+        "iconfactory",
         "neuron",
         "philosophy",
         "skeletron",
