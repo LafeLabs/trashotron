@@ -4,6 +4,7 @@
         "actiongeometry",
         "books",
         "cybermagic",
+        "driver",
         "geometron",
         "home",
         "iconfactory",
