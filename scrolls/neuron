@@ -4,13 +4,37 @@
 
 # TRASHOTRON OPTICAL NEURON
 
-The Trashotron Optical Neuron connects to the [trashotron driver](scrolls/driver) by way of a 8 pin ribbon cable.
+
+The optical neuron reads out six PD204-6C photodiodes with three dual-channel [LM358](https://en.wikipedia.org/wiki/LM358) [operational amplifiers](https://en.wikipedia.org/wiki/Operational_amplifier) in the 8 pin DIP configuration.  30 megaohm bias resistors are used to set the gain for the 6 channels.  0.1 microfarad capacitors are used to filter the power supplies.  An 8 pin header connects to the ribbon cable.
+
+The Trashotron Optical Neuron connects to the [trashotron driver](scrolls/driver) by way of an [8 pin ribbon cable](https://www.amazon.com/dp/B0789F2Y1T).
+
+To build a Trashotron Neuron, it's probably best to assemble enough parts to build a bunch because of economies of scale.  Buy at least 10 circuit boards, and it's probably best to get them along with the [driver](scrolls/driver) board and also the [slimezistor](scrolls/slimezistor) as well as the parts for those.  
+
+That said, the optical neuron can also be a product by itself, and can be used with breadboards to do any kind of digital control from a web browser.
+
+
+### Kit parts:
+
+- [ribbon cable from amazon](https://www.amazon.com/dp/B0789F2Y1T)
+- [100 op amps from amazon](https://www.amazon.com/dp/B082HMTTQX)
+- [0.1 inch headers from amazon](https://www.amazon.com/MCIGICM-Header-2-45mm-Arduino-Connector/dp/B07PKKY8BX/)
+- [30 megaohm resistors from digikey](https://www.digikey.com/en/products/detail/yageo/HHV-25FR-52-30M/2813033)
+- [0.1 uF capacitors from digikey](https://www.digikey.com/en/products/detail/kyocera-avx/SR211C104KARTR1/3066560)
+- [pd204-6c photodiodes from digikey](https://www.digikey.com/en/products/detail/everlight-electronics-co-ltd/PD204-6C/2675631)
+
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-optical-neuron.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/neuron-bottom-assembled.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/neuron-on-screen.png)
 
  - [boards/trashotron-optical-neuron.brd](boards/trashotron-optical-neuron.brd)
  - [boards/trashotron-optical-neuron.sch](boards/trashotron-optical-neuron.sch) 
  - [buy pcb's at pcbway.com](https://www.pcbway.com/project/shareproject/W224521BSI37_trashotron_optical_neuron_2023_03_06_ae2b0405.html)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/optical-neuron-pcbs.png)
 
 ### FOR THE LID CUT OUT A 3"X4.5" CARDBOARD RECTANGLE, PAINT AS SHOWN  WITH 1.5 INCH SQURES:
 
