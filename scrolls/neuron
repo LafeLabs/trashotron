@@ -1,9 +1,6 @@
-
 ## [HOME](scrolls/home)
 
-
 # TRASHOTRON OPTICAL NEURON
-
 
 The optical neuron reads out six PD204-6C photodiodes with three dual-channel [LM358](https://en.wikipedia.org/wiki/LM358) [operational amplifiers](https://en.wikipedia.org/wiki/Operational_amplifier) in the 8 pin DIP configuration.  30 megaohm bias resistors are used to set the gain for the 6 channels.  0.1 microfarad capacitors are used to filter the power supplies.  An 8 pin header connects to the ribbon cable.
 
@@ -13,16 +10,18 @@ To build a Trashotron Neuron, it's probably best to assemble enough parts to bui
 
 That said, the optical neuron can also be a product by itself, and can be used with breadboards to do any kind of digital control from a web browser.
 
-
 ### Kit parts:
 
-- [ribbon cable from amazon](https://www.amazon.com/dp/B0789F2Y1T)
+- [ribbon cables from amazon](https://www.amazon.com/dp/B0789F2Y1T)
 - [100 op amps from amazon](https://www.amazon.com/dp/B082HMTTQX)
 - [0.1 inch headers from amazon](https://www.amazon.com/MCIGICM-Header-2-45mm-Arduino-Connector/dp/B07PKKY8BX/)
 - [30 megaohm resistors from digikey](https://www.digikey.com/en/products/detail/yageo/HHV-25FR-52-30M/2813033)
 - [0.1 uF capacitors from digikey](https://www.digikey.com/en/products/detail/kyocera-avx/SR211C104KARTR1/3066560)
 - [pd204-6c photodiodes from digikey](https://www.digikey.com/en/products/detail/everlight-electronics-co-ltd/PD204-6C/2675631)
 
+When you have all the parts and the boards, assemble them with the parts all on the side with the writing on it and the photodiodes on the opposite side.  Note that the shorter pin is the cathode and also that the flat side as seen from the top is the cathode.  The cathode is the "top" of the board when the writing is all right side up.  Thus when you look on the side opposite the writing, you should see the flats of all the diodes going across the top.  
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/photodiode-drawing.png)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-optical-neuron.png)
 
@@ -42,8 +41,9 @@ That said, the optical neuron can also be a product by itself, and can be used w
 
 ### LAYOUT OF STACK:
 
-![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/neuron-top-layout.svg)
+Cut out 5 total rectangles each 4.5x3 inches in size. Note that the board from the [driver](scrolls/driver) is also a geometry tool specifically for the construction of these patterns.  It has squares in the silk screen which are 1.5"x1.5" in size.  The slimezistor board can be used as a geometry tool to make a ruler which can be used along with the neuron board to do all the layout for all three types of rectangle. The lid is just a rectangle with squares marked so they're easy to align on the [trashotron sreen](trashotron.html).  Then you want two units with the six cutouts shown below and two units with the center cut out for the board, which is the same as running a 1/2 inch edge around the center.
 
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/neuron-top-layout.svg)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/neuron-boxes.svg)
 

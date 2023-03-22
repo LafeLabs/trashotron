@@ -1,0 +1,129 @@
+
+## [HOME](scrolls/home)
+
+# cubes
+ 
+The Geometron Hypercube has a double meaning. It refers to a data structure in the Geometron Language which encodes all of the symbols and geometric actions which make up the language(see [books](scrolls/books)). But it also refers literally to the 4" cardboard cubes described below.  
+
+Cubes are one of the most fundamental constructions of Action Geometry, Geometron, and Trash Magic.  They are made from glued stacks of cardboard cut out from 4 inch squares.  These can be cut out using a laser cutter to save time or by hand with a box cutter.  Ideally, we will develop trash-sourced punch technology which will allow us to stamp out these shapes must faster than a laser with no electricity.
+
+Cube are used as structural elements and enclosures for a wide range of technology, including z motion control stages, controllers, spray paint gondolas, mushroom grow enclosures, nano compost, container gardening, the Internet of Dirt, art supply holders as well as numerous other applications. As cubes age we will eventually compost all of them with help of cardboard eating fungi.  
+
+## What is the Hypercube?
+
+The Geometron Hypercube is two things: The set of all of the 4 inch cubes we make from cardboard trash which are the basis of our physical technology and a geometric language based on the fundamental symmetries of the Universe.  We construct both of these things in order to make it easier to build Trash Magic, using the power of geometry to build things which can be easily replicated and which can build a very wide range of useful objects.  The word "hypercube" here is used to represent generalizations of the cube into higher dimensions in a broad sense.  We take this to mean a set containing many different cubes of many different kinds.
+
+## The Cardboard Hypercube
+
+The cube is 4 inches on a side and can be used for:
+
+ - pencil/rulers/pens/brushes/shapes box
+ - marketing display
+ - card box for Geometron Trash Magic Cards
+ - mushroom farms
+ - worm farms
+ - [link to oyster mushroom cardboard farming](https://grocycle.com/grow-mushrooms-on-cardboard/)
+ - [buy worms to farm in compost bins](https://unclejimswormfarm.com/order-stuff/composting-worms/)
+ - tiny compost piles
+ - plants, seedlings
+ - dice
+ - parts bins
+ - motion sense control pyramids
+ - motor fixture
+ - geometron icon printer tower
+ - large collaborative art structures
+ - lamps
+
+[tiktok of hand cut cube without a laser](https://www.tiktok.com/t/ZTR8AFMJp)
+
+To make one cube, cut out 12 of these from corrugated cardboard, stack them into four panels 3 layers thick and glue them using Elmer's glue:
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardside.jpg)
+
+.svg file for laser cutter:
+
+[![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/side.svg)](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/side.svg)
+
+Now cut out 3 of the bottom pieces, and stack them into a fifth glued panel. 
+
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardbottom.jpg)
+
+.svg file for laser cutter:
+
+[![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/bottom.svg)](https://raw.githubusercontent.com/LafeLabs/hypercube/main/symbolfeed/bottom.svg)
+
+Assemble the sides into the base as shown:
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cardboardcorner.jpg)
+
+Cut out 4 inch squares, print on them, glue them to the panels, and hold it all together with rubber bands:
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/touchgrass.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/dandylion0.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/road3cubes.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/zoomcubebox.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/zoomcube2.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/zoomcube3.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/zoomcube4.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cube-bottom-pattern.jpg)
+
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/cube-side-pattern.jpg)
+
+Every cube we produce in the Trash Robot Network is part of the Geometron Hypercube.  Therefore to grow the Hypercube, we produce and distribute as many cubes as we can, and always evolve the cubes to make them better over time and to solve specific problems to bring us closer to Trash Magic.
+
+## Action Geometry Tools: Rulers and Shapes
+
+To make geometric constructions out of cardboard trash, we use the tools of Action Geometry, which are created with the Geometron Language.  These include the ruler, which we cut from 0.2 or 0.25 inch thick neon green acrylic and the shape sets which we cut from 0.1 or 0.125 inch thick neon green acrylic.  
+
+### Geometron Ruler
+
+The Geometron Ruler is one inch by six inches. One side has tenths and the other halves, quarters and eights. The highest quality rulers are made from quarter inch neon green acrylic with a laser cutter.  Any ruler can be used to make more rulers.  Cereal box cardboard is a good material.  Find a maker space or individual with a laser cutter.  Dig through the waste bin to find extra acrylic.  Place the outlines and etch and make rulers.  Give them away and spread the word of Geometron, Trash Magic, Trash Robot and so on.  Also you can use [Ponoko.com](https://www.ponoko.com/) to get large numbers of rulers made and can sell those if you so choose.  
+
+Using Ponoko.com is only cost effective if you have a budget of over 1000 dollars, then the cost per ruler can drop to about a dollar and a half.  Also, Ponoko only has eighth inch acrylic and quarter inch is the nicest.  For best results, go find 0.2 inch or quarter inch neon green acrylic somewhere, find a laser cutter and print these out yourself.  All the files for this are below.  
+
+This is some 6 inch rulers from both green and yellow acrylic and a 15 cm metric ruler.
+
+![](https://raw.githubusercontent.com/LafeLabs/geometronmagic/main/cube/uploadimages/rulers-photo.jpg)
+
+Ruler Outline SVG file:
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruleroutline.svg)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruleroutline.svg)
+
+Ruler Etch pattern PNG file:  
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruleretch.png)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruleretch.png)
+
+Ruler 2 color SVG file for Ponoko.com:
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler2color.svg)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler2color.svg)
+
+
+Set of 8 rulers in one SVG file for Ponoko.com:
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/rulers8.svg)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/rulers8.svg)
+
+Centimeters PNG file for etch.  Print out with 15 centimeter width and 2 cm height:
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm-etch.png)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm-etch.png)
+
+centimeters Ruler Outline SVG file, line up with etch and make 15x2 cm:
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm-outline.svg)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm-outline.svg)
+
+One ruler with etch and cut in different layers:
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm.svg)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm.svg)
+
+Set of 8 cm rulers in one SVG file for Ponoko.com:
+
+[![](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm-array.svg)](https://raw.githubusercontent.com/LafeLabs/pibrary/main/factory/rulerimageset/uploadimages/ruler-cm-array.svg)
+
+ 
