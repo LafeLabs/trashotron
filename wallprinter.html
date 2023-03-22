@@ -157,13 +157,54 @@ function draw() {
             stepIndex = 0;//this will cause the glyph to start running
             side = unit;//reset value to unit
         }
-        if (keyIsDown(0101)) {// a, up
+        if (keyIsDown(0121)) {// q, DIR3 turns from black to white
           fill(255);
-          rect(0, 0, cellSize, cellSize);
-          rect(cellSize, 0, cellSize, cellSize);
-          fill(0);
-          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(cellSize*2, cellSize, cellSize, cellSize);
         }
+        if (keyIsDown(0101)) {// a, left with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+          rect(cellSize,0, cellSize, cellSize);
+        }
+        if (keyIsDown(0104)) {// d, right with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0,cellSize, cellSize, cellSize);
+          rect(cellSize,cellSize, cellSize, cellSize);
+
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
+
+        }
+        if (keyIsDown(0127)) {// w, away/up with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);//spray paint on
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+          rect(0, 0, cellSize, cellSize);
+        }
+        if (keyIsDown(0123)) {// s, towards/down with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);//spray paint on
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+          rect(0, 0, cellSize, cellSize);
+
+        }
+        
         if (keyIsDown(0132)) {// z, down
           fill(255);
           rect(0, 0, cellSize, cellSize);
@@ -241,7 +282,7 @@ function draw() {
      <div id = "bannerbox"><canvas id = "banner"></canvas></div>
      
      <div id ="helpbox">
-         USE THE KEYS J,K,L,I TO MOVE ROBOT FORWARD, BACK, LEFT AND RIGHT, USE KEYS A AND Z TO MOVE UP AND DOWN, SPACE BAR RUNS THE GLYPH, Q QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
+         USE THE KEYS J,K,L,I TO MOVE ROBOT UP, DOWN, LEFT AND RIGHT USING THE DUAL PULLEY HOISTS. W,A,S,D MOVES THE SAME MOVEMENTS BUT WITH THE SPRAY PAINT ON.  SPACE BAR RUNS THE GLYPH, Q QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
      </div>
      
       <script>
