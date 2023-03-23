@@ -62,4 +62,12 @@ function draw() {
     rect(cellSize*2, 0, cellSize, cellSize);
     rect(0, cellSize, cellSize, cellSize);
   }
+  if(peakFreq > 800 && peakFreq < 1000){
+        fill(255);
+        fill(255);
+        rect(cellSize, 0, cellSize, cellSize);
+        rect(cellSize*2, 0, cellSize, cellSize);
+        rect(0, 0, cellSize, cellSize);
+    
+  }
 }
