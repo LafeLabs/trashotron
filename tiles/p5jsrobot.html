@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUVh7BV0i7cFZNsRxAAAAAAAAAAAAAAAAAAAAAF0i7YJdIu3lUVh7FAAAAAAAAAAAAAAAAAAAAAAAAAAAUVh7Jl0i7cRdIu3/XSLt/lk2xBAAAAAAAAAAAFk2xCtdIu3+XSLt/10i7f1XPbRRAAAAAAAAAAAAAAAAAAAAAFwn45ddIu3/XSLt/10i7f9dIu31AAAAAE1uTAZdIu36XSLt/10i7f9dIu3/XCfjlAAAAAAAAAAAAAAAAAAAAAAAAAAAXSLt710i7f9dIu3/XSLt/10i7dZdIu3iXSLt/10i7f9dIu3/XSLtyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdIu39XSLt/10i7f9dIu3/XSLt/10i7f9dIu3/XSLt+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWyzYSl0i7f9dIu3/XSLt/10i7f9dIu3/XSLt/1ss2GMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXCToUF0i7e5dIu3+XSLt/10i7f9dIu3/XSLt/10i7f9dIu3wXCToegAAAAAAAAAAAAAAAFZEpCJdIu3cXSLt/l0i7f9dIu3/XSLt/10i7f9dIu3/XSLt/10i7f9dIu3/XSLt/10i7f9dIu3/XSLt810i7U1VR59qXSLt/10i7f9dIu3/XSLt/10i7f9dIu3/XSLt/10i7f9dIu3/XSLt/10i7f9dIu3/XSLt/10i7f9VR59tUlOFDF0i7f9dIu3/XSLt/10i7fxdIu3bXSLt810i7f9dIu3/XSLt810i7eddIu3/XSLt/10i7f9dIu36UlOFDAAAAABdIu3BXSLtzVkzyY8AAAAAAAAAAF0i7d9dIu3/XSLt/10i7fMAAAAAAAAAAFkzyVBdIu3QXSLttQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdIu3fXSLt/10i7f9dIu3zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXSLt310i7f9dIu3/XSLt8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0i7eBdIu3/XSLt/10i7fMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVR59jVUefd1VHn3dVR593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAPfPAADjxwAAwYMAAOAHAADwDwAA+B8AAPAPAACAAQAAgAEAAIABAACMOQAA/D8AAPw/AAD8PwAA//8AAA==" rel="icon" type="image/x-icon" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src = "p5jsrobotsketch.js"></script>
+</head>
+<body>
+  <h1>P5JS ROBOT</h1>
+  <h4>EDIT SKETCH:</h4>
+  <a href = "index.html">HOME</a>
+
+  <table>
+      <tr>
+            <td>CELL SIZE[PX]:</td>
+            <td>
+                <input id = "cellsizeinput"/>
+            </td>
+      </tr>
+  </table>
+
+<div id="maineditor" contenteditable="true" spellcheck="false"></div>
+
+<script>
+      
+document.getElementById("cellsizeinput").value = cellSize.toString();
+
+document.getElementById("cellsizeinput").onchange = function(){
+    cellSize = parseInt(this.value);
+    resizeCanvas(3*cellSize, 2*cellSize);
+    this.blur();
+}
+
+
+
+editor = ace.edit("maineditor");
+editor.setTheme("ace/theme/github");
+//editor.setTheme("ace/theme/vibrant_ink");
+editor.getSession().setMode("ace/mode/javascript");
+editor.getSession().setUseWrapMode(true);
+editor.$blockScrolling = Infinity;
+editor.setTheme("ace/theme/vibrant_ink");
+
+currentFile = "p5jsrobotsketch.js";
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        filedata = this.responseText;
+        setmode();
+        editor.setValue(filedata);
+    }
+};
+httpc.open("GET", "fileloader.php?filename=" + currentFile, true);
+httpc.send();
+
+
+
+
+
+document.getElementById("maineditor").onkeyup = function(){
+    data = encodeURIComponent(editor.getSession().getValue());
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename="+currentFile);//send text to filesaver.php
+
+}
+
+editor.setTheme("ace/theme/vibrant_ink");
+
+        
+
+function setmode(){
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".py"){
+        editor.getSession().setMode("ace/mode/python");
+    }
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".txt"){
+        editor.getSession().setMode("ace/mode/text");
+    }    
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".md"){
+        editor.getSession().setMode("ace/mode/markdown");
+    }
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".tex"){
+        editor.getSession().setMode("ace/mode/latex");
+    }
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".js"){
+        editor.getSession().setMode("ace/mode/javascript");
+    }    
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".ino"){
+        editor.getSession().setMode("ace/mode/java");
+    }   
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".css"){
+        editor.getSession().setMode("ace/mode/css");
+    }       
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".php"){
+        editor.getSession().setMode("ace/mode/php");
+    }       
+    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".html"){
+        editor.getSession().setMode("ace/mode/html");
+    }   
+    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".json"){
+        editor.getSession().setMode("ace/mode/json");
+    }       
+    
+}
+
+
+</script>
+<style>
+    body,input{
+        background-color:#808080;
+        font-size:30px;
+        font-family:courier;
+        font-family:Comic Sans MS;
+        overflow:hidden;
+        background-color:#9f8767;
+    }
+    input{
+        border:solid;
+        border-color:black;
+        border-radius:6px;
+    }
+    a{
+        color:#0000ff;
+        position:absolute;
+        right:0px;
+        top:0px;
+        
+    }
+    main{
+        position:absolute;
+        right:0px;
+        bottom:0px;
+    }
+#maineditor{
+    position:absolute;  
+    left:0%;
+    top:250px;
+    bottom:1em;
+    right:50%;
+    font-size:22px;
+    border:solid;
+    border-color:black;
+}
+
+</style>  
+  </body>
+</html>

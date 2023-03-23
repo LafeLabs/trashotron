@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--
+
+        EVERYTHING IS PHYSICAL 
+        EVERYTHING IS FRACTAL
+        EVERYTHING IS RECURSIVE
+        NO MONEY 
+        MO MINING 
+        NO PROPERTY
+        LOOK AT THE INSECTS
+        LOOK AT THE FUNGI
+        LANGUAGE IS HOW THE MIND PARSES REALITY
+
+    -->
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/wAAAAD//wAA/wAAAAD/AP8A/wAApv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFUAAARGAAIxFVUABEYAAjMRFQAARGYiIjMRAABERmZiIzEAAARERGZiMwAAAARERGYiAAAAAABERiL4PwAA+78AAPu/AAD33wAA9V8AAPVfAAD1XwAA998AAOADAADhAAAA4AAAAPAAAADwAAAA+AAAAP4AAAD/wAAA" rel="icon" type="image/x-icon" />
+    
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+<!--geometron javascript library-->
+    <script src="jscode/geometron.js"></script>
+
+</head>
+<body>
+<div id = "header">
+    <a href = "index.html">
+        <img src = "iconsymbols/home.svg"/> 
+    </a>        
+</div>
+
+
+<div id = "mainbox">
+    <div id = "geometronbox">
+        <canvas id = "maincanvas"></canvas>
+    </div>
+</div>
+
+<div id = "spellbox">
+    <table id = "spellinputtable">
+        <tr>
+            <td>
+                <img id = "modeindicator" class = "button" src = "iconsymbols/cursor.svg"/>
+            </td>
+            <td>
+                <input id = "actioninput"/>
+            </td>
+            <td>
+                <input id = "spellinput"/>
+            </td>
+        </tr>
+    </table>
+    <div id = "spellcanvasbox">
+        <canvas id = "spellcanvas"></canvas>
+    </div>
+</div>
+<div id = "controlbox">
+    <a href = "controls.html"><img style = "width:36px" src = "iconsymbols/edit.svg"/></a>
+    <table id = "controltable">
+    </table>
+</div>
+<script>
+
+controls  = [
+    "0230,0232,010,0233,0231,"
+];
+
+shapestack = [
+    "0220:0305,0350,0350,",
+    "0221:0305,0350,",
+    "0222:0334,0334,",
+    "0223:0335,0335,",
+    "0224:0305,0350,0350,0334,0362,0203,0335,0335,0203,0335,0335,0335,0335,0335,0335,0335,0335,0203,0335,0335,0203,0363,0335,0335,0335,0335,0335,0335,0335,0335,0335,",
+    "0225:0305,0350,0334,0362,0203,0335,0335,0203,0335,0335,0335,0203,0335,0335,0203,0363,0335,0335,0335,0335,",
+    "0230:0332,",
+    "0231:0333,",
+    "0232:0334,0334,",
+    "0233:0335,0335,",
+    "01220:0333,0200,0336,0330,0332,0336,0331,0337,0220,0342,0335,0342,0334,0334,0342,0335,0304,0336,0331,0333,0333,0337,0337,",
+    "01221:0333,0200,0336,0330,0332,0336,0331,0337,0221,0334,0342,0335,0342,0335,0342,0334,0304,0336,0331,0333,0333,0337,0337,",
+    "01222:0333,0200,0336,0330,0332,0331,0336,0330,0337,0350,0350,0334,0343,0332,0335,0336,0336,0342,0335,0335,0335,0335,0342,0334,0334,0334,0334,0334,0337,0337,0334,0331,0335,0335,0313,0342,0304,0333,0336,0331,0337,0337,",
+    "01223:0333,0200,0336,0330,0332,0336,0331,0337,0342,0350,0350,0335,0343,0333,0334,0336,0336,0342,0334,0334,0334,0334,0342,0335,0335,0335,0335,0335,0335,0337,0337,0331,0334,0334,0313,0304,0336,0331,0333,0333,0337,0337,",
+    "01224:0333,0200,0336,0330,0332,0336,0331,0337,0224,0313,0304,0336,0331,0333,0333,0337,0337,",
+    "01225:0333,0200,0336,0330,0332,0336,0331,0337,0225,0313,0304,0336,0331,0333,0333,0337,0337,",
+    "01230:0333,0200,0336,0330,0332,0336,0331,0337,0305,0350,0334,0342,0330,0335,0335,0335,0335,0336,0342,0335,0335,0342,0334,0330,0330,0334,0334,0334,0334,0337,0304,0336,0331,0333,0333,0337,0337,",
+    "01231:0333,0200,0336,0330,0332,0336,0331,0337,0305,0350,0335,0342,0330,0335,0335,0335,0335,0336,0342,0335,0335,0342,0335,0335,0335,0335,0337,0331,0334,0313,0304,0336,0331,0333,0333,0337,0337,",
+    "01232:0333,0200,0336,0332,0336,0330,0337,0305,0350,0343,0332,0335,0336,0342,0335,0335,0342,0335,0337,0330,0334,0334,0334,0334,0313,0304,0336,0331,0333,0333,0337,0337,",
+    "01233:0333,0200,0336,0330,0332,0336,0331,0337,0305,0350,0343,0335,0330,0334,0334,0336,0342,0334,0334,0342,0335,0335,0335,0335,0337,0331,0334,0304,0336,0331,0333,0333,0337,0337,"
+];
+
+
+mytile = {
+    "index":11,
+    "name":"Trash",
+    "trajectory":"",
+    "shape":"0225,",
+    "message":"hack the planet",
+    "url":"https://www.trashrobot.org",
+    "relationships":[]
+};
+
+board = [];
+
+tile1 = JSON.parse(JSON.stringify(mytile));
+tile2 = JSON.parse(JSON.stringify(mytile));
+tile3 = JSON.parse(JSON.stringify(mytile));
+tile4 = JSON.parse(JSON.stringify(mytile));
+tile5 = JSON.parse(JSON.stringify(mytile));
+tile6 = JSON.parse(JSON.stringify(mytile));
+tile7 = JSON.parse(JSON.stringify(mytile));
+tile8 = JSON.parse(JSON.stringify(mytile));
+tile9 = JSON.parse(JSON.stringify(mytile));
+tile10 = JSON.parse(JSON.stringify(mytile));
+
+board.push(tile1);
+board.push(tile2);
+board.push(tile3);
+board.push(tile4);
+board.push(tile5);
+//board.push(tile6);
+//board.push(tile7);
+//board.push(tile8);
+//board.push(tile9);
+//board.push(tile10);
+
+board[1].trajectory = "0233,";
+board[2].trajectory = "0233,0233,";
+board[3].trajectory = "0233,0233,0233,";
+board[4].trajectory = "0233,0233,0233,0233,";
+
+
+maincanvas = document.getElementById("maincanvas");
+var mainGVM = new GVM(maincanvas,0.5*innerWidth - 10,0.5*innerWidth -10);
+var spellGVM = new GVM(document.getElementById("spellcanvas"),420,800);
+
+spellGVM.x0 = 5;
+spellGVM.y0 = 35;
+spellGVM.unit = 20;
+spellGVM.importbytecode(shapestack);
+
+//    "0230,0232,010,0233,0231,"
+
+keyboard = [
+"0141:0230,",
+"0163:0232,",
+"0144:0233,",
+"0146:0231,"
+];
+
+mainGVM.importbytecode(hypercube);
+mainGVM.importbytecode(shapestack);
+mainGVM.importbytecode(keyboard);
+mainGVM.style.fill0 = "#00000040";
+
+drawmain();
+function drawmain(){
+    mainGVM.drawGlyph("0300,");
+    for(var index = 0;index < board.length;index++){
+        mainGVM.actionSequence("0300,0221");
+        mainGVM.actionSequence(board[index].trajectory);
+        console.log(board[index].trajectory);
+        mainGVM.actionSequence(board[index].shape);
+        console.log(board[index].shape);
+    }
+    mainGVM.actionSequence(mytile.trajectory);    
+    mainGVM.actionSequence(mytile.shape);    
+    
+    spellGVM.spellGlyph(mainGVM.glyph);
+    document.getElementById("spellinput").value = mainGVM.cleanGlyph;
+}
+
+
+document.getElementById("actioninput").onkeypress = function(a) {
+    var charCode = a.keyCode || a.which;
+    localCursorAction = parseInt(mainGVM.hypercube[charCode],8);   
+    mainGVM.cursorAction(localCursorAction);   
+    spellGVM.spellGlyph(mainGVM.glyph);    
+    this.value = "";
+    mainGVM.clean();
+    document.getElementById("spellinput").value = mainGVM.cleanGlyph;
+}
+
+
+document.getElementById("actioninput").onkeydown = function(a) {
+    var charCode = a.keyCode || a.which;
+
+    if(charCode == 010) {
+        mainGVM.cursorAction(010);
+    }
+
+    spellGVM.spellGlyph(mainGVM.glyph);
+    document.getElementById("spellinput").value = mainGVM.cleanGlyph;
+    mainGVM.clean();
+
+}
+
+if(innerWidth > innerHeight){
+    document.getElementById("actioninput").select();
+}
+
+document.getElementById("spellinput").onchange = function(){
+    mainGVM.glyph = this.value + "0207,";
+    mainGVM.clean();
+
+    drawmain();
+
+
+}
+
+
+
+controlbuttonsize = 40;
+loadcontroltable();
+
+function loadcontroltable(){
+    document.getElementById("controltable").innerHTML = "";
+    for(var index = 0;index < controls.length;index++){
+        var newtr = document.createElement("TR");
+        document.getElementById("controltable").appendChild(newtr);
+        rowarray = controls[index].split(",");
+        for(var rowindex = 0;rowindex < rowarray.length;rowindex++){
+            if(rowarray[rowindex].length > 0){
+                var newtd = document.createElement("TD");
+                newtr.appendChild(newtd);
+                var newcan = document.createElement("CANVAS");
+                newtd.appendChild(newcan);
+                var datadiv = document.createElement("div");
+                datadiv.innerHTML = rowarray[rowindex];
+                datadiv.className = "data";
+                newtd.appendChild(datadiv);
+                var newGVM = new GVM(newcan,controlbuttonsize,controlbuttonsize);
+                newGVM.unit = controlbuttonsize - 2;
+                newGVM.x0 = 1;
+                newGVM.y0 = controlbuttonsize-1;
+                newGVM.importbytecode(hypercube);
+                newGVM.importbytecode(shapestack);
+                newGVM.action(0300);
+                if(parseInt(rowarray[rowindex],8) >= 040 && parseInt(rowarray[rowindex],8) < 0177){
+                    newGVM.drawGlyph("0300,0336,0336,0330,0333,0337,");
+                }
+                newGVM.action(parseInt(rowarray[rowindex],8)+01000);
+
+                newtd.onclick = function(){
+                    var localaction = parseInt(this.getElementsByClassName("data")[0].innerHTML,8);
+                    if(localaction != 022 && localaction != 023){
+                        if(localaction >= 040 && localaction < 0177){
+                            localaction += 01000;
+                        }
+                        mainGVM.cursorAction(localaction);
+                    }
+                    if(localaction == 022){
+                        previous();
+                    }
+                    if(localaction == 023){
+                        next();
+                    }
+                                                        
+                    mainGVM.clean();
+                    spellGVM.spellGlyph(mainGVM.glyph);
+                    document.getElementById("spellinput").value = mainGVM.cleanGlyph;
+
+                }
+                newcan.classList.add("button");
+            }
+        }
+    }
+}
+
+
+
+
+</script>
+<style>
+body{
+    overflow:hidden;
+}
+#header{
+    height:40px;
+    position:absolute;
+    left:0px;
+    width:100%;
+    top:0px;
+}
+#header img{
+    width:36px;
+}
+#geometronbox{
+    position:absolute;
+    right:0px;
+    top:0px;
+    border:solid;
+}
+#mainbox{
+    position:absolute;
+    right:0px;
+    top:40px;
+    bottom:0px;
+    width:50%;
+    border-left:solid;
+    border-color:blue;
+    overflow:scroll;
+}
+#controlbox{
+    position:absolute;
+    top:40px;
+    left:0px;
+    width:50%;
+    overflow:scroll;
+    bottom:50%;
+    border-bottom:solid;
+    border-top:solid;
+    border-color:red;
+}
+#spellbox{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    width:50%;
+    top:50%;
+    border:solid;
+    border-color:green;
+    overflow:scroll;
+}
+#spellcanvasbox{
+    position:absolute;
+    left:0px;
+    border-top:solid;
+    border:color:blue;
+    top:40px;
+}
+
+.uploadimage{
+    max-width:50%;
+}
+.deletebutton{
+    width:40px;
+}
+.button{
+    cursor:pointer;
+}
+.button:hover{
+    background-color:green;
+}
+.button:active{
+    background-color:yellow;
+}
+.data{
+    display:none;
+}
+#spellbox input{
+    font-size:12px;
+    font-family:courier;
+}
+#actioninput{
+    width:10px;
+}
+#spellinput{
+    width:40em;
+}
+#modeindicator{
+    width:25px;
+}
+@media only screen and (orientation: portrait) {
+    #header{
+        height:80px;
+        position:absolute;
+        left:0px;
+        width:100%;
+        top:0px;
+    }
+    #header img{
+        width:70px;
+    }
+    #mainbox{
+        position:absolute;
+        right:0px;
+        top:80px;
+        bottom:50%;
+        width:100%;
+        border-bottom:solid;
+        border-color:blue;
+        overflow:scroll;
+    }
+    #controlbox{
+        position:absolute;
+        top:50%;
+        left:0px;
+        width:100%;
+        overflow:scroll;
+        bottom:25%;
+        border-bottom:solid;
+        border-color:red;
+    }
+    #spellbox{
+        position:absolute;
+        left:0px;
+        bottom:0px;
+        width:100%;
+        top:75%;
+        border:solid;
+        border-color:green;
+        overflow:scroll;
+    }
+}
+</style>
+</body>
+</html>

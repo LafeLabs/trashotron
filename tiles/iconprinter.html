@@ -14,23 +14,22 @@ lsp = "0327,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,050
     
 glyph = "0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,";
 
-//glyph = star;
+glyph = star;
 
-glyph = glyph.replace(/0500,/g, "0406,0406,0403,0407,0405,0404,0407,");
-glyph = glyph.replace(/0501,/g, "0406,0406,0402,0407,0405,0404,0407,");
-glyph = glyph.replace(/0502,/g, "0406,0406,0401,0407,0405,0404,0407,");
-glyph = glyph.replace(/0503,/g, "0406,0406,0400,0407,0405,0404,0407,");
+//glyph = "0501,0501,0501,0503,0503,0503,0500,0500,0500,0502,0502,0502,"
+
+glyph = glyph.replace(/0500,/g, "0406,0406,0403,0407,0407,0407,0405,0404,0406,");
+glyph = glyph.replace(/0501,/g, "0406,0406,0402,0407,0407,0407,0405,0404,0406,");
+glyph = glyph.replace(/0502,/g, "0406,0406,0401,0407,0407,0407,0405,0404,0406,");
+glyph = glyph.replace(/0503,/g, "0406,0406,0400,0407,0407,0407,0405,0404,0406,");
 glyph = glyph.replace(/0504,/g, "0406,0406,0403,0407,0407,");
 glyph = glyph.replace(/0505,/g, "0406,0406,0402,0407,0407,");
 glyph = glyph.replace(/0506,/g, "0406,0406,0401,0407,0407,");
 glyph = glyph.replace(/0507,/g, "0406,0406,0400,0407,0407,");
 
 
-glyph = "0400,0401,0402,0403,0404,0405,0406,0400,0401,0402,0403,0404,0405,0406,0400,0401,0402,0403,0404,0405,";//one unit out and back in the 3 directions, repeated 3 times, with shorter movement each time
-
-//glyph = "0400,0401,";//left,right
-
-
+glyph = glyph.replace(/0407,0407,0406,0406,/g, "");
+glyph = glyph.replace(/0407,0406,/g, "");
 
 glyphStringArray = glyph.split(",");
 
@@ -58,53 +57,74 @@ cellSize  = 200;
 
 stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.
 
-framesPerSecond= 16;//this can be varied to control the pace of time on the glyph trajectory, which adds analog values to that trajectory.  this can be used as a real time feedback from the electrical probe, which can all be fed into a machine learning algorithm which evolves the geometry.  So the noise lives on top of the Geometron glyph trajectory.  We can also get an analog signal directly into the browser using a motor which as it spins pushes a key repeatedly. if we control the rate of keystrokes, that can feed back into p5js.
-unit = 16;//16 frames = 1 second = unit
+framesPerSecond= 45;//this can be varied to control the pace of time on the glyph trajectory, which adds analog values to that trajectory.  this can be used as a real time feedback from the electrical probe, which can all be fed into a machine learning algorithm which evolves the geometry.  So the noise lives on top of the Geometron glyph trajectory.  We can also get an analog signal directly into the browser using a motor which as it spins pushes a key repeatedly. if we control the rate of keystrokes, that can feed back into p5js.
+
+unit = 8;//16 frames = 1 second = unit
 side = unit;//set to starting unit of 1 second
 sideIndex = 0;//step this from 0 to "side" as a side action is carried out
-
-
-portraitMode = false;       
-
 
 function draw() {
     frameRate(framesPerSecond);//frames per second
     background(0);
     if (stepIndex < glyphArray.length) {
         //control the robot to run the geometron glyph
-        if(glyphArray[stepIndex] == 0400){//left
-            setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0400){
+            //move to the left for "side" frames
+            fill(255);
+            rect(cellSize, 0, cellSize, cellSize);//
+            rect(cellSize*2, 0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0401){//right
-            setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0401){
+            //move to the right for "side" frames
+            fill(255);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            rect(0, cellSize, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0402){//away
-            setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0402){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0403){//towards
-            setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0403){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            rect(cellSize, cellSize, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0404){//up
-            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0404){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0405){//down
-            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0405){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, cellSize, cellSize, cellSize);
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0406){
             side /= 2;
             sideIndex = side;
-            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+
         }
         if(glyphArray[stepIndex] == 0407){
             side *= 2;
             sideIndex = side;
-            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
         }          
         if(glyphArray[stepIndex] < 0400 || glyphArray[stepIndex] >= 0500){
             stepIndex++;
@@ -119,151 +139,64 @@ function draw() {
         }
     }
     else{
-        setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+        fill(255);
+        rect(0, 0, cellSize, cellSize);
+        rect(cellSize, 0, cellSize, cellSize);
+        rect(cellSize*2, 0, cellSize, cellSize);
         if (keyIsDown(040)) {// space bar
             stepIndex = 0;//this will cause the glyph to start running
             side = unit;//reset value to unit
         }
         if (keyIsDown(0101)) {// a, up
-            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
+          fill(0);
+          rect(cellSize*2, 0, cellSize, cellSize);
         }
         if (keyIsDown(0132)) {// z, down
-            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
+          rect(2*cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize*2, 0, cellSize, cellSize);
         }
+
         if (keyIsDown(0112)) {// j, left
-            setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
+          fill(255);
+          rect(cellSize, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          fill(0);
+          rect(0,0, cellSize, cellSize);
         }
         if (keyIsDown(0114)) {// l, right
-            setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
+          fill(255);
+          rect(cellSize, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0,cellSize, cellSize, cellSize);
+          fill(0);
+          rect(0,0, cellSize, cellSize);
         }
+
         if (keyIsDown(0111)) {//i, away
-            setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
         }
         if (keyIsDown(0113)) {//k, towards
-            setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
         }
         
+        
     }
-}
-
-
-function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
-    if(!portrait){
-        resizeCanvas(3*cellSize,2*cellSize);
-    }
-    else{
-        resizeCanvas(2*cellSize,3*cellSize);
-    }
-    if(en1){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-        else{//portrait
-            rect(cellSize,0, cellSize, cellSize);//upper right
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-        else{//portrait
-            rect(cellSize,0, cellSize, cellSize);//upper right
-        }
-    }
-
-    if(dir1){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(0,cellSize, cellSize, cellSize);//lower left
-        }
-        else{//portrait
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(0,cellSize, cellSize, cellSize);//lower left
-        }
-        else{//portrait
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-    }
-    if(en2){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(cellSize,0, cellSize, cellSize);//upper middle
-        }
-        else{//portrait
-            rect(cellSize,cellSize, cellSize, cellSize);//right middle
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(cellSize,0, cellSize, cellSize);//upper middle
-        }
-        else{//portrait
-            rect(cellSize,cellSize, cellSize, cellSize);//right middle
-        }
-    }
-    if(dir2){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
-        }
-        else{//portrait
-            rect(0,cellSize, cellSize, cellSize);//left middle
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
-        }
-        else{//portrait
-            rect(0,cellSize, cellSize, cellSize);//left middle
-        }
-    }
-    if(en3){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(2*cellSize,0, cellSize, cellSize);//upper right
-        }
-        else{//portrait
-            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(2*cellSize,0, cellSize, cellSize);//upper right
-        }
-        else{//portrait
-            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
-        }
-    }
-
-    if(dir3){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
-        }
-        else{//portrait
-            rect(0,2*cellSize, cellSize, cellSize);//lower left
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
-        }
-        else{//portrait
-            rect(0,2*cellSize, cellSize, cellSize);//lower left
-        }
-    }    
 }
 </script>
 
@@ -295,7 +228,8 @@ function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
      <div id ="helpbox">
          USE THE KEYS J,K,L,I TO MOVE ROBOT FORWARD, BACK, LEFT AND RIGHT, USE KEYS A AND Z TO MOVE UP AND DOWN, SPACE BAR RUNS THE GLYPH, Q QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
      </div>
-     <script>
+     
+      <script>
       
       
 document.getElementById("cellsizeinput").value = cellSize.toString();

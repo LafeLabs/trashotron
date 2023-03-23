@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    
+    
     <script src = "geometron.js"></script>
     <script src = "trashmagic.js"></script>
     <script>
@@ -26,11 +28,9 @@ glyph = glyph.replace(/0506,/g, "0406,0406,0401,0407,0407,");
 glyph = glyph.replace(/0507,/g, "0406,0406,0400,0407,0407,");
 
 
-glyph = "0400,0401,0402,0403,0404,0405,0406,0400,0401,0402,0403,0404,0405,0406,0400,0401,0402,0403,0404,0405,";//one unit out and back in the 3 directions, repeated 3 times, with shorter movement each time
+glyph = "0400,0405,0402,0405,0401,0405,0403,0405,";//one unit out and back in the 3 directions, repeated 3 times, with shorter movement each time
 
 //glyph = "0400,0401,";//left,right
-
-
 
 glyphStringArray = glyph.split(",");
 
@@ -63,48 +63,80 @@ unit = 16;//16 frames = 1 second = unit
 side = unit;//set to starting unit of 1 second
 sideIndex = 0;//step this from 0 to "side" as a side action is carried out
 
-
-portraitMode = false;       
-
-
 function draw() {
     frameRate(framesPerSecond);//frames per second
     background(0);
     if (stepIndex < glyphArray.length) {
         //control the robot to run the geometron glyph
-        if(glyphArray[stepIndex] == 0400){//left
-            setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0400){
+            //move to the left for "side" frames
+            fill(255);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            fill(0);
+            rect(0,0, cellSize, cellSize);
+            rect(cellSize,0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0401){//right
-            setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0401){
+            //move to the right for "side" frames
+            fill(255);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            rect(0,cellSize, cellSize, cellSize);
+            rect(cellSize,cellSize, cellSize, cellSize);
+            fill(0);
+            rect(0,0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0402){//away
-            setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0402){
+            //away
+            fill(255);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            rect(cellSize, cellSize, cellSize, cellSize);
+            fill(0);
+            rect(cellSize,0, cellSize, cellSize);
+            rect(0, 0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0403){//towards
-            setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0403){
+            //towards
+            fill(255);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            rect(0, cellSize, cellSize, cellSize);
+            fill(0);
+            rect(cellSize,0, cellSize, cellSize);
+            rect(0, 0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0404){//up
-            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0404){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0405){//down
-            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
+        if(glyphArray[stepIndex] == 0405){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, cellSize, cellSize, cellSize);
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0406){
             side /= 2;
             sideIndex = side;
-            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+
         }
         if(glyphArray[stepIndex] == 0407){
             side *= 2;
             sideIndex = side;
-            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
         }          
         if(glyphArray[stepIndex] < 0400 || glyphArray[stepIndex] >= 0500){
             stepIndex++;
@@ -119,151 +151,110 @@ function draw() {
         }
     }
     else{
-        setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+        fill(255);
+        rect(0, 0, cellSize, cellSize);
+        rect(cellSize, 0, cellSize, cellSize);
+        rect(cellSize*2, 0, cellSize, cellSize);
         if (keyIsDown(040)) {// space bar
             stepIndex = 0;//this will cause the glyph to start running
             side = unit;//reset value to unit
         }
-        if (keyIsDown(0101)) {// a, up
-            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+        if (keyIsDown(0121)) {// q, DIR3 turns from black to white
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);
         }
-        if (keyIsDown(0132)) {// z, down
-            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
+        if (keyIsDown(0101)) {// a, left with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+          rect(cellSize,0, cellSize, cellSize);
         }
-        if (keyIsDown(0112)) {// j, left
-            setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
+        if (keyIsDown(0104)) {// d, right with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0,cellSize, cellSize, cellSize);
+          rect(cellSize,cellSize, cellSize, cellSize);
+
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
+
         }
-        if (keyIsDown(0114)) {// l, right
-            setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
+        if (keyIsDown(0127)) {// w, away/up with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);//spray paint on
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+          rect(0, 0, cellSize, cellSize);
         }
-        if (keyIsDown(0111)) {//i, away
-            setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
-        }
-        if (keyIsDown(0113)) {//k, towards
-            setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
+        if (keyIsDown(0123)) {// s, towards/down with spray paint
+          fill(255);
+          rect(cellSize*2, cellSize, cellSize, cellSize);//spray paint on
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+          rect(0, 0, cellSize, cellSize);
+
         }
         
-    }
-}
+        if (keyIsDown(0132)) {// z, down
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
+          rect(2*cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize*2, 0, cellSize, cellSize);
+        }
 
+        if (keyIsDown(0112)) {// j, left
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+          rect(cellSize,0, cellSize, cellSize);
+        }
+        if (keyIsDown(0114)) {// l, right
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0,cellSize, cellSize, cellSize);
+          rect(cellSize,cellSize, cellSize, cellSize);
 
-function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
-    if(!portrait){
-        resizeCanvas(3*cellSize,2*cellSize);
-    }
-    else{
-        resizeCanvas(2*cellSize,3*cellSize);
-    }
-    if(en1){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-        else{//portrait
-            rect(cellSize,0, cellSize, cellSize);//upper right
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-        else{//portrait
-            rect(cellSize,0, cellSize, cellSize);//upper right
-        }
-    }
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
 
-    if(dir1){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(0,cellSize, cellSize, cellSize);//lower left
         }
-        else{//portrait
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(0,cellSize, cellSize, cellSize);//lower left
-        }
-        else{//portrait
-            rect(0,0, cellSize, cellSize);//upper left
-        }
-    }
-    if(en2){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(cellSize,0, cellSize, cellSize);//upper middle
-        }
-        else{//portrait
-            rect(cellSize,cellSize, cellSize, cellSize);//right middle
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(cellSize,0, cellSize, cellSize);//upper middle
-        }
-        else{//portrait
-            rect(cellSize,cellSize, cellSize, cellSize);//right middle
-        }
-    }
-    if(dir2){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
-        }
-        else{//portrait
-            rect(0,cellSize, cellSize, cellSize);//left middle
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
-        }
-        else{//portrait
-            rect(0,cellSize, cellSize, cellSize);//left middle
-        }
-    }
-    if(en3){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(2*cellSize,0, cellSize, cellSize);//upper right
-        }
-        else{//portrait
-            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
-        }
-    }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(2*cellSize,0, cellSize, cellSize);//upper right
-        }
-        else{//portrait
-            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
-        }
-    }
 
-    if(dir3){//true=black, false=white
-        fill(0);//black
-        if(!portrait){//landscape
-            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
+        if (keyIsDown(0111)) {//i, away
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+          rect(0, 0, cellSize, cellSize);
+
         }
-        else{//portrait
-            rect(0,2*cellSize, cellSize, cellSize);//lower left
+        if (keyIsDown(0113)) {//k, towards
+          fill(255);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+          rect(0, 0, cellSize, cellSize);
         }
+        
+        
     }
-    else{
-        fill(255);//white        
-        if(!portrait){//landscape
-            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
-        }
-        else{//portrait
-            rect(0,2*cellSize, cellSize, cellSize);//lower left
-        }
-    }    
 }
 </script>
 
@@ -293,9 +284,10 @@ function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
      <div id = "bannerbox"><canvas id = "banner"></canvas></div>
      
      <div id ="helpbox">
-         USE THE KEYS J,K,L,I TO MOVE ROBOT FORWARD, BACK, LEFT AND RIGHT, USE KEYS A AND Z TO MOVE UP AND DOWN, SPACE BAR RUNS THE GLYPH, Q QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
+         USE THE KEYS J,K,L,I TO MOVE ROBOT UP, DOWN, LEFT AND RIGHT USING THE DUAL PULLEY HOISTS. W,A,S,D MOVES THE SAME MOVEMENTS BUT WITH THE SPRAY PAINT ON.  SPACE BAR RUNS THE GLYPH, Q QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
      </div>
-     <script>
+     
+      <script>
       
       
 document.getElementById("cellsizeinput").value = cellSize.toString();
