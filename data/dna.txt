@@ -31,6 +31,8 @@
         "operator.html",
         "p5jsrobot.html",
         "p5jsrobotsketch.js",
+        "qrcode-page.html",
+        "qrcode.html",
         "readme.html",
         "readmeeditor.html",
         "robot.css",
