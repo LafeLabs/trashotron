@@ -8,6 +8,7 @@
         "control-p5js.html",
         "cssrobot.html",
         "cube-probe.html",
+        "dtmf-sketch.js",
         "font.html",
         "fork.html",
         "forkdestroyer.html",

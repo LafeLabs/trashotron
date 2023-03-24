@@ -7,9 +7,9 @@ This connects driver board takes power from USB and possibly other voltages for 
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/trashotron-driver.png)
 
- - [boards/trashotron-driver.brd](boards/trashotron-driver.brd)
- - [boards/trashotron-driver.sch](boards/trashotron-driver.sch) 
- - [link to buy from pcbway.com](www.pcbway.com/project/shareproject/W224521BSI42_trashotron_driver_2023_03_06_1aff405c.html)
+ - [boards/trashotron-driver.brd](https://raw.githubusercontent.com/LafeLabs/trashotron/main/boards/trashotron-driver.brd)
+ - [boards/trashotron-driver.sch](https://raw.githubusercontent.com/LafeLabs/trashotron/main/boards/trashotron-driver.sch) 
+ - [link to buy from pcbway.com](https://www.pcbway.com/project/shareproject/W224521BSI42_trashotron_driver_2023_03_06_1aff405c.html)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/driver-assembly.png)
 
