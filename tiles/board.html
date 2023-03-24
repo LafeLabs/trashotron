@@ -68,7 +68,7 @@ controls  = [
 ];
 
 shapestack = [
-    "0220:0305,0350,0350,",
+    "0220:0305,0350,0350,0335,",
     "0221:0305,0350,",
     "0222:0334,0334,",
     "0223:0335,0335,",
@@ -165,17 +165,30 @@ drawmain();
 mainGVM.glyph = board[myIndex].trajectory + "0207,";
 
 
+
+
 function drawmain(){
     mainGVM.drawGlyph("0300,");
     for(var index = 0;index < board.length;index++){
         if(index != myIndex){
-            mainGVM.actionSequence("0300,0221,");
+            if(board[index].shape == "0225,"){
+                mainGVM.actionSequence("0300,0221,");
+            }
+            else{
+                mainGVM.actionSequence("0300,0220,");
+            }
+            
             mainGVM.actionSequence(board[index].trajectory);
             mainGVM.actionSequence(board[index].shape);
         }
     }
     
-    mainGVM.actionSequence("0300,0221,0322,");
+    if(board[myIndex].shape == "0225,"){
+        mainGVM.actionSequence("0300,0221,0322,");
+    }
+    else{
+        mainGVM.actionSequence("0300,0220,0322,");
+    }
     mainGVM.actionSequence(board[myIndex].trajectory);
     mainGVM.actionSequence(board[myIndex].shape);
     
@@ -202,6 +215,33 @@ document.getElementById("actioninput").onkeydown = function(a) {
 
     if(charCode == 010) {
         mainGVM.cursorAction(010);
+    }
+
+    if(charCode == 046){
+        //up arrow: prev symbol
+        myIndex--;
+        if(myIndex < 0){
+            myIndex = board.length - 1;
+        }
+        mainGVM.glyph = board[myIndex].trajectory + "0207,";
+    }
+    if(charCode == 050){
+        //down arrow: next symbol
+        myIndex++;
+        if(myIndex > board.length - 1){
+            myIndex = 0;
+        }
+        mainGVM.glyph = board[myIndex].trajectory + "0207,";
+    }
+
+    if(charCode == 040) {
+        //space bar make a new tile
+        board.push(JSON.parse(JSON.stringify(mytile)));
+        myIndex = board.length - 1;
+        mainGVM.glyph = board[myIndex].trajectory + "0207,";
+        if(myIndex%2==0){
+            board[myIndex].shape = "0224,";
+        }
     }
 
     spellGVM.spellGlyph(mainGVM.glyph);
