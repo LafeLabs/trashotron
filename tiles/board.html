@@ -314,6 +314,9 @@ function loadcontroltable(){
                     }
                                                         
                     mainGVM.clean();
+                    board[myIndex].trajectory = mainGVM.cleanGlyph;
+                    drawmain();
+
                     spellGVM.spellGlyph(mainGVM.glyph);
                     document.getElementById("spellinput").value = mainGVM.cleanGlyph;
 
