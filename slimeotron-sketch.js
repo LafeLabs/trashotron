@@ -8,7 +8,12 @@
 let mic, fft;
 
 cellSize = 200;
-
+if(innerHeight > innerWidth){
+    portraitMode = true;
+}
+else{
+    portraitMode = false;
+}
 
 function setup() {
   createCanvas(3*cellSize, 2*cellSize);
@@ -19,7 +24,6 @@ function setup() {
   fft = new p5.FFT();
   fft.setInput(mic);
 }
-
 function draw() {
 //  background(159,144,103);
   background(0);
@@ -38,36 +42,153 @@ function draw() {
   let binFreq = nyquistFreq / (spectrum.length / 2);
   let peakFreq = binFreq * peakBin;
 
+
+  if(peakFreq > 1000){
+    //move left
+    setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
+  }
+  if(peakFreq < 800){
+    //move right
+    setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
+  }
+  if(peakFreq > 400 && peakFreq < 600){
+    setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+  }
+  if(peakFreq > 600 && peakFreq < 800){
+    setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
+  }
+  if(peakFreq > 800 && peakFreq < 1100){
+    setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
+  }
+
   beginShape();
   for (let i = 0; i < spectrum.length; i++) {
     vertex(i, map(spectrum[i], 0, 255, height, 0));
   }
   endShape();
-
   // Display the peak frequency in Hz
   textSize(24);
   textAlign(RIGHT);
   fill(0);
   text(peakFreq.toFixed(2) + " Hz", width - 20, 50);
-  if(peakFreq > 1000){
-    //move left
-    fill(255);
-    rect(cellSize, 0, cellSize, cellSize);//
-    rect(cellSize*2, 0, cellSize, cellSize);
-  }
-  if(peakFreq < 800){
-    //move right
-    fill(255);
-    rect(cellSize, 0, cellSize, cellSize);
-    rect(cellSize*2, 0, cellSize, cellSize);
-    rect(0, cellSize, cellSize, cellSize);
-  }
-  if(peakFreq > 800 && peakFreq < 1000){
-        fill(255);
-        fill(255);
-        rect(cellSize, 0, cellSize, cellSize);
-        rect(cellSize*2, 0, cellSize, cellSize);
-        rect(0, 0, cellSize, cellSize);
-    
-  }
+
+}
+
+function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
+    if(!portrait){
+        resizeCanvas(3*cellSize,2*cellSize);
+    }
+    else{
+        resizeCanvas(2*cellSize,3*cellSize);
+    }
+    if(en1){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+        else{//portrait
+            rect(cellSize,0, cellSize, cellSize);//upper right
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+        else{//portrait
+            rect(cellSize,0, cellSize, cellSize);//upper right
+        }
+    }
+
+    if(dir1){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(0,cellSize, cellSize, cellSize);//lower left
+        }
+        else{//portrait
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(0,cellSize, cellSize, cellSize);//lower left
+        }
+        else{//portrait
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+    }
+    if(en2){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(cellSize,0, cellSize, cellSize);//upper middle
+        }
+        else{//portrait
+            rect(cellSize,cellSize, cellSize, cellSize);//right middle
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(cellSize,0, cellSize, cellSize);//upper middle
+        }
+        else{//portrait
+            rect(cellSize,cellSize, cellSize, cellSize);//right middle
+        }
+    }
+    if(dir2){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
+        }
+        else{//portrait
+            rect(0,cellSize, cellSize, cellSize);//left middle
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
+        }
+        else{//portrait
+            rect(0,cellSize, cellSize, cellSize);//left middle
+        }
+    }
+    if(en3){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(2*cellSize,0, cellSize, cellSize);//upper right
+        }
+        else{//portrait
+            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(2*cellSize,0, cellSize, cellSize);//upper right
+        }
+        else{//portrait
+            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
+        }
+    }
+
+    if(dir3){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
+        }
+        else{//portrait
+            rect(0,2*cellSize, cellSize, cellSize);//lower left
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
+        }
+        else{//portrait
+            rect(0,2*cellSize, cellSize, cellSize);//lower left
+        }
+    }    
 }
