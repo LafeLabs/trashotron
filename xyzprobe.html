@@ -73,31 +73,35 @@ function draw() {
         //control the robot to run the geometron glyph
         if(glyphArray[stepIndex] == 0400){
             //move to the right for "side" frames
-          setTrashotron(true,true,false,false,false,true,portraitMode,cellSize);//right
+          setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);//right
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0401){
             //move to the left for "side" frames
-          setTrashotron(true,true,false,true,true,true,portraitMode,cellSize);//left
+          setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);//left
           
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0402){
-            //towards wall
-            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+            //away
+
+            setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);              
+
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0403){
-            //away from wall
-            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
+            //towards
+            setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0404){//up
-            setTrashotron(true,true,false,true,false,true,portraitMode,cellSize);    
+        
+            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+    
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0405){//down
-            setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);        
+            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);              
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0406){
@@ -133,26 +137,26 @@ function draw() {
                 stepIndex = 0;//this will cause the glyph to start running
                 side = unit;//reset value to unit
             }
-            if (keyIsDown(0125)) {// u  towards wall 0402
+            if (keyIsDown(0125)) {// u up 0404
                 setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
             }
-            if (keyIsDown(0110)) {// h out from wall 0403
+            if (keyIsDown(0110)) {// h down 0405
                 setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
             }
     
             if (keyIsDown(0112)) {// j, left 0401
-              setTrashotron(true,true,false,true,true,true,portraitMode,cellSize);//left
+                setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
             }
             if (keyIsDown(0114)) {// l, right 0400
-              setTrashotron(true,true,false,false,false,true,portraitMode,cellSize);//right
+                setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
             
             }
     
-            if (keyIsDown(0111)) {//i, up  0404
-              setTrashotron(true,true,false,true,false,true,portraitMode,cellSize);
+            if (keyIsDown(0111)) {//i, away  0402
+                setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);              
             }
-            if (keyIsDown(0113)) {//k, down 0405
-              setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);
+            if (keyIsDown(0113)) {//k, towards 0403
+                setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);              
             }
 
         }
@@ -194,7 +198,7 @@ function draw() {
      <div id = "bannerbox"><canvas id = "banner"></canvas></div>
      
      <div id ="helpbox">
-         USE THE KEYS J,K,L,I TO MOVE ROBOT UP, DOWN, LEFT AND RIGHT USING THE DUAL PULLEY HOISTS. H MOVEs THE PEN OUT FROM THE WALL AND U MOVES IT TOWARD THE WALL.  G(FOR "GO") RUNS THE GLYPH, S(FOR "STOP") QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  HIT "ENTER" TO SWITCH IN AND OUT OF GLYPH EDIT MODE. PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
+         USE THE KEYS J,K,L,I TO MOVE ROBOT UP, DOWN, LEFT AND RIGHT. H MOVES THE STAGE TOWARDS YOU AND U MOVES AWAY.  G(FOR "GO") RUNS THE GLYPH, S(FOR "STOP") QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  HIT "ENTER" TO SWITCH IN AND OUT OF GLYPH EDIT MODE. PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
      </div>
      
       <script>
@@ -265,11 +269,11 @@ for(var index = 040;index <= 0176;index++){
 simplekeyboard = [
     "055:0406,",
     "075:0407,",
-    "0165:0402,",
-    "0151:0404,",
-    "0150:0403,",
+    "0165:0404,",
+    "0151:0402,",
+    "0150:0405,",
     "0152:0401,",
-    "0153:0405,",
+    "0153:0403,",
     "0154:0400,"
 ];
 
@@ -294,16 +298,16 @@ httpglyph.onreadystatechange = function() {
         spellingGVM.spellGlyph(spellingGVM.glyph);  
     }
 };
-httpglyph.open("GET", "fileloader.php?filename=data/wallglyph.txt", true);
+httpglyph.open("GET", "fileloader.php?filename=data/xyzglyph.txt", true);
 httpglyph.send();
 
 function saveglyph(){
-    //save glyph as data/wallglyph.txt
+    //save glyph as data/xyzglyph.txt
     var httpc = new XMLHttpRequest();
     var url = "filesaver.php";        
     httpc.open("POST", url, true);
     httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-    httpc.send("data="+glyph+"&filename=data/wallglyph.txt");//send text to
+    httpc.send("data="+glyph+"&filename=data/xyzglyph.txt");//send text to
 }
 
 function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
