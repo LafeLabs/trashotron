@@ -27,6 +27,7 @@
         "imagefeed.html",
         "index.html",
         "keyboard.html",
+        "loopotron.html",
         "microscope-scan.html",
         "operator.html",
         "p5jsrobot.html",
