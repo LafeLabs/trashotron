@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
-    
-    
     <script src = "geometron.js"></script>
     <script src = "trashmagic.js"></script>
     <script>
@@ -26,7 +24,6 @@ glyph = glyph.replace(/0504,/g, "0406,0406,0403,0407,0407,");
 glyph = glyph.replace(/0505,/g, "0406,0406,0402,0407,0407,");
 glyph = glyph.replace(/0506,/g, "0406,0406,0401,0407,0407,");
 glyph = glyph.replace(/0507,/g, "0406,0406,0400,0407,0407,");
-
 
 glyph = "0400,0405,0402,0405,0401,0405,0403,0405,";//one unit out and back in the 3 directions, repeated 3 times, with shorter movement each time
 
@@ -52,9 +49,13 @@ function setup() {
     createCanvas(cellSize*3, cellSize*2);
 }
 
+portraitMode = false;
+if(innerHeight > innerWidth){
+    portraitMode = true;
+}
 
 
-cellSize  = 200;
+cellSize  = 150;
 
 stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.
 
@@ -63,80 +64,52 @@ unit = 16;//16 frames = 1 second = unit
 side = unit;//set to starting unit of 1 second
 sideIndex = 0;//step this from 0 to "side" as a side action is carried out
 
+glypheditmode = false;
+
 function draw() {
     frameRate(framesPerSecond);//frames per second
     background(0);
     if (stepIndex < glyphArray.length) {
         //control the robot to run the geometron glyph
         if(glyphArray[stepIndex] == 0400){
-            //move to the left for "side" frames
-            fill(255);
-            rect(cellSize*2, 0, cellSize, cellSize);
-            fill(0);
-            rect(0,0, cellSize, cellSize);
-            rect(cellSize,0, cellSize, cellSize);
+            //move to the right for "side" frames
+          setTrashotron(true,true,false,false,false,true,portraitMode,cellSize);//right
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0401){
-            //move to the right for "side" frames
-            fill(255);
-            rect(cellSize*2, 0, cellSize, cellSize);
-            rect(0,cellSize, cellSize, cellSize);
-            rect(cellSize,cellSize, cellSize, cellSize);
-            fill(0);
-            rect(0,0, cellSize, cellSize);
-            rect(cellSize, 0, cellSize, cellSize);
+            //move to the left for "side" frames
+          setTrashotron(true,true,false,true,true,true,portraitMode,cellSize);//left
+          
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0402){
-            //away
-            fill(255);
-            rect(cellSize*2, 0, cellSize, cellSize);
-            rect(cellSize, cellSize, cellSize, cellSize);
-            fill(0);
-            rect(cellSize,0, cellSize, cellSize);
-            rect(0, 0, cellSize, cellSize);
+            //towards wall
+            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0403){
-            //towards
-            fill(255);
-            rect(cellSize*2, 0, cellSize, cellSize);
-            rect(0, cellSize, cellSize, cellSize);
-            fill(0);
-            rect(cellSize,0, cellSize, cellSize);
-            rect(0, 0, cellSize, cellSize);
+            //away from wall
+            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0404){
-            fill(255);
-            rect(0, 0, cellSize, cellSize);
-            rect(cellSize, 0, cellSize, cellSize);
+        if(glyphArray[stepIndex] == 0404){//up
+            setTrashotron(true,true,false,true,false,true,portraitMode,cellSize);    
             sideIndex++;
         }
-        if(glyphArray[stepIndex] == 0405){
-            fill(255);
-            rect(0, 0, cellSize, cellSize);
-            rect(cellSize, 0, cellSize, cellSize);
-            rect(cellSize*2, cellSize, cellSize, cellSize);
+        if(glyphArray[stepIndex] == 0405){//down
+            setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);        
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0406){
             side /= 2;
             sideIndex = side;
-            fill(255);
-            rect(0, 0, cellSize, cellSize);
-            rect(cellSize, 0, cellSize, cellSize);
-            rect(cellSize*2, 0, cellSize, cellSize);
+            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
 
         }
         if(glyphArray[stepIndex] == 0407){
             side *= 2;
             sideIndex = side;
-            fill(255);
-            rect(0, 0, cellSize, cellSize);
-            rect(cellSize, 0, cellSize, cellSize);
-            rect(cellSize*2, 0, cellSize, cellSize);
+            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
         }          
         if(glyphArray[stepIndex] < 0400 || glyphArray[stepIndex] >= 0500){
             stepIndex++;
@@ -145,117 +118,53 @@ function draw() {
               sideIndex = 0;
               stepIndex++;
         }
-        if (keyIsDown(0121)) {// q/Q
+        if (keyIsDown(0123)) {// s
             //exit the glyph by putting index to greater than length of glyph
             stepIndex = glyphArray.length + 1;
         }
     }
     else{
-        fill(255);
-        rect(0, 0, cellSize, cellSize);
-        rect(cellSize, 0, cellSize, cellSize);
-        rect(cellSize*2, 0, cellSize, cellSize);
-        if (keyIsDown(040)) {// space bar
-            stepIndex = 0;//this will cause the glyph to start running
-            side = unit;//reset value to unit
-        }
-        if (keyIsDown(0121)) {// q, DIR3 turns from black to white
-          fill(255);
-          rect(cellSize*2, cellSize, cellSize, cellSize);
-        }
-        if (keyIsDown(0101)) {// a, left with spray paint
-          fill(255);
-          rect(cellSize*2, cellSize, cellSize, cellSize);
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          fill(0);
-          rect(0,0, cellSize, cellSize);
-          rect(cellSize,0, cellSize, cellSize);
-        }
-        if (keyIsDown(0104)) {// d, right with spray paint
-          fill(255);
-          rect(cellSize*2, cellSize, cellSize, cellSize);
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          rect(0,cellSize, cellSize, cellSize);
-          rect(cellSize,cellSize, cellSize, cellSize);
-
-          fill(0);
-          rect(0,0, cellSize, cellSize);
-          rect(cellSize, 0, cellSize, cellSize);
+        if(!glypheditmode){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            if (keyIsDown(0107)) {// g
+                stepIndex = 0;//this will cause the glyph to start running
+                side = unit;//reset value to unit
+            }
+            if (keyIsDown(0125)) {// u  towards wall 0402
+                setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+            }
+            if (keyIsDown(0110)) {// h out from wall 0403
+                setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
+            }
+    
+            if (keyIsDown(0112)) {// j, left 0401
+              setTrashotron(true,true,false,true,true,true,portraitMode,cellSize);//left
+            }
+            if (keyIsDown(0114)) {// l, right 0400
+              setTrashotron(true,true,false,false,false,true,portraitMode,cellSize);//right
+            
+            }
+    
+            if (keyIsDown(0111)) {//i, up  0404
+              setTrashotron(true,true,false,true,false,true,portraitMode,cellSize);
+            }
+            if (keyIsDown(0113)) {//k, down 0405
+              setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);
+            }
 
         }
-        if (keyIsDown(0127)) {// w, away/up with spray paint
-          fill(255);
-          rect(cellSize*2, cellSize, cellSize, cellSize);//spray paint on
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          rect(cellSize, cellSize, cellSize, cellSize);
-          fill(0);
-          rect(cellSize,0, cellSize, cellSize);
-          rect(0, 0, cellSize, cellSize);
+        else{
+            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+            //edit the glyph
         }
-        if (keyIsDown(0123)) {// s, towards/down with spray paint
-          fill(255);
-          rect(cellSize*2, cellSize, cellSize, cellSize);//spray paint on
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          rect(0, cellSize, cellSize, cellSize);
-          fill(0);
-          rect(cellSize,0, cellSize, cellSize);
-          rect(0, 0, cellSize, cellSize);
-
-        }
-        
-        if (keyIsDown(0132)) {// z, down
-          fill(255);
-          rect(0, 0, cellSize, cellSize);
-          rect(cellSize, 0, cellSize, cellSize);
-          rect(2*cellSize, cellSize, cellSize, cellSize);
-          fill(0);
-          rect(cellSize*2, 0, cellSize, cellSize);
-        }
-
-        if (keyIsDown(0112)) {// j, left
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          fill(0);
-          rect(0,0, cellSize, cellSize);
-          rect(cellSize,0, cellSize, cellSize);
-        }
-        if (keyIsDown(0114)) {// l, right
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          rect(0,cellSize, cellSize, cellSize);
-          rect(cellSize,cellSize, cellSize, cellSize);
-
-          fill(0);
-          rect(0,0, cellSize, cellSize);
-          rect(cellSize, 0, cellSize, cellSize);
-
-        }
-
-        if (keyIsDown(0111)) {//i, away
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          rect(cellSize, cellSize, cellSize, cellSize);
-          fill(0);
-          rect(cellSize,0, cellSize, cellSize);
-          rect(0, 0, cellSize, cellSize);
-
-        }
-        if (keyIsDown(0113)) {//k, towards
-          fill(255);
-          rect(cellSize*2, 0, cellSize, cellSize);
-          rect(0, cellSize, cellSize, cellSize);
-          fill(0);
-          rect(cellSize,0, cellSize, cellSize);
-          rect(0, 0, cellSize, cellSize);
-        }
-        
-        
     }
 }
+
+
+
 </script>
 
   </head>
@@ -274,6 +183,7 @@ function draw() {
           <tr>
               <td>GEOMETRON GLYPH:</td>
               <td>
+                  <input id = "actioninput"/>
                   <input id = "glyphinput"/>
               </td>
           </tr>
@@ -284,7 +194,7 @@ function draw() {
      <div id = "bannerbox"><canvas id = "banner"></canvas></div>
      
      <div id ="helpbox">
-         USE THE KEYS J,K,L,I TO MOVE ROBOT UP, DOWN, LEFT AND RIGHT USING THE DUAL PULLEY HOISTS. W,A,S,D MOVES THE SAME MOVEMENTS BUT WITH THE SPRAY PAINT ON.  SPACE BAR RUNS THE GLYPH, Q QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
+         USE THE KEYS J,K,L,I TO MOVE ROBOT UP, DOWN, LEFT AND RIGHT USING THE DUAL PULLEY HOISTS. H MOVEs THE PEN OUT FROM THE WALL AND U MOVES IT TOWARD THE WALL.  G RUNS THE GLYPH, S QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
      </div>
      
       <script>
@@ -305,7 +215,6 @@ document.getElementById("glyphinput").onchange = function(){
     spellingGVM.spellGlyph(glyph + "0207,");  
 
     glyphStringArray = glyph.split(",");
-    
     glyphArray = [];
     for(var index = 0;index < glyphStringArray.length;index++){
         if(glyphStringArray[index].length > 0){
@@ -314,6 +223,7 @@ document.getElementById("glyphinput").onchange = function(){
         }
     }
     this.blur();
+    saveglyph();
 }
 
 bannerGlyph = "0337,0337,0337,0337,0337,0347,0325,0336,0336,0336,0336,0336,0333,0333,0333,0330,0336,0330,0335,0337,0337,0305,0311,0201,0335,0350,0201,0335,0335,0201,0335,0335,0201,0335,0335,0201,0335,0335,0335,0335,0337,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0335,0335,0342,0335,0336,0333,0334,0334,0342,0331,0335,0335,0335,0334,0337,0201,0334,0334,0334,0334,0201,0336,0330,0337,0201,0334,0334,0334,0334,0201,0335,0335,0335,0334,0342,0334,0334,0334,0334,0336,0330,0335,0335,0335,0336,0201,0335,0335,0335,0335,0201,0335,0335,0335,0335,0201,0335,0335,0335,0335,0201,0335,0335,0335,0335,0201,0335,0335,0330,0335,0335,0330,0342,0335,0335,0335,0335,0335,0334,0330,0334,0336,0330,0334,0334,0334,0336,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0300,0322,01124,0323,01122,0324,01101,0325,01123,0326,01110,0327,01117,0322,01124,0323,01122,0324,01117,0325,01116,";
@@ -345,8 +255,270 @@ spellingGVM.spellGlyph(glyph + "0207,");
 
 googleyeyes(8);
 
+document.getElementById("actioninput").value = "";
 
-  </script>
+blankkeyboard = [];
+for(var index = 040;index <= 0176;index++){
+    blankkeyboard.push("0" + index.toString(8) + ":0177,");    
+}
+
+simplekeyboard = [
+    "055:0406,",
+    "075:0407,",
+    "0165:0402,",
+    "0151:0404,",
+    "0150:0403,",
+    "0152:0401,",
+    "0153:0405,",
+    "0154:0400,"
+];
+
+spellingGVM.importbytecode(blankkeyboard);
+spellingGVM.importbytecode(simplekeyboard);
+
+var httpglyph = new XMLHttpRequest();
+httpglyph.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        glyph = this.responseText;
+        document.getElementById("glyphinput").value = glyph;        
+        glyphStringArray = glyph.split(",");
+        glyphArray = [];
+        for(var index = 0;index < glyphStringArray.length;index++){
+            if(glyphStringArray[index].length > 0){
+                var localaction = parseInt(glyphStringArray[index],8);
+                glyphArray.push(parseInt(glyphStringArray[index],8));
+            }
+        }
+
+        spellingGVM.glyph = glyph + "0207,";
+        spellingGVM.spellGlyph(spellingGVM.glyph);  
+    }
+};
+httpglyph.open("GET", "fileloader.php?filename=data/wallglyph.txt", true);
+httpglyph.send();
+
+function saveglyph(){
+    //save glyph as data/wallglyph.txt
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+glyph+"&filename=data/wallglyph.txt");//send text to
+}
+
+function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
+    if(!portrait){
+        resizeCanvas(3*cellSize,2*cellSize);
+    }
+    else{
+        resizeCanvas(2*cellSize,3*cellSize);
+    }
+    if(en1){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+        else{//portrait
+            rect(cellSize,0, cellSize, cellSize);//upper right
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+        else{//portrait
+            rect(cellSize,0, cellSize, cellSize);//upper right
+        }
+    }
+
+    if(dir1){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(0,cellSize, cellSize, cellSize);//lower left
+        }
+        else{//portrait
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(0,cellSize, cellSize, cellSize);//lower left
+        }
+        else{//portrait
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+    }
+    if(en2){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(cellSize,0, cellSize, cellSize);//upper middle
+        }
+        else{//portrait
+            rect(cellSize,cellSize, cellSize, cellSize);//right middle
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(cellSize,0, cellSize, cellSize);//upper middle
+        }
+        else{//portrait
+            rect(cellSize,cellSize, cellSize, cellSize);//right middle
+        }
+    }
+    if(dir2){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
+        }
+        else{//portrait
+            rect(0,cellSize, cellSize, cellSize);//left middle
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
+        }
+        else{//portrait
+            rect(0,cellSize, cellSize, cellSize);//left middle
+        }
+    }
+    if(en3){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(2*cellSize,0, cellSize, cellSize);//upper right
+        }
+        else{//portrait
+            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(2*cellSize,0, cellSize, cellSize);//upper right
+        }
+        else{//portrait
+            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
+        }
+    }
+
+    if(dir3){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
+        }
+        else{//portrait
+            rect(0,2*cellSize, cellSize, cellSize);//lower left
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
+        }
+        else{//portrait
+            rect(0,2*cellSize, cellSize, cellSize);//lower left
+        }
+    }    
+}
+
+function keyPressed() {
+  if (keyCode === RETURN) {
+      glypheditmode  = !glypheditmode;
+      if(glypheditmode){
+          document.getElementById("actioninput").select();
+      }
+      else{
+          document.getElementById("actioninput").blur();
+      }
+  }
+}
+
+
+
+document.getElementById("actioninput").onkeypress = function(a) {
+    var charCode = a.keyCode || a.which;
+    if(charCode != 015){
+        localCursorAction = parseInt(spellingGVM.hypercube[charCode],8);   
+
+        spellingGVM.cursorAction(localCursorAction);   
+        spellingGVM.spellGlyph(spellingGVM.glyph);    
+        this.value = "";
+        spellingGVM.clean();
+        glyph = spellingGVM.cleanGlyph;
+        document.getElementById("glyphinput").value = spellingGVM.cleanGlyph;
+       this.value = "";
+
+    }
+    glyphStringArray = glyph.split(",");
+    
+    glyphArray = [];
+    for(var index = 0;index < glyphStringArray.length;index++){
+        if(glyphStringArray[index].length > 0){
+            var localaction = parseInt(glyphStringArray[index],8);
+            glyphArray.push(parseInt(glyphStringArray[index],8));
+        }
+    }
+        
+    stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.    
+    saveglyph();
+}
+
+
+document.getElementById("actioninput").onkeydown = function(a) {
+    var charCode = a.keyCode || a.which;
+
+    if(charCode == 010) {
+        spellingGVM.cursorAction(010);
+    }
+    if(charCode == 045){
+        spellingGVM.cursorAction(020);             
+    }
+    if(charCode == 047){
+        spellingGVM.cursorAction(021);   
+    }
+
+    if(charCode == 046){
+        //up arrow: prev symbol
+        spellingGVM.clean();
+        spellingGVM.glyph = "0207," + spellingGVM.cleanGlyph;
+        spellingGVM.drawGlyph(spellingGVM.glyph);
+    }
+    if(charCode == 050){
+        //down arrow: next symbol
+        spellingGVM.clean();
+        spellingGVM.glyph = spellingGVM.cleanGlyph + "0207,";
+        spellingGVM.drawGlyph(spellingGVM.glyph);
+
+    }
+
+    spellingGVM.spellGlyph(spellingGVM.glyph);
+    spellingGVM.clean();
+    document.getElementById("glyphinput").value = spellingGVM.cleanGlyph;
+    glyph = spellingGVM.cleanGlyph;
+    this.value = "";
+    
+    glyphStringArray = glyph.split(",");
+    
+    glyphArray = [];
+    for(var index = 0;index < glyphStringArray.length;index++){
+        if(glyphStringArray[index].length > 0){
+            var localaction = parseInt(glyphStringArray[index],8);
+            glyphArray.push(parseInt(glyphStringArray[index],8));
+        }
+    }
+        
+    stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.
+    
+    saveglyph();
+    
+}
+
+
+</script>
 <style>
     body,input{
         background-color:#808080;
@@ -363,6 +535,9 @@ googleyeyes(8);
     }
     a{
         color:#0000ff;
+    }
+    #actioninput{
+        width:0.5em;
     }
     #cardboard{
         position:absolute;
@@ -384,12 +559,12 @@ googleyeyes(8);
     main{
         position:absolute;
         right:0px;
-        bottom:0px;
+        top:0px;
     }
     #bannerbox{
         position:absolute;
         right:0px;
-        top:0px;
+        bottom:0px;
         z-index:0;
     }
     #helpbox{

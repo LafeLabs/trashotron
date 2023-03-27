@@ -84,7 +84,8 @@
         "set.txt",
         "symbolset.txt",
         "textfeed.txt",
-        "trashotron-hypercube.txt"
+        "trashotron-hypercube.txt",
+        "wallglyph.txt"
     ],
     "javascript": [
         "geometron.js",
