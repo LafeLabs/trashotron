@@ -48,22 +48,22 @@ function draw() {
   setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
 
 
-  if(peakFreq > 550 && peakFreq < 650){
+  if(peakFreq > 150 && peakFreq < 250){
     setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
   }
-  if(peakFreq > 750 && peakFreq < 850){
+  if(peakFreq > 250 && peakFreq < 350){
     setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
   }
-  if(peakFreq > 950 && peakFreq < 1050){
+  if(peakFreq > 350 && peakFreq < 450){
     setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
   }
-  if(peakFreq > 1150 && peakFreq < 1250){
+  if(peakFreq > 450 && peakFreq < 550){
     setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
   }
-  if(peakFreq > 1350 && peakFreq < 1450){
+  if(peakFreq > 550 && peakFreq < 650){
     setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
   }
-  if(peakFreq > 1550 && peakFreq < 1650){
+  if(peakFreq > 650 && peakFreq < 750){
     setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
   }
 
