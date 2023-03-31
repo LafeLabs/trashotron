@@ -19,6 +19,7 @@
         "philosophy",
         "skeletron",
         "slimezistor",
-        "srs"
+        "srs",
+        "videos"
     ]
 }

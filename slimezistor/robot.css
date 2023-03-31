@@ -1,0 +1,67 @@
+#en1{
+    background-color:black;
+}
+#en2{
+    background-color:white;
+}
+#en3{
+    background-color:white;
+}
+
+
+#dir1{
+    background-color:black;
+}
+#dir2{
+    background-color:black;
+}
+#dir3{
+    background-color:black;
+}
+#dir1{
+    background-color:black;
+	animation: blink 1s steps(1) infinite 2s;    
+}
+@keyframes blink {
+	50% {
+		background-color: white;
+	}
+}
+td{
+    width:200px;
+    height:200px;
+    border:solid;
+    border-color:blue;
+}
+#control{
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    border:solid;
+    border-color:white;
+    width:600px;
+    height:400px;
+    z-index:1;
+}
+#maineditor{
+    position:absolute;  
+    left:0%;
+    top:150px;
+    bottom:1em;
+    right:50%;
+    font-size:22px;
+    border:solid;
+    border-color:black;
+}
+a{
+    color:#0000ff;
+    font-size:2em;
+    position:absolute;
+    right:0px;
+    top:0px;
+}
+body{
+    overflow:hidden;
+    background-color:#9f8767;
+    font-family:Comic Sans MS;
+}
