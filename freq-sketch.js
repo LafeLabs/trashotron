@@ -32,7 +32,7 @@ function draw() {
 
   // Calculate the peak frequency in Hz
   let nyquistFreq = sampleRate() / 2;
-  let binFreq = nyquistFreq / (spectrum.length / 2);
+  let binFreq = nyquistFreq / (spectrum.length);
   let peakFreq = binFreq * peakBin;
 
   beginShape();

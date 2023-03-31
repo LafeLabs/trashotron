@@ -1,0 +1,63 @@
+
+## [HOME](scrolls/home)
+
+# videos
+ 
+## SlimeZistor
+
+### what is this and why did we build it and what can it do? 
+
+1. speak of cybernetics and feedback loops
+2. speak of what we want to communicate with
+3. show it working in the field
+4. walk through the circuit and show how it works
+
+### Build the electronics kit
+
+1. buy all the parts
+2. Color code the capacitors and board
+2. put it all in a ziploc bag for distribution
+3. go find a USB thingy of some kind
+4. go find an audio cable of some kind
+5. find random wires
+
+### Construct the mechanicals
+
+1. 1x4 inch ruler from pcb
+2. 4 inch square from ruler
+3. square stack
+4. cut out cutouts
+5. glue
+6. top decoration
+7. bottom decoration
+8. QR codes on a square as replicator
+
+## Optical Neuron
+
+### What is it and why did we build it and what can it do?
+
+0. trash magic and building everything from trash
+1. background: the trashDuino and programming with trash, working from the browser
+2. the power of p5js and geometron libraries
+3. show it working and show a few assembled units
+
+### Build the electronics kit
+
+ - buy the parts
+ - put together in ziploc bag
+ - assemble
+
+### Build the mechanicals
+
+ - use driver board to make a basic card
+ - use the ruler and neuron board to make the pattern for the sides
+ - use the ruler to make the pattern for the holes(this could use work, make them narrower maybe), maybe make a little tube around each diode 
+
+
+### Control things with it
+
+ - various screens
+ - run with driver for DVD drives 
+ - run with driver for wall robot
+ - 
+

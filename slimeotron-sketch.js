@@ -7,6 +7,8 @@
  */
 let mic, fft;
 
+
+
 cellSize = 200;
 if(innerHeight > innerWidth){
     portraitMode = true;
@@ -39,26 +41,30 @@ function draw() {
 
   // Calculate the peak frequency in Hz
   let nyquistFreq = sampleRate() / 2;
-  let binFreq = nyquistFreq / (spectrum.length / 2);
+  let binFreq = nyquistFreq / (spectrum.length);
   let peakFreq = binFreq * peakBin;
 
 
-  if(peakFreq > 1000){
-    //move left
+  setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+
+
+  if(peakFreq > 550 && peakFreq < 650){
     setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);
   }
-  if(peakFreq < 800){
-    //move right
+  if(peakFreq > 750 && peakFreq < 850){
     setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);
   }
-  if(peakFreq > 400 && peakFreq < 600){
-    setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
-  }
-  if(peakFreq > 600 && peakFreq < 800){
+  if(peakFreq > 950 && peakFreq < 1050){
     setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
   }
-  if(peakFreq > 800 && peakFreq < 1100){
+  if(peakFreq > 1150 && peakFreq < 1250){
     setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
+  }
+  if(peakFreq > 1350 && peakFreq < 1450){
+    setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+  }
+  if(peakFreq > 1550 && peakFreq < 1650){
+    setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
   }
 
   beginShape();
