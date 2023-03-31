@@ -1,3 +1,5 @@
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/qrcode.png)
+
 # THE SCROLL OF SLIME
  
 What is the slimezistor?
