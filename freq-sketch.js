@@ -36,9 +36,11 @@ function draw() {
   let peakFreq = binFreq * peakBin;
 
   beginShape();
+  vertex(0,height);
   for (let i = 0; i < spectrum.length; i++) {
     vertex(i, map(spectrum[i], 0, 255, height, 0));
   }
+  vertex(width,height);
   endShape();
 
   // Display the peak frequency in Hz
