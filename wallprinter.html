@@ -192,7 +192,7 @@ function draw() {
      <div id = "spellingbox"><canvas id = "spelling"></canvas></div>
      
      <div id = "bannerbox"><canvas id = "banner"></canvas></div>
-     
+     <div id = "wallbox"><canvas id = "wallcanvas"></canvas></div>
      <div id ="helpbox">
          USE THE KEYS J,K,L,I TO MOVE ROBOT UP, DOWN, LEFT AND RIGHT USING THE DUAL PULLEY HOISTS. H MOVEs THE PEN OUT FROM THE WALL AND U MOVES IT TOWARD THE WALL.  G(FOR "GO") RUNS THE GLYPH, S(FOR "STOP") QUITS OUT OF RUNNING GLYPH. CHANGE SIZE WITH THE INPUT TO MATCH THE OPTICAL PICKUP UNIT.  HIT "ENTER" TO SWITCH IN AND OUT OF GLYPH EDIT MODE. PASTE DIFFERENT GEOMETRON GLYPHS INTO THE GLYPH INPUT TO CHANGE GLYPH WHICH WILL RUN.
      </div>
@@ -200,6 +200,8 @@ function draw() {
       <script>
       
       
+document.getElementById("wallbox").style.display = "none";
+
 document.getElementById("cellsizeinput").value = cellSize.toString();
 
 document.getElementById("cellsizeinput").onchange = function(){
@@ -246,12 +248,39 @@ iconGVM.importbytecode(hypercube);
 iconGVM.drawGlyph(lsp);  
 
 spellsize = 30;
-var spellingGVM = new GVM(document.getElementById("spelling"),spellsize*20,spellsize*10);
+spellingGVM = new GVM(document.getElementById("spelling"),spellsize*20,spellsize*10);
 spellingGVM.x0 = 2;
 spellingGVM.y0 = spellsize + 2;
 spellingGVM.unit = spellsize;
 spellingGVM.importbytecode(hypercube);
 spellingGVM.spellGlyph(glyph + "0207,");  
+
+wallGVM = new GVM(document.getElementById("wallcanvas"),400,400);
+wallGVM.importbytecode(hypercube);
+wallGVM.unit = 25;
+
+hypercube05xx = [    
+    "0500:0400,0335,0342,0334,0333,",
+    "0501:0401,0334,0342,0335,0332,",
+    "0502:0402,0326,",
+    "0503:0403,0322,",
+    "0504:0404,0342,0330,",
+    "0505:0405,0331,0342,",
+    "0506:0406,0336,",
+    "0507:0407,0337,"
+];
+
+hypercube015xx = [    
+    "01500:01400,",
+    "01501:01401,",
+    "01502:01402,",
+    "01503:01403,",
+    "01504:01404,",
+    "01505:01405,",
+    "01506:01406,",
+    "01507:01407,"
+];
+
 
 googleyeyes(8);
 
@@ -263,18 +292,23 @@ for(var index = 040;index <= 0176;index++){
 }
 
 simplekeyboard = [
-    "055:0406,",
-    "075:0407,",
-    "0165:0402,",
-    "0151:0404,",
-    "0150:0403,",
-    "0152:0401,",
-    "0153:0405,",
-    "0154:0400,"
+    "055:0506,",
+    "075:0507,",
+    "0165:0502,",
+    "0151:0504,",
+    "0150:0503,",
+    "0152:0501,",
+    "0153:0505,",
+    "0154:0500,"
 ];
 
 spellingGVM.importbytecode(blankkeyboard);
 spellingGVM.importbytecode(simplekeyboard);
+spellingGVM.importbytecode(hypercube05xx);
+spellingGVM.importbytecode(hypercube015xx);
+wallGVM.importbytecode(hypercube05xx);
+wallGVM.importbytecode(hypercube015xx);
+
 
 var httpglyph = new XMLHttpRequest();
 httpglyph.onreadystatechange = function() {
@@ -286,12 +320,16 @@ httpglyph.onreadystatechange = function() {
         for(var index = 0;index < glyphStringArray.length;index++){
             if(glyphStringArray[index].length > 0){
                 var localaction = parseInt(glyphStringArray[index],8);
-                glyphArray.push(parseInt(glyphStringArray[index],8));
+                if(localaction >= 0500 && localaction <= 0507){
+                    localaction -= 0100;
+                }
+                glyphArray.push(localaction);
             }
         }
 
         spellingGVM.glyph = glyph + "0207,";
         spellingGVM.spellGlyph(spellingGVM.glyph);  
+        wallGVM.drawGlyph(spellingGVM.glyph);
     }
 };
 httpglyph.open("GET", "fileloader.php?filename=data/wallglyph.txt", true);
@@ -430,9 +468,14 @@ function keyPressed() {
       glypheditmode  = !glypheditmode;
       if(glypheditmode){
           document.getElementById("actioninput").select();
+          document.getElementById("wallbox").style.display = "block";
+          document.getElementById("helpbox").style.display = "none";
       }
       else{
           document.getElementById("actioninput").blur();
+          document.getElementById("wallbox").style.display = "none";
+          document.getElementById("helpbox").style.display = "block";
+
       }
   }
 }
@@ -446,12 +489,13 @@ document.getElementById("actioninput").onkeypress = function(a) {
 
         spellingGVM.cursorAction(localCursorAction);   
         spellingGVM.spellGlyph(spellingGVM.glyph);    
+        wallGVM.drawGlyph(spellingGVM.glyph);
         this.value = "";
         spellingGVM.clean();
         glyph = spellingGVM.cleanGlyph;
         document.getElementById("glyphinput").value = spellingGVM.cleanGlyph;
        this.value = "";
-
+       
     }
     glyphStringArray = glyph.split(",");
     
@@ -459,7 +503,10 @@ document.getElementById("actioninput").onkeypress = function(a) {
     for(var index = 0;index < glyphStringArray.length;index++){
         if(glyphStringArray[index].length > 0){
             var localaction = parseInt(glyphStringArray[index],8);
-            glyphArray.push(parseInt(glyphStringArray[index],8));
+            if(localaction >= 0500 && localaction <= 0507){
+                localaction -= 0100;
+            }
+            glyphArray.push(localaction);
         }
     }
         
@@ -486,16 +533,19 @@ document.getElementById("actioninput").onkeydown = function(a) {
         spellingGVM.clean();
         spellingGVM.glyph = "0207," + spellingGVM.cleanGlyph;
         spellingGVM.drawGlyph(spellingGVM.glyph);
+        wallGVM.drawGlyph(spellingGVM.glyph);
     }
     if(charCode == 050){
         //down arrow: next symbol
         spellingGVM.clean();
         spellingGVM.glyph = spellingGVM.cleanGlyph + "0207,";
         spellingGVM.drawGlyph(spellingGVM.glyph);
-
+        wallGVM.drawGlyph(spellingGVM.glyph);
     }
 
     spellingGVM.spellGlyph(spellingGVM.glyph);
+        wallGVM.drawGlyph(spellingGVM.glyph);
+    
     spellingGVM.clean();
     document.getElementById("glyphinput").value = spellingGVM.cleanGlyph;
     glyph = spellingGVM.cleanGlyph;
@@ -507,7 +557,10 @@ document.getElementById("actioninput").onkeydown = function(a) {
     for(var index = 0;index < glyphStringArray.length;index++){
         if(glyphStringArray[index].length > 0){
             var localaction = parseInt(glyphStringArray[index],8);
-            glyphArray.push(parseInt(glyphStringArray[index],8));
+            if(localaction >= 0500 && localaction <= 0507){
+                localaction -= 0100;
+            }
+            glyphArray.push(localaction);
         }
     }
         
@@ -584,6 +637,12 @@ document.getElementById("actioninput").onkeydown = function(a) {
         border-color:black;
         font-family:Comic Sans MS;
         background-color:#9f8767;
+    }
+    #wallbox{
+        position:absolute;
+        left:0px;
+        bottom:0px;
+        z-index:2;
     }
 </style>  
   </body>
