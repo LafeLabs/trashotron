@@ -65,6 +65,7 @@
         "trashotron-loop.html",
         "trashotron-microscope.html",
         "trashotron.html",
+        "wallprinter-mobile.html",
         "wallprinter.html",
         "webdestroyer.html",
         "webeditor.html",
@@ -142,7 +143,8 @@
         "philosophy",
         "skeletron",
         "slimezistor",
-        "srs"
+        "srs",
+        "videos"
     ],
     "iconsymbols": [
         "abcfont.svg",
