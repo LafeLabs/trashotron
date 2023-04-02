@@ -1,6 +1,8 @@
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/qrcode.png)
 
 # [THE SCROLL OF SLIME](https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md)
+
+### [replicator video on diode.zone](https://diode.zone/w/vE8SuKbdi8HwsczfvGmvGS)
  
 ### What is the slimezistor?
 
