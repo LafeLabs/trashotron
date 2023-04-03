@@ -4,6 +4,10 @@
 
  - [support TRASH ROBOT on Patreon](https://www.patreon.com/trashrobot)
  - [pay UPCYCLE ROBOTICS for synths](https://account.venmo.com/u/upcyclerobotics)
+ - [TRASH ROBOT main page](https://www.trashrobot.org)
+ - [buy the self-replicating book GEOMETRON MAGIC](https://www.lulu.com/shop/trash-robot/geometron-magic/paperback/product-y6p96w.html?page=1&pageSize=4)
+
+If you are in Denver, Boulder, or Jefferson County in Colorado just message TRASH ROBOT to get a synth and I'll drop it off somewhere in a hiding spot where you can find it.  All things are sliding scale, and barter is always accepted. I take food, coffee, medicine, art supplies, electronics supplies, and ESPECIALLY old laptops as barter for synthesizers.  I DO NOT SHIP. If you are not around the Denver Metro Area, find someone in your area who can do [TRASH MAGIC](https://www.trashrobot.org) and they'll make and deliver synthesizers for you.
 
 ### [replicator video on diode.zone](https://diode.zone/w/vE8SuKbdi8HwsczfvGmvGS)
  
@@ -47,9 +51,7 @@ We will assemble kits and distribute them.  You can buy all the parts for a kit 
 
 We color code the boards and capacitors using a paint pen and color the 0.1 uF capacitors red, the 0.47 uF capacitors green, and the 10 uF capacitors blue.  Then we do this on the board as well. Note that 0.1 uF is "104" in the capacitor code, which represents 10 times 10 to the fourth power picofarads, which is 1e5 times 1e-12 or 1e-7 or 0.1e-6. Similarly, 0.47 uF is "474" and 10 uF is "106".
 
-These are the kit parts:
-
-![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-kit-parts.png)
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/kitparts.png)
 
 Here are links to buy the parts from amazon(enough for about 50 units for about 40 dollars):
 
@@ -73,6 +75,8 @@ Color codes:
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-capacitor-2.png)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-capacitor-3.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/capacitors.png)
 
 
 Tiktok electronics assembly video sequence:

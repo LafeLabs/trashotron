@@ -1,0 +1,25 @@
+{
+    "server": "https://raw.githubusercontent.com/LafeLabs/trashotron/main/",
+    "scrolls": [
+        "actiongeometry",
+        "books",
+        "cssrobot",
+        "cubes",
+        "cybermagic",
+        "driver",
+        "fashion",
+        "flags",
+        "geometron",
+        "home",
+        "iconfactory",
+        "iconprinter",
+        "microscope",
+        "music",
+        "neuron",
+        "philosophy",
+        "skeletron",
+        "slimezistor",
+        "srs",
+        "videos"
+    ]
+}
