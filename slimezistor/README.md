@@ -2,6 +2,9 @@
 
 # [THE SCROLL OF SLIME](https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md)
 
+ - [support TRASH ROBOT on Patreon](https://www.patreon.com/trashrobot)
+ - [pay UPCYCLE ROBOTICS for synths](https://account.venmo.com/u/upcyclerobotics)
+
 ### [replicator video on diode.zone](https://diode.zone/w/vE8SuKbdi8HwsczfvGmvGS)
  
 ### [tiktok of slimezistor operating in the South Platte River](https://www.tiktok.com/@trash_robot/video/7217537522228907307)
