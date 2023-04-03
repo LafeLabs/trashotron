@@ -4,6 +4,8 @@
 
 ### [replicator video on diode.zone](https://diode.zone/w/vE8SuKbdi8HwsczfvGmvGS)
  
+### [tiktok of slimezistor operating in the South Platte River](https://www.tiktok.com/@trash_robot/video/7217537522228907307)
+
 ### What is the slimezistor?
 
 The SlimeZistor is a device which allows us to sense our electrical environment using sound.  
