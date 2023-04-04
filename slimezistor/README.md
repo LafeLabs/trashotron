@@ -31,6 +31,8 @@ The SlimeZistor is a device which allows us to sense our electrical environment 
 
 ### How does the SlimeZistor work?
 
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-schematic-bottomsquare.png)
+
 The slimezistor is a [relaxation oscillator](https://en.wikipedia.org/wiki/Relaxation_oscillator) in which a capacitor is charged and discharged through some type of slime which is connected to a pair of electrodes.  The resistance of the slime determines the rate of charge/discharge of the capacitor and hence the frequency.  Any nonlinearities in the current-voltage characteristic of the slime are represented by changes in the frequency components in the output signal on the speaker.  
 
 Thus we are creating a sort of synthesizer in which the frequency of the tone is set by the resistance of the slime and the shape of the waveform is set by the nonlinear characteristics or time dependent dynamics of the slime system.
