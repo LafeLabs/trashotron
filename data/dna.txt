@@ -65,6 +65,7 @@
         "trashotron-loop.html",
         "trashotron-microscope.html",
         "trashotron.html",
+        "trashotron2.html",
         "wallprinter-mobile.html",
         "wallprinter.html",
         "webdestroyer.html",

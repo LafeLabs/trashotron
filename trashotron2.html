@@ -73,12 +73,13 @@ function draw() {
         //control the robot to run the geometron glyph
         if(glyphArray[stepIndex] == 0400){
             //move to the right for "side" frames
-          setTrashotron(true,true,false,false,false,true,portraitMode,cellSize);//right
+            setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);//right
+          
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0401){
             //move to the left for "side" frames
-          setTrashotron(true,true,false,true,true,true,portraitMode,cellSize);//left
+            setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);//left
           
             sideIndex++;
         }
@@ -93,11 +94,11 @@ function draw() {
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0404){//up
-            setTrashotron(true,true,false,true,false,true,portraitMode,cellSize);    
+            setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0405){//down
-            setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);        
+            setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
             sideIndex++;
         }
         if(glyphArray[stepIndex] == 0406){
@@ -141,18 +142,18 @@ function draw() {
             }
     
             if (keyIsDown(0112)) {// j, left 0401
-              setTrashotron(true,true,false,true,true,true,portraitMode,cellSize);//left
+              setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);//left
             }
             if (keyIsDown(0114)) {// l, right 0400
-              setTrashotron(true,true,false,false,false,true,portraitMode,cellSize);//right
+              setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);//right
             
             }
     
             if (keyIsDown(0111)) {//i, up  0404
-              setTrashotron(true,true,false,true,false,true,portraitMode,cellSize);
+              setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
             }
             if (keyIsDown(0113)) {//k, down 0405
-              setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);
+              setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);
             }
 
         }
