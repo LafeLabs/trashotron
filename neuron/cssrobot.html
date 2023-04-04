@@ -1,0 +1,130 @@
+ <!doctype html>
+<html>
+<head>
+ <!-- 
+PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+
+CC0
+-->
+
+<!--Stop Google:-->
+<META NAME="robots" CONTENT="noindex,nofollow">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6cAEBuXIBHrpwAVO5bwGQuW8BzLpvAdO7cQCTu3IBULtzAhcAAAAAAAAAAAAAAAAAAAAAAAAAAM6SDwq/eAR5um8BvrpvAe66bwH/uW0A/750BP/QkBn/x4MQ/752B/+5bgDnuGwAsLx1A1QAAAAAAAAAAAAAAADNjQ0svHIC8rltAP+5bAD/uWkA/7hmAP++dwv/4Kon/+CoHv/dox3/2Jwe/8eDEP+7cgLSxoQJBgAAAAAAAAAAyoUKObtwAfm5bQH/vHke/8KRTP/FqYL/0si6//bqzv/v05L/579e/+WzOP/Wmx7/u3AA4caCCBQAAAAAAAAAAMeDCUe5bAD/vHwh/87Myf/R2eT/z9bf/9PRzP/8+vb////////////57Mz/2J0i/7xxAO3OiwwjAAAAAAAAAADNiwxauGgA/8CIPf/S3/D/ybSZ/7t7Jf/AfBf/4rJB/+3Ngv/+/fn//fnr/9ymMP+7cQD3yocJNAAAAAAAAAAAzIkKcbdoAP+/hTf/zcS4/8COTP+2YAD/vnIC/9yhF//dohn/+e/Z///++//grj//vHEA/8qGCUUAAAAA0I8NBMeCCIW5bAD/u3US/719Jv+9eyH/vHoh/8KEJ//iskH/5LNC//nv2P//////5LdP/7xxAP/SjwxaAAAAAMeCBw7BegWYuGcA/8Wic//Q1Nn/zszI/8zMyP/U0s//+/n0/////v///////////+jBYv+9cwD/z40KdQAAAADIggcZwnkEqrhnAP/EoG7/0djh/9HX3//O0dT/1dfa//v48f/15Lv/8tyo//XjuP/ovVf/wnoE/8qEB43YmA8Iy4cKI8B3BLy5bQD/uWkA/75+Kv/Gp33/zMW7/9XW2P/8+/r/9+vM/+rHdP/fqSn/4agi/8aBEP/Gfwai1JMOFMaBBzK9dALMuW4B/8CKP//BjUr/wItD/8KbZ//SyLv//f///////////////Pju/+vHbP/Hggn/w3wFuNSSDSHCeQVDu28A3bpyEP/Pzs7/09/v/9La5//P1uD/19nf//7+/v/////////////////z3aT/yoYJ/8F5BMvYmA4ww30GVbtwAOy7cQn/wItD/8COSv/Ajkn/v41I/8WWTf/pwmj/68Vr/+rEav/pxW3/6L5U/9CQF/++dgPf1ZYORMB5BGq7cAH0um4B/7lqAP+5aQD/uWkA/7hnAP+9cQL/26Aa/9yiHf/coRz/3KEb/9+mI//TlR3/vXMC8NOUDl29dQN0uW8B47lvAea6bwHjum8B47pvAeO6bwHju3AC4710BeO9dAXjvXQF4710BeO9dAXjvHIE5rxzAt/Ojgxp/D8AAOAHAADAAwAAwAMAAMADAADAAwAAwAMAAIADAACAAwAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAA==" rel="icon" type="image/x-icon" />
+
+    
+<!--
+ace.js project home:
+https://ace.c9.io/
+
+list of languages:
+https://cloud9-sdk.readme.io/docs/language-mode
+
+-->    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="robot.css">
+
+<title>CSS ROBOT</title>
+
+</head>
+<body>
+<a href=  "index.html">HOME</a>
+
+<h1>PURE CSS ROBOT</h1>
+<h3>EDIT ROBOT.CSS:</h3>
+<div id="maineditor" contenteditable="true" spellcheck="false"></div>
+
+<table id = "control">
+    <tr>
+        <td id = "en1"></td>
+        <td id = "en2"></td>
+        <td id = "en3"></td>
+    </tr>
+    <tr>
+        <td id = "dir1"></td>
+        <td id = "dir2"></td>
+        <td id = "dir3"></td>
+    </tr>
+</table>
+
+<script>
+
+prototypescroll = "name";
+
+editor = ace.edit("maineditor");
+editor.setTheme("ace/theme/github");
+//editor.setTheme("ace/theme/vibrant_ink");
+editor.getSession().setMode("ace/mode/css");
+editor.getSession().setUseWrapMode(true);
+editor.$blockScrolling = Infinity;
+editor.setTheme("ace/theme/vibrant_ink");
+
+currentFile = "robot.css";
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        filedata = this.responseText;
+        setmode();
+        editor.setValue(filedata);
+    }
+};
+httpc.open("GET", "fileloader.php?filename=" + currentFile, true);
+httpc.send();
+
+
+
+
+
+document.getElementById("maineditor").onkeyup = function(){
+    data = encodeURIComponent(editor.getSession().getValue());
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename="+currentFile);//send text to filesaver.php
+
+}
+
+editor.setTheme("ace/theme/vibrant_ink");
+
+        
+
+function setmode(){
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".py"){
+        editor.getSession().setMode("ace/mode/python");
+    }
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".txt"){
+        editor.getSession().setMode("ace/mode/text");
+    }    
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".md"){
+        editor.getSession().setMode("ace/mode/markdown");
+    }
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".tex"){
+        editor.getSession().setMode("ace/mode/latex");
+    }
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".js"){
+        editor.getSession().setMode("ace/mode/javascript");
+    }    
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".ino"){
+        editor.getSession().setMode("ace/mode/java");
+    }   
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".css"){
+        editor.getSession().setMode("ace/mode/css");
+    }       
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".php"){
+        editor.getSession().setMode("ace/mode/php");
+    }       
+    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".html"){
+        editor.getSession().setMode("ace/mode/html");
+    }   
+    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".json"){
+        editor.getSession().setMode("ace/mode/json");
+    }       
+    
+}
+
+codesquaresize = 120;
+
+</script>
+</body>
+</html>

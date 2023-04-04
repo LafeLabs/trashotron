@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src = "geometron.js"></script>
+    <script src = "trashmagic.js"></script>
+    <script>
+    
+A = "0404,0405,0400,";
+B = "0404,0405,0401,";
+C = "0404,0405,0402,";
+D = "0404,0405,0403,";
+a = "0400,";
+b = "0401,";
+c = "0402,";
+d = "0403,";
+E = A+A+A+A+C+B+B+B+B+C+A+A+A+A+C+B+B+B+B+C+A+A+A+A+D+d+d+d+b+b+b+b;
+
+glyph = E;
+
+glyphStringArray = glyph.split(",");
+
+glyphArray = [];
+for(var index = 0;index < glyphStringArray.length;index++){
+    if(glyphStringArray[index].length > 0){
+        var localaction = parseInt(glyphStringArray[index],8);
+        glyphArray.push(parseInt(glyphStringArray[index],8));
+    }
+}
+    
+    
+//add this function:
+//go thru glypharray and every time there's a 0407 double the number of repetitions of an action from 0400 thru 0405, and halve with 0406, always starting with the minimum side unit used in a sequence.
+//this requires careful management of the hypercube, or adding some 0407's to the start or both, do when not tired
+
+    
+function setup() {
+    createCanvas(cellSize*3, cellSize*2);
+}
+
+
+
+cellSize  = 200;
+
+stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.
+
+framesPerSecond= 30;//this can be varied to control the pace of time on the glyph trajectory, which adds analog values to that trajectory.  this can be used as a real time feedback from the electrical probe, which can all be fed into a machine learning algorithm which evolves the geometry.  So the noise lives on top of the Geometron glyph trajectory.  We can also get an analog signal directly into the browser using a motor which as it spins pushes a key repeatedly. if we control the rate of keystrokes, that can feed back into p5js.
+unit = 16;//16 frames = 1 second = unit
+side = unit;//set to starting unit of 1 second
+sideIndex = 0;//step this from 0 to "side" as a side action is carried out
+
+run = false;
+
+function draw() {
+    frameRate(framesPerSecond);//frames per second
+    background(0);
+    if(run){
+        if (stepIndex < glyphArray.length) {
+            //control the robot to run the geometron glyph
+            if(glyphArray[stepIndex] == 0400){
+                //move to the left for "side" frames
+                fill(255);
+                rect(cellSize, 0, cellSize, cellSize);//
+                rect(cellSize*2, 0, cellSize, cellSize);
+                sideIndex++;
+            }
+            if(glyphArray[stepIndex] == 0401){
+                //move to the right for "side" frames
+                fill(255);
+                rect(cellSize, 0, cellSize, cellSize);
+                rect(cellSize*2, 0, cellSize, cellSize);
+                rect(0, cellSize, cellSize, cellSize);
+                sideIndex++;
+            }
+            if(glyphArray[stepIndex] == 0402){
+                fill(255);
+                rect(0, 0, cellSize, cellSize);
+                rect(cellSize*2, 0, cellSize, cellSize);
+                sideIndex++;
+            }
+            if(glyphArray[stepIndex] == 0403){
+                fill(255);
+                rect(0, 0, cellSize, cellSize);
+                rect(cellSize*2, 0, cellSize, cellSize);
+                rect(cellSize, cellSize, cellSize, cellSize);
+                sideIndex++;
+            }
+            if(glyphArray[stepIndex] == 0404){
+                fill(255);
+                rect(0, 0, cellSize, cellSize);
+                rect(cellSize, 0, cellSize, cellSize);
+                sideIndex++;
+            }
+            if(glyphArray[stepIndex] == 0405){
+                fill(255);
+                rect(0, 0, cellSize, cellSize);
+                rect(cellSize, 0, cellSize, cellSize);
+                rect(cellSize*2, cellSize, cellSize, cellSize);
+                sideIndex++;
+            }
+            if(glyphArray[stepIndex] == 0406){
+                side /= 2;
+                sideIndex = side;
+                fill(255);
+                rect(0, 0, cellSize, cellSize);
+                rect(cellSize, 0, cellSize, cellSize);
+                rect(cellSize*2, 0, cellSize, cellSize);
+    
+            }
+            if(glyphArray[stepIndex] == 0407){
+                side *= 2;
+                sideIndex = side;
+                fill(255);
+                rect(0, 0, cellSize, cellSize);
+                rect(cellSize, 0, cellSize, cellSize);
+                rect(cellSize*2, 0, cellSize, cellSize);
+            }          
+            if(glyphArray[stepIndex] < 0400 || glyphArray[stepIndex] >= 0500){
+                stepIndex++;
+            }
+            if(sideIndex == side){
+                  sideIndex = 0;
+                  stepIndex++;
+            }
+    
+        }
+        else{
+            stepIndex = 0;
+        }        
+    }
+    else{
+        fill(255);
+        rect(0, 0, cellSize, cellSize);
+        rect(cellSize, 0, cellSize, cellSize);
+        rect(cellSize*2, 0, cellSize, cellSize);
+    }
+}
+
+</script>
+
+  </head>
+  <body>
+      <div id = "cardboard"></div>
+      <div id = "backgroundbox">
+          <canvas id = "spell"></canvas>
+      </div>
+      <h1>MICROSCOPE SCAN</h1>
+      <a href = "index.html">HOME</a>
+      <a href = "trashotron.html">TRASHOTRON CONTROL</a>
+      <table>
+          <tr>
+                <td>CELL SIZE[PX]:</td>
+                <td>
+                    <input id = "cellsizeinput"/>
+                </td>
+          </tr>
+          <tr>
+              <td>STEP SIZE[ms]</td>
+              <td>
+                  <input id = "stepsizeinput"/>
+              </td>
+          </tr>
+          <tr>
+              <td class ="button" id = "startbutton">START</td>
+              <td class ="button" id = "stopbutton">STOP</td>
+          </tr>
+      </table>
+
+      <script>
+      
+      
+
+document.getElementById("startbutton").onclick = function(){
+    run = true;
+}      
+document.getElementById("stopbutton").onclick = function(){
+    run = false;
+    stepIndex = 0;
+    sideIndex = 0;
+}      
+
+
+      
+document.getElementById("cellsizeinput").value = cellSize.toString();
+
+document.getElementById("cellsizeinput").onchange = function(){
+    cellSize = parseInt(this.value);
+    resizeCanvas(3*cellSize, 2*cellSize);
+    this.blur();
+}
+
+
+var newGVM = new GVM(document.getElementById("spell"),600,200);
+newGVM.x0 = 7;
+newGVM.y0 = 30;
+newGVM.unit = 30;
+newGVM.style.color5 = "#00ff00";
+newGVM.style.line5 = 3;
+newGVM.importbytecode(hypercube);
+newGVM.spellGlyph(glyph);  
+
+
+stepsize = 1000.0/framesPerSecond;
+
+document.getElementById("stepsizeinput").value = stepsize.toString();
+
+
+document.getElementById("stepsizeinput").onchange = function(){
+    stepsize = parseFloat(this.value);
+    framesPerSecond = 1000/stepsize;
+}
+</script>
+<style>
+    body,input{
+        background-color:#808080;
+        font-size:30px;
+        font-family:courier;
+        font-family:Comic Sans MS;
+        overflow:hidden;
+        background-color:#9f8767;
+    }
+    input{
+        border:solid;
+        border-color:black;
+        border-radius:6px;
+    }
+    a{
+        color:#0000ff;
+    }
+    .button{
+        border:solid;
+        text-align:center;
+        cursor:pointer;
+        border-radius:5px;
+    }
+    .button:hover{
+        background-color:green;
+    }
+    .button:active{
+        background-color:green;
+    }
+
+    #cardboard{
+        position:absolute;
+        left:0px;
+        top:0px;
+        right:0px;
+        bottom:0px;
+        z-index:-10;
+        background-color:#9f8767;
+    }
+    #iconbox{
+        position:absolute;
+        left:0px;
+        top:0px;
+        right:0px;
+        bottom:0px;
+        z-index:-8;
+    }
+    main{
+        position:absolute;
+        right:0px;
+        bottom:0px;
+    }
+    #bannerbox{
+        position:absolute;
+        right:0px;
+        top:0px;
+        z-index:0;
+    }
+    #helpbox{
+        position:absolute;
+        left:20px;
+        bottom:20px;
+        overflow:scroll;
+        width:300px;
+        height:300px;
+        color:black;
+        font-family:courier;
+        border-width:20px;
+        border-radius:20px;
+        font-size:18px;
+        border:solid;
+        padding: 1em 1em 1em 1em;
+        border-color:black;
+        font-family:Comic Sans MS;
+        background-color:#9f8767;
+    }
+</style>  
+  </body>
+</html>

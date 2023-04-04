@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src = "geometron.js"></script>
+    <script src = "trashmagic.js"></script>
+    <script>
+
+portraitMode = true;
+if(innerWidth > innerHeight){
+    portratMode = false
+}
+
+glyph = "";
+
+glyphStringArray = glyph.split(",");
+
+glyphArray = [];
+for(var index = 0;index < glyphStringArray.length;index++){
+    if(glyphStringArray[index].length > 0){
+        var localaction = parseInt(glyphStringArray[index],8);
+        glyphArray.push(parseInt(glyphStringArray[index],8));
+    }
+}
+    
+    
+function setup() {
+    createCanvas(cellSize*3, cellSize*2);
+}
+
+cellSize  = 200;
+
+stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.
+
+framesPerSecond= 16;//this can be varied to control the pace of time on the glyph trajectory, which adds analog values to that trajectory.  this can be used as a real time feedback from the electrical probe, which can all be fed into a machine learning algorithm which evolves the geometry.  So the noise lives on top of the Geometron glyph trajectory.  We can also get an analog signal directly into the browser using a motor which as it spins pushes a key repeatedly. if we control the rate of keystrokes, that can feed back into p5js.
+unit = 16;//16 frames = 1 second = unit
+side = unit;//set to starting unit of 1 second
+sideIndex = 0;//step this from 0 to "side" as a side action is carried out
+
+glypheditmode = false;
+
+function draw() {
+    frameRate(framesPerSecond);//frames per second
+    background(0);
+    if (stepIndex < glyphArray.length) {
+        //control the robot to run the geometron glyph
+        if(glyphArray[stepIndex] == 0400){
+            //move to the right for "side" frames
+          setTrashotron(true,true,false,false,false,true,portraitMode,cellSize);//right
+            sideIndex++;
+        }
+        if(glyphArray[stepIndex] == 0401){
+            //move to the left for "side" frames
+          setTrashotron(true,true,false,true,true,true,portraitMode,cellSize);//left
+          
+            sideIndex++;
+        }
+        if(glyphArray[stepIndex] == 0402){
+            //towards wall
+            setTrashotron(false,false,true,true,true,true,portraitMode,cellSize);
+            sideIndex++;
+        }
+        if(glyphArray[stepIndex] == 0403){
+            //away from wall
+            setTrashotron(false,false,true,true,true,false,portraitMode,cellSize);
+            sideIndex++;
+        }
+        if(glyphArray[stepIndex] == 0404){//up
+            setTrashotron(true,true,false,true,false,true,portraitMode,cellSize);    
+            sideIndex++;
+        }
+        if(glyphArray[stepIndex] == 0405){//down
+            setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);        
+            sideIndex++;
+        }
+        if(glyphArray[stepIndex] == 0406){
+            side /= 2;
+            sideIndex = side;
+            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+
+        }
+        if(glyphArray[stepIndex] == 0407){
+            side *= 2;
+            sideIndex = side;
+            setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+        }          
+        if(glyphArray[stepIndex] < 0400 || glyphArray[stepIndex] >= 0500){
+            stepIndex++;
+        }
+        if(sideIndex == side){
+              sideIndex = 0;
+              stepIndex++;
+        }
+        if (keyIsDown(0123)) {// s
+            //exit the glyph by putting index to greater than length of glyph
+            stepIndex = glyphArray.length + 1;
+        }
+    }
+    else{
+        setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
+            //edit the glyph
+    }
+}
+
+
+
+</script>
+
+  </head>
+  <body>
+      <table id = "footertable">
+          <tr>
+              <td id  ="gobutton" class=  "button">GO</td>
+              <td id = "stopbutton" class = "button">STOP</td>
+              <td><a href = "index.html">HOME</a></td>
+          </tr>
+          <tr>
+              <td>GLYPH:</td>
+              <td>
+                  <input id = "glyphinput"/>
+              </td>
+              <td>SQUARE SIZE[px]:</td>
+              <td>
+                  <input id = "cellsizeinput"/>
+              </td>
+          </tr>
+      </table>
+     
+<style>
+    body,input{
+        background-color:#808080;
+        font-size:30px;
+        font-family:courier;
+        font-family:Comic Sans MS;
+        overflow:hidden;
+        background-color:#9f8767;
+    }
+    input{
+        border:solid;
+        border-color:black;
+        border-radius:6px;
+    }
+    a{
+        color:#0000ff;
+    }
+    main{
+        position:absolute;
+        right:0px;
+        top:0px;
+    }
+    #footertable{
+        position:absolute;
+        bottom:0px;
+        left:0px;
+    }
+    .button{
+        cursor:pointer;
+    }
+</style>       
+     
+      <script>
+      
+      
+
+document.getElementById("cellsizeinput").value = cellSize.toString();
+
+document.getElementById("cellsizeinput").onchange = function(){
+    cellSize = parseInt(this.value);
+    resizeCanvas(3*cellSize, 2*cellSize);
+    this.blur();
+}
+
+document.getElementById("glyphinput").value = glyph.toString();
+
+document.getElementById("glyphinput").onchange = function(){
+    glyph = this.value;
+    glyphStringArray = glyph.split(",");
+    glyphArray = [];
+    for(var index = 0;index < glyphStringArray.length;index++){
+        if(glyphStringArray[index].length > 0){
+            var localaction = parseInt(glyphStringArray[index],8);
+            glyphArray.push(parseInt(glyphStringArray[index],8));
+        }
+    }
+    this.blur();
+    stepIndex = glyphArray.length + 1;
+    saveglyph();
+}
+
+document.getElementById("gobutton").onclick = function(){
+    stepIndex = 0;
+}
+
+document.getElementById("stopbutton").onclick = function(){
+    stepIndex = glyphArray.length + 1;
+}
+
+
+
+var httpglyph = new XMLHttpRequest();
+httpglyph.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        glyph = this.responseText;
+        document.getElementById("glyphinput").value = glyph;        
+        glyphStringArray = glyph.split(",");
+        glyphArray = [];
+        for(var index = 0;index < glyphStringArray.length;index++){
+            if(glyphStringArray[index].length > 0){
+                var localaction = parseInt(glyphStringArray[index],8);
+                if(localaction >= 0500 && localaction <= 0507){
+                    localaction -= 0100;
+                }
+                glyphArray.push(localaction);
+            }
+        }
+        stepIndex = glyphArray.length + 1;
+    }
+};
+httpglyph.open("GET", "fileloader.php?filename=data/wallglyph.txt", true);
+httpglyph.send();
+
+function saveglyph(){
+    //save glyph as data/wallglyph.txt
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+glyph+"&filename=data/wallglyph.txt");//send text to
+}
+
+function setTrashotron(en1,en2,en3,dir1,dir2,dir3,portrait,cellSize){
+    if(!portrait){
+        resizeCanvas(3*cellSize,2*cellSize);
+    }
+    else{
+        resizeCanvas(2*cellSize,3*cellSize);
+    }
+    if(en1){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+        else{//portrait
+            rect(cellSize,0, cellSize, cellSize);//upper right
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+        else{//portrait
+            rect(cellSize,0, cellSize, cellSize);//upper right
+        }
+    }
+
+    if(dir1){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(0,cellSize, cellSize, cellSize);//lower left
+        }
+        else{//portrait
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(0,cellSize, cellSize, cellSize);//lower left
+        }
+        else{//portrait
+            rect(0,0, cellSize, cellSize);//upper left
+        }
+    }
+    if(en2){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(cellSize,0, cellSize, cellSize);//upper middle
+        }
+        else{//portrait
+            rect(cellSize,cellSize, cellSize, cellSize);//right middle
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(cellSize,0, cellSize, cellSize);//upper middle
+        }
+        else{//portrait
+            rect(cellSize,cellSize, cellSize, cellSize);//right middle
+        }
+    }
+    if(dir2){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
+        }
+        else{//portrait
+            rect(0,cellSize, cellSize, cellSize);//left middle
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(cellSize,cellSize, cellSize, cellSize);//bottom  middle
+        }
+        else{//portrait
+            rect(0,cellSize, cellSize, cellSize);//left middle
+        }
+    }
+    if(en3){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(2*cellSize,0, cellSize, cellSize);//upper right
+        }
+        else{//portrait
+            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(2*cellSize,0, cellSize, cellSize);//upper right
+        }
+        else{//portrait
+            rect(cellSize,2*cellSize, cellSize, cellSize);//lower right
+        }
+    }
+
+    if(dir3){//true=black, false=white
+        fill(0);//black
+        if(!portrait){//landscape
+            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
+        }
+        else{//portrait
+            rect(0,2*cellSize, cellSize, cellSize);//lower left
+        }
+    }
+    else{
+        fill(255);//white        
+        if(!portrait){//landscape
+            rect(2*cellSize,cellSize, cellSize, cellSize);//lower right
+        }
+        else{//portrait
+            rect(0,2*cellSize, cellSize, cellSize);//lower left
+        }
+    }    
+}
+</script>
+</body>
+</html>
