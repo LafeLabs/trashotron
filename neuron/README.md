@@ -1,3 +1,5 @@
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/neuron/trashmagic/qrcodes.png)
+
 # [TRASHOTRON OPTICAL NEURON](https://github.com/LafeLabs/trashotron/blob/main/neuron/README.md)
 
 # [home](index.html)
