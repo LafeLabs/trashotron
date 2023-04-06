@@ -66,6 +66,7 @@
         "trashotron-microscope.html",
         "trashotron.html",
         "trashotron2.html",
+        "wallboard.html",
         "wallprinter-mobile.html",
         "wallprinter.html",
         "webdestroyer.html",
@@ -75,6 +76,7 @@
     "data": [
         "arduinocodexyz.txt",
         "arduinocodexyzbig.txt",
+        "board.txt",
         "coin.txt",
         "controls.txt",
         "currentjson.txt",
