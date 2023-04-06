@@ -111,6 +111,33 @@ function draw() {
             sideIndex = side;
             setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
         }          
+        if(glyphArray[stepIndex] == 0410){
+            //up and to the left
+            setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);    
+            sideIndex++;
+
+        }
+        if(glyphArray[stepIndex] == 0411){
+            //up and to the right
+              setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);
+            sideIndex++;
+
+        }
+        if(glyphArray[stepIndex] == 0412){
+            //down and to the right
+              setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);//left
+            sideIndex++;
+
+        }
+        if(glyphArray[stepIndex] == 0413){
+            //down and to the left
+            setTrashotron(true,false,false,true,false,true,portraitMode,cellSize);    
+            sideIndex++;
+
+        }        
+
+
+        
         if(glyphArray[stepIndex] < 0400 || glyphArray[stepIndex] >= 0500){
             stepIndex++;
         }
@@ -155,6 +182,28 @@ function draw() {
               setTrashotron(true,true,false,false,true,true,portraitMode,cellSize);
             }
 
+//ERFD
+//0105,0122,0106,0104,
+
+            if(keyIsDown(0105)){
+                //e  up and to the left
+              setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);//left
+              console.log("[");
+            }
+            if(keyIsDown(0122)){
+                //r  up and to the right
+              setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);//left
+            }
+
+            if(keyIsDown(0105)){
+                //f  down and right
+              setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);//left
+            }
+            if(keyIsDown(0122)){
+                //d  down and left
+              setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);//left
+            }            
+            
         }
         else{
             setTrashotron(false,false,false,true,true,true,portraitMode,cellSize);
@@ -267,7 +316,11 @@ hypercube05xx = [
     "0504:0404,0342,0330,",
     "0505:0405,0331,0342,",
     "0506:0406,0336,",
-    "0507:0407,0337,"
+    "0507:0407,0337,",
+    "0510:0350,0334,0201,0335,0304,0410,",
+    "0511:0350,0335,0201,0334,0304,0411,",
+    "0512:0350,0335,0335,0335,0201,0334,0334,0334,0304,0412,",
+    "0513:0350,0334,0334,0334,0201,0335,0335,0335,0304,0413,"
 ];
 
 hypercube015xx = [    
@@ -278,9 +331,27 @@ hypercube015xx = [
     "01504:01404,",
     "01505:01405,",
     "01506:01406,",
-    "01507:01407,"
+    "01507:01407,",
+    "01510:01410,",
+    "01511:01411,",
+    "01512:01412,",
+    "01513:01413,"
 ];
 
+
+
+//ERFD
+//0105,0122,0106,0104,
+
+
+//erfd
+//0145,0162,0146,0144,
+diagonalkeys = [
+    "0145:0510,",
+    "0162:0511,",
+    "0146:0512,",
+    "0144:0513,"
+]
 
 googleyeyes(8);
 
@@ -304,10 +375,12 @@ simplekeyboard = [
 
 spellingGVM.importbytecode(blankkeyboard);
 spellingGVM.importbytecode(simplekeyboard);
+spellingGVM.importbytecode(diagonalkeys);
 spellingGVM.importbytecode(hypercube05xx);
 spellingGVM.importbytecode(hypercube015xx);
 wallGVM.importbytecode(hypercube05xx);
 wallGVM.importbytecode(hypercube015xx);
+
 
 
 var httpglyph = new XMLHttpRequest();
@@ -320,7 +393,7 @@ httpglyph.onreadystatechange = function() {
         for(var index = 0;index < glyphStringArray.length;index++){
             if(glyphStringArray[index].length > 0){
                 var localaction = parseInt(glyphStringArray[index],8);
-                if(localaction >= 0500 && localaction <= 0507){
+                if(localaction >= 0500 && localaction <= 0517){
                     localaction -= 0100;
                 }
                 glyphArray.push(localaction);
@@ -504,7 +577,7 @@ document.getElementById("actioninput").onkeypress = function(a) {
     for(var index = 0;index < glyphStringArray.length;index++){
         if(glyphStringArray[index].length > 0){
             var localaction = parseInt(glyphStringArray[index],8);
-            if(localaction >= 0500 && localaction <= 0507){
+            if(localaction >= 0500 && localaction <= 0517){
                 localaction -= 0100;
             }
             glyphArray.push(localaction);
@@ -558,7 +631,7 @@ document.getElementById("actioninput").onkeydown = function(a) {
     for(var index = 0;index < glyphStringArray.length;index++){
         if(glyphStringArray[index].length > 0){
             var localaction = parseInt(glyphStringArray[index],8);
-            if(localaction >= 0500 && localaction <= 0507){
+            if(localaction >= 0500 && localaction <= 0517){
                 localaction -= 0100;
             }
             glyphArray.push(localaction);
