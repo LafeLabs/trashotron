@@ -6,8 +6,19 @@
   </head>
   <body>
       <a href = "index.html">HOME</a>
+      <table>
+          <tr>
+              <td>
+                  FREQUENCY FOR 10K RESISTOR:
+              </td>
+              <td>
+                  <input id = "freqinput"/>
+              </td>
+          </tr>
+      </table>
     <main>
     </main>
+    
     <style>
     a{
         color:#0000ff;
@@ -17,6 +28,28 @@
         body{
             background-color:#9f8767;
         }
+        table{
+            background-color:#9f8767;
+            font-size:1.5em;
+            font-family:Comic Sans MS;
+            position:absolute;
+            right:0px;
+            top:0px;
+        }
+        input{
+            background-color:#9f8767;
+            font-family:Comic Sans MS;  
+            font-size:0.8em;
+            width:4em;
+        }
     </style>
+    <script>
+        document.getElementById("freqinput").onchange = function(){
+            f = parseFloat(this.value);
+            C = 1/(f*10000);
+        }
+        document.getElementById("freqinput").value = (Math.round(1/(10000*C))).toString();
+        
+    </script>
   </body>
 </html>

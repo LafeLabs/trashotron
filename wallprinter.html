@@ -113,7 +113,7 @@ function draw() {
         }          
         if(glyphArray[stepIndex] == 0410){
             //up and to the left
-            setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);    
+            setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);    
             sideIndex++;
 
         }
@@ -187,7 +187,7 @@ function draw() {
 
             if(keyIsDown(0105)){
                 //e  up and to the left
-              setTrashotron(true,false,false,true,true,true,portraitMode,cellSize);//left
+              setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);//left
               console.log("[");
             }
             if(keyIsDown(0122)){
@@ -195,11 +195,11 @@ function draw() {
               setTrashotron(false,true,false,true,true,true,portraitMode,cellSize);//left
             }
 
-            if(keyIsDown(0105)){
+            if(keyIsDown(0106)){
                 //f  down and right
               setTrashotron(true,false,false,false,true,true,portraitMode,cellSize);//left
             }
-            if(keyIsDown(0122)){
+            if(keyIsDown(0104)){
                 //d  down and left
               setTrashotron(false,true,false,true,false,true,portraitMode,cellSize);//left
             }            
@@ -306,7 +306,7 @@ spellingGVM.spellGlyph(glyph + "0207,");
 
 wallGVM = new GVM(document.getElementById("wallcanvas"),400,400);
 wallGVM.importbytecode(hypercube);
-wallGVM.unit = 25;
+wallGVM.unit = 100;
 
 hypercube05xx = [    
     "0500:0400,0335,0342,0334,0333,",
@@ -715,6 +715,7 @@ document.getElementById("actioninput").onkeydown = function(a) {
     #wallbox{
         position:absolute;
         left:0px;
+        border:solid;
         bottom:0px;
         z-index:2;
     }

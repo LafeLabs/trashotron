@@ -89,8 +89,8 @@ function draw() {
   text(R.toFixed(2) + " Ohms", width - 20, 80);
   gnarl = spectrum[2*peakBin]/spectrum[peakBin];
   text(spectrum[peakBin].toFixed(2) + " peak", width - 20, 120);
-  text(gnarl.toFixed(2) + " 2f ratio", width - 20, 150);
-  text(integral.toFixed() + " integral", width - 20, 180);
+//  text(gnarl.toFixed(2) + " 2f ratio", width - 20, 150);
+  //text(integral.toFixed() + " integral", width - 20, 180);
 
 
   frameIndex++;

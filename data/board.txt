@@ -20,7 +20,7 @@
     {
         "index": 1,
         "name": "me",
-        "trajectory": "0502,0510,0510,0513,0513,0512,0512,0511,0511,",
+        "trajectory": "0502,0512,0513,",
         "shape": "0220,",
         "message": "this is geometric social media",
         "url": "https://www.trashrobot.org",
@@ -32,7 +32,25 @@
             }
         ],
         "x": 437.5,
-        "y": 437.4999999999999,
+        "y": 585.992424049175,
         "side": 105
+    },
+    {
+        "index": 2,
+        "name": "me",
+        "trajectory": "",
+        "shape": "0220,",
+        "message": "this is geometric social media",
+        "url": "https://www.trashrobot.org",
+        "relationships": [
+            {
+                "name": "me",
+                "index": 0,
+                "relationship": "Self"
+            }
+        ],
+        "x": 425.5,
+        "y": 425.5,
+        "side": 102.11999999999999
     }
 ]
