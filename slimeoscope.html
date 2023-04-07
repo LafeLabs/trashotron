@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
+    <script src="slimeoscope.js"></script>
+  </head>
+  <body>
+      <a href = "index.html">HOME</a>
+      <table>
+          <tr>
+              <td>
+                  FREQUENCY FOR 10K RESISTOR:
+              </td>
+              <td>
+                  <input id = "freqinput"/>
+              </td>
+          </tr>
+      </table>
+    <main>
+    </main>
+    
+    <style>
+    a{
+        color:#ff2cb4;
+
+    /*    color:#0000ff;*/
+    
+        font-size:1.5em;
+        font-family:Comic Sans MS;
+    }
+        body{
+            background-color:#9f8767;
+        }
+        table{
+            background-color:#9f8767;
+            font-size:1.5em;
+            font-family:Comic Sans MS;
+            position:absolute;
+            right:0px;
+            top:0px;
+        }
+        input{
+            background-color:#9f8767;
+            font-family:Comic Sans MS;  
+            font-size:0.8em;
+            width:4em;
+        }
+        main{
+            position:absolute;
+            z-index:-1;
+            overflow:hidden;
+            left:0px;
+            top:0px;
+            right:0px;
+            bottom:0px;
+        }
+    </style>
+    <script>
+        document.getElementById("freqinput").onchange = function(){
+            f = parseFloat(this.value);
+            C = 1/(f*10000);
+        }
+        document.getElementById("freqinput").value = (Math.round(1/(10000*C))).toString();
+        
+    </script>
+  </body>
+</html>
