@@ -30,6 +30,12 @@ function setup() {
 function draw() {
 
   let spectrum = fft.analyze();
+  nyquistFreq = sampleRate() / 2;
+  binFreq = nyquistFreq / (spectrum.length);
+  i1000 = Math.round(1000/binFreq);
+  stroke(0,255,0);
+
+  line(0,height - 3*i1000,width,height - 3*i1000);
 
   strokeWeight(5);
   for (let i = 0; i < spectrum.length; i++) {
@@ -78,6 +84,7 @@ function draw() {
     point(frameIndex,height - 3*i);
   }
 
+//  i1000 = 
   frameIndex += 3;
   if(frameIndex > width){
       frameIndex = 0;
