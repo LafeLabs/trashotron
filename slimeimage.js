@@ -70,8 +70,10 @@ function draw() {
             blue = Math.round(z);
         }    
     
-    stroke('rgb(' + red + ',' + green + ',' + blue + ')');
-    
+    stroke(0);
+    point(frameIndex,height - 3*i);
+//     stroke('rgb(' + red + ',' + green + ',' + blue + ')');
+    stroke('rgba(' + red + ',' + green + ',' + blue + ',' + spectrum[i]/10 + ')');
     
     point(frameIndex,height - 3*i);
   }
