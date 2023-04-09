@@ -1,0 +1,18 @@
+
+## [HOME](scrolls/home)
+
+# dtmf
+ 
+ - [16 channel dtmf decoder  from amazon](https://www.amazon.com/Channels-Decoder-MT8870-Decoding-Controller/dp/B07VCHFSLC/)
+ - [wikipedia page about dtmf](https://en.wikipedia.org/wiki/Dual-tone_multi-frequency_signaling)
+ - [dtmf controller](slimeotron-dtmf.html)
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/51/DTMF_keypad_layout.svg)
+
+|              | 1209 Hz  | 1336 Hz | 1477 Hz  | 1633 Hz |
+| ---------|------------| --------- |------------|-----------|
+| 697 Hz |      1         |       2       |       3       |    A         |
+| 770 Hz |      4        |       5      |       6       |    B          |
+| 852 Hz |      7        |      8       |       9       |     C         |
+| 941 Hz  |     *        |      0       |        #      |     D        |
+

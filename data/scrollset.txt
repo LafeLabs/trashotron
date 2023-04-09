@@ -7,6 +7,7 @@
         "cubes",
         "cybermagic",
         "driver",
+        "dtmf",
         "fashion",
         "flags",
         "geometron",
