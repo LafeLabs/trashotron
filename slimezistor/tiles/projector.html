@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--
+
+        EVERYTHING IS PHYSICAL 
+        EVERYTHING IS FRACTAL
+        EVERYTHING IS RECURSIVE
+        NO MONEY 
+        MO MINING 
+        NO PROPERTY
+        LOOK AT THE INSECTS
+        LOOK AT THE FUNGI
+        LANGUAGE IS HOW THE MIND PARSES REALITY
+
+    -->
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/wAAAAD//wAA/wAAAAD/AP8A/wAApv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFUAAARGAAIxFVUABEYAAjMRFQAARGYiIjMRAABERmZiIzEAAARERGZiMwAAAARERGYiAAAAAABERiL4PwAA+78AAPu/AAD33wAA9V8AAPVfAAD1XwAA998AAOADAADhAAAA4AAAAPAAAADwAAAA+AAAAP4AAAD/wAAA" rel="icon" type="image/x-icon" />
+    
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+<!--geometron javascript library-->
+    <script src="jscode/geometron.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+</head>
+<body>
+<a id = "readmelink" href  = "readme.html">ABOUT</a>
+<br>
+<input id  = "actioninput"/>
+<table id = "controltable">
+</table>
+
+<div id = "geometronbox">
+<canvas id = "maincanvas"></canvas>
+<div id = "linkbox"></div>
+</div>
+
+<style>
+body{
+    overflow:hidden;
+    background-color:#808080;
+}
+#readmelink{
+    position:absolute;
+    right:10px;
+    top:10px;
+    color:#0000ff;
+}
+#geometronbox{
+    position:absolute;
+    right:0px;
+    top:0px;
+    z-index:-1;
+}
+#linkbox{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    overflow:none;
+}
+#linkbox a{
+    position:absolute;
+    border:solid;
+    z-index:2;
+}
+#linkbox span{
+    position:absolute;
+    border:solid;
+    z-index:1;
+}
+
+#buttontable td{
+    border:solid;
+    text-align:center;
+    border-radius:5px;
+}
+#controltable{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+}
+.button{
+    cursor:pointer;
+}
+.button:hover{
+    background-color:green;
+}
+.button:active{
+    background-color:yellow;
+}
+.data{
+    display:none;
+}
+#actioninput{
+    width:10px;
+}
+@media only screen and (orientation: portrait) {
+    #actioninput{
+        display:none;
+    }
+}
+</style>
+
+<script>
+
+
+shapestack = [
+    "0220:0305,0350,0362,0203,0334,0334,0203,0334,0334,0334,0203,0334,0334,0203,0363,0334,0334,0334,0334,0311,0337,0313,0336,0330,",
+        "0221:0305,0350,0362,0203,0335,0335,0203,0335,0335,0335,0203,0335,0335,0203,0335,0335,0363,0335,0335,0311,0337,0313,0336,0330,",
+        "0222:0305,0350,0362,0203,0334,0203,0334,0334,0334,0334,0203,0334,0203,0363,0334,0334,0334,0334,0330,0334,0334,0334,0311,0336,0313,0336,0330,0337,",
+        "0223:0305,0350,0362,0203,0335,0203,0335,0335,0335,0335,0203,0335,0203,0363,0335,0335,0335,0335,0330,0335,0335,0335,0311,0336,0313,0336,0330,0337,",
+        "01220:0333,0200,0336,0330,0332,0336,0331,0337,0220,0313,0304,0336,0331,0333,0333,0337,0337,",
+        "01221:0333,0200,0336,0330,0332,0336,0331,0337,0221,0313,0304,0336,0331,0333,0333,0337,0337,",
+        "01222:0333,0200,0336,0330,0332,0336,0331,0337,0222,0304,0336,0331,0333,0333,0337,0337,",
+        "01223:0333,0200,0336,0330,0332,0336,0331,0337,0223,0313,0304,0336,0333,0331,0333,0337,0337,"
+];
+
+
+board = [];
+maincanvas = document.getElementById("maincanvas");
+
+square = 100;
+
+var mainGVM = new GVM(maincanvas,innerWidth,innerHeight);
+
+
+//keyboard : asdw, zxcv, jkli uo, colors 1234567 
+
+
+keyboard = [
+    "041:0177,",
+    "042:0236,",
+    "043:0177,",
+    "044:0177,",
+    "045:0177,",
+    "046:0177,",
+    "047:0177,",
+    "050:0177,",
+    "051:0177,",
+    "052:0177,",
+    "053:0177,",
+    "054:0177,",
+    "055:0177,",
+    "056:0177,",
+    "057:0177,",
+    "060:035,",
+    "061:0320,",
+    "062:0322,",
+    "063:0323,",
+    "064:0324,",
+    "065:0325,",
+    "066:0326,",
+    "067:0327,",
+    "070:0177,",
+    "071:034,",
+    "072:0177,",
+    "073:0177,",
+    "074:0237,",
+    "075:0177,",
+    "076:0177,",
+    "077:0177",
+    "0100:0177,",
+    "0101:0230",
+    "0102:0234,",
+    "0103:0177,",
+    "0104:0232",
+    "0105:0177,",
+    "0106:0233",
+    "0107:0234",
+    "0110:0235",
+    "0111:0177,",
+    "0112:0236",
+    "0113:0237",
+    "0114:0177,",
+    "0115:0236,",
+    "0116:0235,",
+    "0117:0177,",
+    "0120:0177,",
+    "0121:0177,",
+    "0122:0177,",
+    "0123:0231",
+    "0124:0224,",
+    "0125:0226,",
+    "0126:0177,",
+    "0127:0177,",
+    "0130:0177,",
+    "0131:0225,",
+    "0132:0177,",
+    "0133:0177,",
+    "0134:0177,",
+    "0135:0177,",
+    "0136:0177,",
+    "0137:0177,",
+    "0140:0177,",
+    "0141:0334,",
+    "0142:0177,",
+    "0143:0222,",
+    "0144:0335,",
+    "0145:0177,",
+    "0146:0333,",
+    "0147:0177,",
+    "0150:0177,",
+    "0151:030,",
+    "0152:032,",
+    "0153:031,",
+    "0154:033,",
+    "0155:0177,",
+    "0156:0177,",
+    "0157:037,",
+    "0160:0177,",
+    "0161:0177,",
+    "0162:0177,",
+    "0163:0331,",
+    "0164:0177,",
+    "0165:036,",
+    "0166:0223,",
+    "0167:0330,",
+    "0170:0221,",
+    "0171:0177,",
+    "0172:0220,",
+    "0173:0177,",
+    "0174:0177,",
+    "0175:0177,",
+    "0176:0177,"
+];
+
+mainGVM.importbytecode(hypercube);
+mainGVM.importbytecode(shapestack);
+mainGVM.importbytecode(keyboard);
+
+mainGVM.style.fill0 = "#00000040";
+mainGVM.style.fill2 = "#ff000040";//red
+mainGVM.style.fill3 = "#FFA50040";//orange
+mainGVM.style.fill4 = "#FFFF0040";//yellow
+mainGVM.style.fill5 = "#00ff0040";//green
+mainGVM.style.fill6 = "#0000ff40";//blue
+mainGVM.style.fill7 = "#FF00ff40";//purple
+
+
+myIndex = 0;
+
+
+function update(){
+    
+    var httpboard = new XMLHttpRequest();
+    httpboard.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+            board = JSON.parse(this.responseText);
+            mainGVM.glyph = "";
+            drawmain();
+        }
+    };
+    httpboard.open("GET", "fileloader.php?filename=data/board.txt", true);
+    httpboard.send();        
+
+}
+
+var httpboard = new XMLHttpRequest();
+httpboard.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        board = JSON.parse(this.responseText);
+        mainGVM.glyph = "";
+        drawmain();
+    }
+};
+httpboard.open("GET", "fileloader.php?filename=data/board.txt", true);
+httpboard.send();        
+
+
+function drawmain(){
+    document.getElementById("linkbox").innerHTML = "";
+    mainGVM.drawGlyph("0300,");
+    for(var index = 0;index < board.length;index++){
+        mainGVM.actionSequence("0300,0305,0350,");
+        mainGVM.actionSequence(board[index].trajectory);
+        mainGVM.actionSequence(board[index].shape);
+        board[index].x = mainGVM.x;
+        board[index].y = mainGVM.y;
+        board[index].side = mainGVM.side;
+        if(board[index].side > 100){
+            var newa = document.createElement("A");
+            newa.href = board[index].url;
+            newa.innerHTML = board[index].name;
+            newa.style.left = board[index].x.toString() + "px";
+            newa.style.top = board[index].y.toString() + "px";
+            document.getElementById("linkbox").appendChild(newa);
+        }
+        if(board[index].side > 200){
+            var newspan = document.createElement("SPAN");
+            newspan.innerHTML = board[index].message;
+            newspan.style.left = board[index].x.toString() + "px";
+            newspan.style.top = (board[index].y - 50).toString() + "px";
+            document.getElementById("linkbox").appendChild(newspan);
+        }
+    }
+}
+
+
+document.getElementById("actioninput").onkeypress = function(a) {
+    var charCode = a.keyCode || a.which;
+    localCursorAction = parseInt(mainGVM.hypercube[charCode],8);   
+    mainGVM.cursorAction(localCursorAction);   
+    this.value = "";
+    mainGVM.clean();
+    board[myIndex].trajectory = mainGVM.cleanGlyph;
+//    drawmain();
+    update();
+}
+
+
+document.getElementById("actioninput").onkeydown = function(a) {
+    var charCode = a.keyCode || a.which;
+
+    if(charCode == 010) {
+        mainGVM.cursorAction(010);
+    }
+
+    mainGVM.clean();
+    board[myIndex].trajectory = mainGVM.cleanGlyph;
+//    drawmain();
+    update();
+}
+
+if(innerWidth > innerHeight){
+    document.getElementById("actioninput").select();
+}
+
+
+
+topcontrols  = [
+    "030,031,032,033,",
+    "034,035,036,037,"
+];
+
+
+controlbuttonsize = 80;
+
+document.getElementById("controltable").innerHTML = "";
+for(var index = 0;index < topcontrols.length;index++){
+    var newtr = document.createElement("TR");
+    document.getElementById("controltable").appendChild(newtr);
+    rowarray = topcontrols[index].split(",");
+    for(var rowindex = 0;rowindex < rowarray.length;rowindex++){
+        if(rowarray[rowindex].length > 0){
+            var newtd = document.createElement("TD");
+            newtr.appendChild(newtd);
+            var newcan = document.createElement("CANVAS");
+            newtd.appendChild(newcan);
+            var datadiv = document.createElement("div");
+            datadiv.innerHTML = rowarray[rowindex];
+            datadiv.className = "data";
+            newtd.appendChild(datadiv);
+            var newGVM = new GVM(newcan,controlbuttonsize,controlbuttonsize);
+            newGVM.unit = controlbuttonsize - 2;
+            newGVM.x0 = 1;
+            newGVM.y0 = controlbuttonsize-1;
+            newGVM.importbytecode(hypercube);
+            newGVM.importbytecode(shapestack);
+            newGVM.action(0300);
+            if(parseInt(rowarray[rowindex],8) >= 040 && parseInt(rowarray[rowindex],8) < 0177){
+                newGVM.drawGlyph("0300,0336,0336,0330,0333,0337,");
+            }
+            newGVM.action(parseInt(rowarray[rowindex],8)+01000);
+
+            newtd.onclick = function(){
+                var localaction = parseInt(this.getElementsByClassName("data")[0].innerHTML,8);
+                if(localaction != 022 && localaction != 023){
+                    if(localaction >= 040 && localaction < 0177){
+                        localaction += 01000;
+                    }
+                    mainGVM.cursorAction(localaction);
+                }
+                if(localaction == 022){
+                    previous();
+                }
+                if(localaction == 023){
+                    next();
+                }
+                mainGVM.clean();
+                drawmain();
+
+
+            }
+            newcan.classList.add("button");
+        }
+    }
+}
+
+
+function setup(){
+    frameRate(5);
+}
+function draw(){
+    update();
+}
+
+
+
+</script>
+</body>
+</html>
