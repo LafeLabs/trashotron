@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!--
+
+        EVERYTHING IS PHYSICAL
+        EVERYTHING IS FRACTAL
+        EVERYTHING IS RECURSIVE
+        NO MONEY
+        MO MINING
+        NO PROPERTY
+        LOOK AT THE INSECTS
+        LOOK AT THE FUNGI
+        LANGUAGE IS HOW THE MIND PARSES REALITY
+
+    -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
+<script>
+    
+let osc, fft;
+
+frameIndex = -30;
+
+pulseIndex = 0;
+
+pulse = 1;
+
+function setup(){
+  
+  createCanvas(100, 100);
+  background("red");
+  osc = new p5.SinOsc(); // set frequency and type
+  osc.amp(0);
+  osc2 = new p5.SinOsc(); // set frequency and type
+  osc2.amp(0.5);
+  osc.start();
+  osc2.start();
+  freq = 697;
+  osc.freq(freq);  
+
+}
+
+
+function draw(){
+  if(pulseIndex < 5 && pulseIndex >=0){
+     if(pulse == 1){
+        freq = 697;
+        osc.freq(freq);
+        amp = 0.5;
+        osc.amp(amp);
+        freq2 = 1209;
+        osc2.freq(freq2);
+        amp2 = 0.5;
+        osc2.amp(amp2);
+     } 
+     if(pulse == 2){
+        freq = 697;
+        osc.freq(freq);
+        amp = 0.5;
+        osc.amp(amp);
+        freq2 = 1336;
+        osc2.freq(freq2);
+        amp2 = 0.5;
+        osc2.amp(amp2);
+     } 
+     if(pulse == 3){
+        freq = 697;
+        osc.freq(freq);
+        amp = 0.5;
+        osc.amp(amp);
+        freq2 = 1477;
+        osc2.freq(freq2);
+        amp2 = 0.5;
+        osc2.amp(amp2);
+     } 
+     if(pulse == 4){
+        freq = 770;
+        osc.freq(freq);
+        amp = 0.5;
+        osc.amp(amp);
+        freq2 = 1209;
+        osc2.freq(freq2);
+        amp2 = 0.5;
+        osc2.amp(amp2);
+     } 
+     if(pulse == 5){
+        freq = 770;
+        osc.freq(freq);
+        amp = 0.5;
+        osc.amp(amp);
+        freq2 = 1336;
+        osc2.freq(freq2);
+        amp2 = 0.5;
+        osc2.amp(amp2);
+     } 
+     if(pulse == 6){
+        freq = 770;
+        osc.freq(freq);
+        amp = 0.5;
+        osc.amp(amp);
+        freq2 = 1477;
+        osc2.freq(freq2);
+        amp2 = 0.5;
+        osc2.amp(amp2);
+     } 
+  }
+
+  if(pulseIndex >= 5){
+    amp = 0;
+    osc.amp(amp);
+    amp2 = 0;
+    osc2.amp(amp2);
+  }
+  pulseIndex++;
+
+}
+
+
+</script>
+</head>
+<body>    
+<table>
+    <tr>
+        <td>X enable</td><td>Y enable</td><td>Z enable</td>
+    </tr>
+    <tr>
+        <td>X direction</td><td>Y direction</td><td>Z direction</td>
+    </tr>
+</table>
+<script>
+buttons = document.getElementsByTagName("td");
+
+buttons[0].onclick = function(){
+    //1
+
+        freq = 697;
+        osc.freq(freq);
+        amp = 0.5;
+        osc.amp(amp);
+        freq2 = 1209;
+        osc2.freq(freq2);
+        amp2 = 0.5;
+        osc2.amp(amp2);
+
+    pulse = 1;      
+    pulseIndex = 0;
+}
+
+
+</script>
+<style>
+td{
+    height:250px;
+    border:solid;
+    border-radius:10px;
+    font-size:70px;
+    text-align:center;
+    cursor:pointer;
+}
+td:hover{
+    background-color:green;
+}
+td:active{
+    background-color:yellow;
+}
+
+</style>
+</body>
+</html>

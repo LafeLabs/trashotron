@@ -1,0 +1,56 @@
+## [WWW.TRASHROBOT.ORG](https://www.trashrobot.org)
+
+# TRASHONOMICON
+
+TRASHOTRON is the unification of Geometron and Trash Magic.  Trash Magic is the philosophy of building a new civilization entirely from the waste streams of the old one and things we can grow or gather right where we are.  Geometron is a geometric language for the control of machines.
+
+This is a [TRASHBOOK](https://github.com/LafeLabs/trashbook/) which replicates the [trashotron](https://github.com/LafeLabs/trashotron/) set.
+
+TRASHOTRON is a self-replicating set consisting of:
+
+ - [Optical Neuron](scrolls/neuron)
+ - [Trashotron Driver](scrolls/driver)
+ - [SlimeZistor](scrolls/slimezistor)
+ - [dtmf](scrolls/dtmf)
+ - [loopotron.html](loopotron.html)
+ - [xyzprobe.html](xyzprobe.html)
+ - [trashotron.html](trashotron.html)
+ - [wallprinter.html](wallprinter.html)
+ - [wallboard.html](wallboard.html)
+ - [Philosophy](scrolls/philosophy)
+ - [THE GEOMETRON HYPERCUBE](scrolls/cubes)
+ - [Arduino microscope robot](scrolls/microscope)
+ - [Arduino icon printer](scrolls/iconprinter)
+ - [ICON FACTORY](scrolls/iconfactory)
+ - [Geometron](scrolls/geometron)
+ - [Books](scrolls/books) 
+ - [Zines](scrolls/zines)
+ - [Music](scrolls/music)
+ - [Fashion](scrolls/fashion)
+ - [Flags](scrolls/flags)
+ - [action geometry, self-replicating geometric constructions in trash using geometron](scrolls/actiongeometry)
+ - [the trash magic philosophy and books documenting it](scrolls/trashmagicphilosophy)
+ - [cybermagic self-replicating code](scrolls/cybermagic)
+ - [the arduino based trash robot icon printer(prints on trash)](scrolls/iconprinter)
+ - [the arduino based trash robot microscope(images trash in 3d)](scrolls/microscope)
+ - [the spray paint wall printer](scrolls/wallprinter)
+ - this document, the TRASHONOMICON which replicates the set
+ - the trash magic server and web framework including CSS and js
+ - [CSS ROBOT](scrolls/cssrobot)
+ - [P5JS ROBOT](p5jsrobot.html)
+ - [the trashotron optical neuron which converts pixels on a screen into digital outputs](scrolls/neuron)
+ - [the trashotron driver which translates digital signals to stepper motor control using an analog circuit for a clock](scrolls/driver)
+ - [the slimezistor synthesizer and electrical probe for both science and music and technology](scrolls/slimezistor)
+
+Some links:
+
+ - [wallprinter.html](wallprinter.html)
+ - [trashotron.html](trashotron.html)
+ - [cube-probe.html](cube-probe.html)
+ - [star-probe.html](star-probe.html)
+ - [webeditor.html](webeditor.html)
+ - [editor.php](editor.php)
+ - [readme.html](readme.html)
+ - [dnagenerator.php](dnagenerator.php)
+
+

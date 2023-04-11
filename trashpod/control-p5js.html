@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src = "geometron.js"></script>
+    <script>
+    
+star = "0504,0504,0504,0504,0504,0504,0504,0504,0504,0504,0504,0502,0504,0502,0504,0502,0502,0504,0502,0504,0502,0504,0502,0502,0504,0502,0504,0502,0504,0502,0502,0504,0502,0504,0502,0504,0502,0504,0502,0502,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0501,0507,0501,0501,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0507,0504,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0500,0507,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0500,0507,0500,0500,0505,0502,0502,0505,0502,0502,0505,0502,0505,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0502,0505,0502,0505,0502,0505,0502,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0507,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0507,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0503,0504,0502,0504,0502,0502,0504,0502,0504,0502,0504,0502,0502,0504,0502,0504,0502,0504,0502,0502,0504,0502,0504,0502,0502,0504,0502,0504,0502,0504,0506,0502,0504,0502,0504,0502,0504,0502,0502,0504,0502,0504,0502,0502,0504,0502,0506,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,";
+
+
+lsp = "0327,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0506,0502,0505,0502,0501,0506,0501,0501,0501,0506,0501,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0507,0501,0507,0501,0507,0501,0503,0503,0505,0503,0501,0501,0501,0501,0507,0501,0501,0507,0501,0507,0501,0507,0501,0503,0503,0503,0504,0503,0503,0504,0503,0505,0501,0501,0501,0507,0501,0505,0503,0503,0503,0504,0503,0507,0500,0500,0500,0505,0505,0503,0505,0503,0505,0503,0503,0503,0503,0504,0503,0500,0500,0500,0507,0501,0507,0501,0507,0501,0503,0503,0504,0503,0507,0500,0500,0500,0507,0500,0500,0507,0501,0503,0503,0503,0503,0504,0503,0504,0503,0504,0503,0500,0500,0500,0506,0500,0500,0506,0500,0500,0503,0503,0504,0503,0503,0504,0503,0504,0503,0500,0500,0507,0500,0500,0500,0500,0506,0500,0500,0500,0506,0500,0506,0500,0500,0502,0504,0502,0502,0504,0502,0504,0502,0507,0500,0503,0500,0507,0500,0500,0500,0507,0500,0500,0500,0500,0506,0500,0500,0506,0500,0506,0500,0502,0504,0502,0502,0504,0502,0502,0502,0504,0502,0502,0504,0502,0500,0500,0500,0506,0500,0500,0506,0500,0500,0506,0500,0506,0500,0502,0504,0502,0502,0504,0502,0502,0502,0502,0502,0502,0505,0502,0502,0505,0502,0505,0502,0502,0505,0502,0501,0506,0501,0501,0506,0501,0501,0506,0501,0501,0501,0501,0502,0502,0505,0502,0502,0502,0505,0502,0505,0502,0505,0502,0501,0506,0501,0501,0501,0506,0501,0501,0501,0501,0507,0501,0507,0501,0507,0501,0505,0502,0502,0505,0502,0507,0507,0507,0507,0507,0507,0507,0507,0507,0501,0501,0501,0507,0501,0501,0501,0507,0501,0501,0507,0501,0507,0501,0503,0503,0505,0503,0503,0503,0503,0503,0504,0503,0503,0503,0504,0503,0503,0503,0504,0503,0503,0503,0500,0502,0502,0507,0507,0500,0502,0502,0502,0502,0505,0502,0502,0502,0505,0502,0502,0502,0502,0502,0502,0502,0504,0502,0504,0502,0500,0500,0506,0500,0500,0500,0500,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0507,0503,0507,0501,0501,0501,0501,0507,0501,0501,0501,0501,0501,0501,0506,0501,0501,0506,0501,0501,0501,0506,0501,0501,0506,0501,0506,0501,0501,0506,0501,0503,0505,0503,0500,0503,0500,0507,0500,0503,0500,0507,0500,0500,0507,0500,0500,0507,0500,0500,0500,0500,0500,0500,0500,0500,0500,0500,0500,0506,0500,0500,0500,0504,0504,0504,0504,0506,0506,0506,0504,0506,0502,0502,0502,0504,0502,0504,0502,0507,0500,0507,0500,0505,0505,0505,0506,0502,0505,0502,0502,0502,0502,0504,0502,0500,0507,0500,0503,0503,0503,0507,0507,0507,0507,0507,0500,0500,0503,0501,0504,0507,0504,0500,0502,0502,0502,0502,0506,0506,0506,0506,0506,0506,0506,0506,0505,0505,0502,0502,0504,0502,0502,0505,0505,0503,0503,0504,0502,0507,0507,0507,0504,0504,0504,0504,0504,0504,0324,0500,0500,0507,0500,0500,0506,0500,0504,0502,0503,0503,0503,0500,0507,0500,0500,0500,0505,0505,0503,0501,0503,0503,0503,0503,0505,0502,0505,0502,0502,0501,0507,0501,0501,0501,0504,0502,0504,0502,0502,0505,0502,0505,0502,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0505,0507,0507,0507,";
+    
+glyph = "0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,0400,0401,0402,0403,0404,0405,";
+
+//glyph = star;
+
+glyph = glyph.replace(/0500,/g, "0406,0406,0403,0407,0405,0404,0407,");
+glyph = glyph.replace(/0501,/g, "0406,0406,0402,0407,0405,0404,0407,");
+glyph = glyph.replace(/0502,/g, "0406,0406,0401,0407,0405,0404,0407,");
+glyph = glyph.replace(/0503,/g, "0406,0406,0400,0407,0405,0404,0407,");
+glyph = glyph.replace(/0504,/g, "0406,0406,0403,0407,0407,");
+glyph = glyph.replace(/0505,/g, "0406,0406,0402,0407,0407,");
+glyph = glyph.replace(/0506,/g, "0406,0406,0401,0407,0407,");
+glyph = glyph.replace(/0507,/g, "0406,0406,0400,0407,0407,");
+
+
+glyph = "0400,0401,0406,0402,0403,0407,0404,0405,";//one unit out and back in all 3 axes, start with this unit being one second which is 10 frames. That should be about 2 mm on the DVD drive stage
+
+//glyph = "0400,0401,";//left,right
+
+glyphStringArray = glyph.split(",");
+
+glyphArray = [];
+for(var index = 0;index < glyphStringArray.length;index++){
+    if(glyphStringArray[index].length > 0){
+        var localaction = parseInt(glyphStringArray[index],8);
+        glyphArray.push(parseInt(glyphStringArray[index],8));
+    }
+}
+    
+    
+//add this function:
+//go thru glypharray and every time there's a 0407 double the number of repetitions of an action from 0400 thru 0405, and halve with 0406, always starting with the minimum side unit used in a sequence.
+//this requires careful management of the hypercube, or adding some 0407's to the start or both, do when not tired
+
+    
+function setup() {
+    createCanvas(cellSize*3, cellSize*2);
+}
+
+
+
+cellSize  = 200;
+
+stepIndex = glyphArray.length + 1;// if this is larger than the length of the array, it will NOT draw the glyph by default.
+
+frameIndex = 0;
+
+framesPerSecond= 10;//this can be varied to control the pace of time on the glyph trajectory, which adds analog values to that trajectory.  this can be used as a real time feedback from the electrical probe, which can all be fed into a machine learning algorithm which evolves the geometry.  So the noise lives on top of the Geometron glyph trajectory.  We can also get an analog signal directly into the browser using a motor which as it spins pushes a key repeatedly. if we control the rate of keystrokes, that can feed back into p5js.
+unit = 10;//10 frames = 1 second = unit
+side = unit;//set to starting unit of 1 second
+
+duringStep = false;
+
+function draw() {
+    frameRate(framesPerSecond);//frames per second
+    background(0);
+    if (stepIndex < glyphArray.length) {
+        //control the robot to run the geometron glyph
+        if(glyphArray[stepIndex] == 0400){
+            //move to the left for "side" frames
+            fill(255);
+            rect(cellSize, 0, cellSize, cellSize);//
+            rect(cellSize*2, 0, cellSize, cellSize);
+        }
+        if(glyphArray[stepIndex] == 0401){
+            //move to the right for "side" frames
+            fill(255);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            rect(0, cellSize, cellSize, cellSize);
+        }
+        if(glyphArray[stepIndex] == 0402){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+        }
+        if(glyphArray[stepIndex] == 0403){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize*2, 0, cellSize, cellSize);
+            rect(cellSize, cellSize, cellSize, cellSize);
+        }
+        if(glyphArray[stepIndex] == 0404){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+        }
+        if(glyphArray[stepIndex] == 0405){
+            fill(255);
+            rect(0, 0, cellSize, cellSize);
+            rect(cellSize, 0, cellSize, cellSize);
+            rect(cellSize*2, cellSize, cellSize, cellSize);
+        }
+        if(glyphArray[stepIndex] == 0406){
+            side /= 2;
+            stepIndex++;
+            frameIndex = 0;
+        }
+        if(glyphArray[stepIndex] == 0407){
+            side *= 2;
+            stepIndex++;
+            frameIndex = 0;
+        }          
+      
+        frameIndex++;
+        if(frameIndex == side){
+              frameIndex = 0;
+              duringStep = false;
+              stepIndex++;
+        }
+        if (keyIsDown(0121)) {// q/Q
+            stepIndex = glyphArray.length + 1;
+        }
+    }
+    else{
+        fill(255);
+        rect(0, 0, cellSize, cellSize);
+        rect(cellSize, 0, cellSize, cellSize);
+        rect(cellSize*2, 0, cellSize, cellSize);
+        if (keyIsDown(040)) {// space bar
+         stepIndex = 0;//this will cause
+        }
+        if (keyIsDown(0101)) {// a, up
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
+          fill(0);
+          rect(cellSize*2, 0, cellSize, cellSize);
+        }
+        if (keyIsDown(0132)) {// z, down
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize, 0, cellSize, cellSize);
+          rect(2*cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize*2, 0, cellSize, cellSize);
+        }
+
+        if (keyIsDown(LEFT_ARROW)) {
+          fill(255);
+          rect(cellSize, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+        }
+        if (keyIsDown(RIGHT_ARROW)) {
+          fill(255);
+          rect(cellSize, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(0,cellSize, cellSize, cellSize);
+          fill(0);
+          rect(0,0, cellSize, cellSize);
+        }
+
+        if (keyIsDown(UP_ARROW)) {
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+        }
+        if (keyIsDown(DOWN_ARROW)) {
+          fill(255);
+          rect(0, 0, cellSize, cellSize);
+          rect(cellSize*2, 0, cellSize, cellSize);
+          rect(cellSize, cellSize, cellSize, cellSize);
+          fill(0);
+          rect(cellSize,0, cellSize, cellSize);
+        }
+        
+        
+    }
+}
+</script>
+<style>
+    body,input{
+        background-color:#808080;
+        font-size:30px;
+        font-family:courier;
+    }
+    main{
+        position:absolute;
+        right:0px;
+        bottom:0px;
+    }
+</style>
+  </head>
+  <body>
+      <a href = "index.html">HOME</a>
+      <table>
+          <tr>
+                <td>CELL SIZE[PX]:</td>
+                <td>
+                    <input id = "cellsizeinput"/>
+                </td>
+          </tr>
+      </table>
+      <script>
+          document.getElementById("cellsizeinput").value = cellSize.toString();
+document.getElementById("cellsizeinput").onchange = function(){
+    cellSize = parseInt(this.value);
+    resizeCanvas(3*cellSize, 2*cellSize);
+    this.blur();
+}
+      </script>
+  </body>
+</html>
