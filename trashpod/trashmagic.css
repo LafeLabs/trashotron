@@ -1,5 +1,5 @@
 body{
-    background-color:black;
+    background-color:#9f8767;
 }
 #mainscroll{
     position:absolute;
@@ -11,9 +11,6 @@ body{
     color:#00ff00;
     font-family:courier;
     z-index:0;
-}
-pre{
-    font-family:courier;
 }
 h1{
     text-align:center;

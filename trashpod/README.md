@@ -1,12 +1,24 @@
 # TRASHPOD
  
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/trashmagic/qrcode.png) 
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/trashmagic/qrcodes.png) 
+ 
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/trashmagic/server.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/trashmagic/trashnet.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/trashmagic/ubuntu.png)
+
+
 1000 SONGS IN YOUR SHOPPING CART FULL OF TRASH!
 
 THIS IS A PARODY RELEASED INTO THE PUBLIC DOMAIN!
 
 IT HAS NO RELATION TO ANY COMMERCIAL PRODUCT!
 
-TO REPLICATE THE TRASHPOD SERVER, YOU MUST GET THE GREEN DRIVE AND THE PURPLE DRIVE:
+TO REPLICATE THE TRASHPOD SERVER, YOU MUST GET THE GREEN DRIVE AND THE PURPLE DRIVE. PURPLE IS UBUNTU INSTALL AND GREEN IS MEDIA.
 
 GET A LAPTOP SOMEONE IS THROWING AWAY, MAKE SURE THEY HAVE ALL THEIR DATA, AND WIPE THE HARD DRIVE!
 
@@ -54,3 +66,11 @@ ON A TRASH MAGIC DUMP(HOME INTERNET CONNECTION) FORWARD ALL PORT 80 TRAFFIC TO T
 POINT A DOMAIN AND SUBDOMAIN REFERENCING THE PHYSICAL LOCATION OF THE TRASH CART TO A TRASH SERVER!
 
 WRITE THE DOMAIN ON CARDBOARD SIGNS AND PUT THEM IN ON AND AROUND THE TRASH CART!
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/trashmagic/flag.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/trashmagic/cart-flag.png)
+
+
+
+
