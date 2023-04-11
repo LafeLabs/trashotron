@@ -13,11 +13,6 @@ $dna = json_decode($dnaraw);
 
 mkdir("data");
 mkdir("php");
-mkdir("scrolls");
-mkdir("iconsymbols");
-mkdir("jscode");
-mkdir("symbolfeed");
-mkdir("images");
 
 //mkdir("css");
 
@@ -43,25 +38,6 @@ foreach($dna->php as $value){
     copy($baseurl."php/".$value,"php/".$value);
     copy($baseurl."php/".$value,explode(".",$value)[0].".php");
 
-}
-
-foreach($dna->scrolls as $value){
-    
-    if($value == "home"){
-        copy($baseurl."scrolls/".$value,"scrolls/".$value);
-    }
-
-    
-}
-foreach($dna->iconsymbols as $value){
-    
-    copy($baseurl."iconsymbols/".$value,"iconsymbols/".$value);
-
-}
-
-    
-foreach($dna->javascript as $value){
-    copy($baseurl."jscode/".$value,"jscode/".$value);
 }
 
 

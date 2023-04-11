@@ -1,6 +1,0 @@
-{
-    "server": "https://raw.githubusercontent.com/LafeLabs/trashotron/main/",
-    "scrolls": [
-        "home"
-    ]
-}
