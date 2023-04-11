@@ -23,11 +23,12 @@ https://cloud9-sdk.readme.io/docs/language-mode
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
 
-<title>Html Pi Crust Code Editor</title>
+<title>TRASH MAGIC CODE EDITOR</title>
 
 </head>
 <body>
 <a href=  "index.html" style = "position:absolute;right:5px;top:1.5em;font-size:2em">HOME</a>
+<div id = "lightdarkbutton" class = "button">DARK MODE</div>
 <a  href = "webdestroyer.html" style = "display:none;position:absolute;right:5px;top:3em;font-size:2em">DESTROYER</a>
 
 <table id = "inputtable">
@@ -63,7 +64,7 @@ editor.setTheme("ace/theme/github");
 editor.getSession().setMode("ace/mode/html");
 editor.getSession().setUseWrapMode(true);
 editor.$blockScrolling = Infinity;
-editor.setTheme("ace/theme/vibrant_ink");
+//editor.setTheme("ace/theme/vibrant_ink");
 
 currentFile = "index.html";
 var httpc = new XMLHttpRequest();
@@ -159,12 +160,12 @@ document.getElementById("maineditor").onkeyup = function(){
     var fileName = currentFile.split("/")[1];
 }
 
-document.body.style.backgroundColor = "#202020";
-document.body.style.color = "white";
-document.getElementById("newscrollinput").style.backgroundColor = "#202020";
-document.getElementById("newscrollinput").style.color = "white";        
+//document.body.style.backgroundColor = "#202020";
+//document.body.style.color = "white";
+//document.getElementById("newscrollinput").style.backgroundColor = "#202020";
+//document.getElementById("newscrollinput").style.color = "white";        
 
-editor.setTheme("ace/theme/vibrant_ink");
+//editor.setTheme("ace/theme/vibrant_ink");
 
         
 document.getElementById("newscrollinput").value = "";
@@ -270,35 +271,49 @@ function setmode(){
 
 codesquaresize = 120;
 
+lightmode = true;
+document.getElementById("lightdarkbutton").onclick = function(){
+    lightmode = !lightmode;
+    if(lightmode){
+        document.getElementById("lightdarkbutton").innerHTML = "DARK MODE";
+        editor.setTheme("ace/theme/github");
+    }
+    else{
+        document.getElementById("lightdarkbutton").innerHTML = "LIGHT MODE";
+        editor.setTheme("ace/theme/vibrant_ink");
+    }
+}
+
 </script>
 <style>
+#lightdarkbutton{
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:10em;
+}
 a{
-    color:#ff2cb4;
+/*    color:#ff2cb4;*/
+    color:#0000ff;
 }
 #inputtable{
     position:absolute;
     left:10px;
     top:10px;
-    font-family:courier;
-}
-#newscrollinput{
-    font-family:courier;
-    
 }
 #linktable{
     position:absolute;
     right:10px;
     top:10px;
-    background-color:#808080;
 }
 body{
     overflow:hidden;
+    background-color:#9f8767;
+    font-family:Comic Sans MS;
 }
 input{
-    font-family:courier;
-    color:white;
+    background-color:#9f8767;
 }
-
 .file{
     cursor:pointer;
     border-radius:0.25em;
@@ -321,7 +336,6 @@ input{
     border:solid;
     border-radius:5px;
     border-width:3px;
-    font-family:courier;
     font-size:22px;
     z-index:99999999;
 }
@@ -337,6 +351,8 @@ input{
 }
 .button{
     cursor:pointer;
+    border:solid;
+    text-align:center;
 }
 .button:hover{
     background-color:green;
