@@ -13,9 +13,8 @@ $dna = json_decode($dnaraw);
 
 mkdir("data");
 mkdir("php");
-
-//mkdir("css");
-
+mkdir("songs");
+mkdir("trashmagic");
 
 copy("https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashpod/php/replicator.txt","replicator.php");
 

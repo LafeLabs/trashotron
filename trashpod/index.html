@@ -39,16 +39,20 @@ LANGUAGE IS HOW THE MIND PARSES REALITY
 <body>    
 <div id = "mainscroll">
     
-    
     <h1>TRASHPOD</h1>
 
 <P>1000 SONGS IN YOUR SHOPPING CART FULL OF TRASH!</P>
 
     <a href = "https://github.com/LafeLabs/trashotron/blob/main/trashpod/README.md">REPLICATE THE TRASHPOD!</a>
 
-    <a href = "trashrobot.html">TRASH ROBOT</a>
+    <a href = "trashrobot.html">TRASH ROBOT!</a>
+    
+    <a href = "webeditor.html">WEB CODE EDITOR!</a>
+    
+    <a href = "slimebeats.html">SLIMEBEATS</a>
 
-    <a href = "webeditor.html">WEB CODE EDITOR</a>
+<P>PUT SONGS IN THE FOLDER /var/www/html/songs/ AND THEY WILL APPEAR BELOW!  PUT IMAGES IN /var/www/html/trashmagic/ AND THEY WILL ALSO APPEAR BELOW!</P>
+
 
 </div>
 <script>
@@ -60,6 +64,10 @@ for(var index = 0;index < titles.length;index++){
     rainbowstring(titles[index]);    
 }
 
+
+listfiles(document.getElementById("mainscroll"),"songs");
+
+listimages(document.getElementById("mainscroll"),"trashmagic");
 
 rainbow(document.getElementsByTagName("A"));
 
