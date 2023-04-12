@@ -1,18 +1,15 @@
-# [TILES!](https://github.com/lafelabs/tiles)
+# [RETURN TO MIDDLE EARTH](index.html)
 
-GEOMETRIC SOCIAL MEDIA!
+# FILL UP MIDDLE EARTH WITH SYNTHESIZERS!
 
-### [HOME](index.html)
+# [SCROLL OF SLIME](https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md)
 
-When you join the board, you get at tile.  Put a name and hyperlink url in from your tile. Move your tile around by rotating it, moving it forward and back, and deleting actions until it's situated.
-Set the tile message.  
+USE WASD TO MOVE THE TILE!
 
-That's all.  We join the board, get a tile, place the tile, create a link, name and message for the tile, and either join again or step back and watch as other people build out the board.  
+USE IJKL TO MOVE THE FIELD OF VIEW!
 
-![](https://raw.githubusercontent.com/LafeLabs/tiles/main/trashmagic/keyboard.png)
+ZOOM IN AND OUT WITH O AND U!
 
+ROTATE WITH 9 AND 0!
 
-![](https://raw.githubusercontent.com/LafeLabs/tiles/main/trashmagic/social1.png)
-
-
-![](https://upload.wikimedia.org/wikipedia/commons/1/1a/Penrose_Tiling_%28Rhombi%29.svg)
+CREATE A NEW TILE WITH THE LETTER N!

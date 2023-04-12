@@ -1,5 +1,5 @@
 {
-    "toptext": "SLIMEZISTOR",
-    "bottomtext": "TRASH SYNTHESIZER",
+    "toptext": "FILL MIDDLE EARTH",
+    "bottomtext": "WITH SYNTHESIZERS",
     "map": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Sketch_Map_of_Middle-earth.svg"
 }
