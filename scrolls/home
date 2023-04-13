@@ -8,6 +8,7 @@ This is a [TRASHBOOK](https://github.com/LafeLabs/trashbook/) which replicates t
 
 TRASHOTRON is a self-replicating set consisting of:
 
+ - [trashotron-dtmf-fft](trashotron-dtmf-fft.html)
  - [Optical Neuron](scrolls/neuron)
  - [Trashotron Driver](scrolls/driver)
  - [SlimeZistor](scrolls/slimezistor)
