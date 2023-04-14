@@ -16,6 +16,7 @@ freq2 = 1209;
 duration = 2;
 frameIndex = 0;
 toneIndex = 0;
+displayIndex = 0;
 
 
 //https://www.w3schools.com/jsref/jsref_concat_array.asp
@@ -32,9 +33,9 @@ dir2 = false;
 dir3 = false;
 
 
-total_Array = [];
-
 toneArray = [];
+
+scan = [];
 
 //z up and down, then move y away
 
@@ -90,10 +91,10 @@ stepAway = [
 ]
 
 
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
 
 yReturn = [
   {
@@ -130,7 +131,7 @@ yReturn = [
   }
 ]
 
-toneArray  = toneArray.concat(yReturn);
+scan  = scan.concat(yReturn);
 
 xShift = [
   {
@@ -151,29 +152,29 @@ xShift = [
   }
 ]
 
-toneArray  = toneArray.concat(xShift);
+scan  = scan.concat(xShift);
 
 
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(yReturn);
-toneArray  = toneArray.concat(xShift);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(yReturn);
+scan  = scan.concat(xShift);
 
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(yReturn);
-toneArray  = toneArray.concat(xShift);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(yReturn);
+scan  = scan.concat(xShift);
 
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(stepAway);
-toneArray  = toneArray.concat(yReturn);
-toneArray  = toneArray.concat(xShift);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(stepAway);
+scan  = scan.concat(yReturn);
+scan  = scan.concat(xShift);
 
 
 xReturn = [
@@ -210,10 +211,76 @@ xReturn = [
     "duration":3
   }
 ]
+scan  = scan.concat(xReturn);
 
-toneArray  = toneArray.concat(xReturn);
-glyph = toneArray;
-displayIndex = 0;
+pulse1 = [
+    {
+        "value":"1",
+        duration:3
+    },
+    {
+        "value":"none",
+        duration:3
+    }
+];
+
+pulse2 = [
+    {
+        "value":"2",
+        duration:3
+    },
+    {
+        "value":"none",
+        duration:3
+    }
+];
+
+pulse3 = [
+    {
+        "value":"3",
+        duration:3
+    },
+    {
+        "value":"none",
+        duration:3
+    }
+];
+
+pulse4 = [
+    {
+        "value":"4",
+        duration:3
+    },
+    {
+        "value":"none",
+        duration:3
+    }
+];
+
+pulse5 = [
+    {
+        "value":"5",
+        duration:3
+    },
+    {
+        "value":"none",
+        duration:3
+    }
+];
+
+pulse6 = [
+    {
+        "value":"6",
+        duration:3
+    },
+    {
+        "value":"none",
+        duration:3
+    }
+];
+
+//toneArray = scan;
+
 
 function setup() {
   frameRate(30);
@@ -234,6 +301,34 @@ function setup() {
 
   background(0);
   t0 = millis();
+  
+  press1 = createButton('1');
+  press1.position(0, 0);
+  press1.mousePressed(one)
+  press2 = createButton('2');
+  press2.position(20, 0);
+  press2.mousePressed(two)
+  press3 = createButton('3');
+  press3.position(40, 0);
+  press3.mousePressed(three)
+  press4 = createButton('4');
+  press4.position(60, 0);
+  press4.mousePressed(four)
+  press5 = createButton('5');
+  press5.position(80, 0);
+  press5.mousePressed(five)
+  press6 = createButton('6');
+  press6.position(100, 0);
+  press6.mousePressed(six)
+
+  pressscan = createButton('SCAN');
+  pressscan.position(120, 0);
+  pressscan.mousePressed(run)
+
+  pressstop = createButton('STOP');
+  pressstop.position(170, 0);
+  pressstop.mousePressed(stop)
+
 }
 
 function draw() {
@@ -388,3 +483,96 @@ function draw() {
   json_data_array.push(jsondata);
 }
 
+function one(){ 
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = pulse1;
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+}
+
+function two(){ 
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = pulse2;
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+}
+
+function three(){
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = pulse3;
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+    
+}
+
+
+function four(){
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = pulse4;
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+    
+}
+
+function five(){
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = pulse5;
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+
+}
+
+function six(){
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = pulse6;
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+
+}
+
+function run(){
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = scan;
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+
+}
+
+function stop(){
+    duration = 2;
+    frameIndex = 0;
+    toneIndex = 0;
+    toneArray = [];
+    t0 = millis();
+    x = 0;
+    y = 0;
+    z = 0;
+}
