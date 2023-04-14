@@ -32,6 +32,7 @@ dir1 = false;
 dir2 = false;
 dir3 = false;
 
+scanMode = false;
 
 toneArray = [];
 
@@ -388,6 +389,12 @@ function draw() {
     toneIndex++;
   }
     frameIndex++;
+   
+  if(toneIndex == toneArray.length){
+        scanMode = false;
+        savejson();
+        json_data_array = [];
+  }  
   if(toneIndex > toneArray.length){
     amplitude = 0;
     osc.amp(amplitude);
@@ -474,16 +481,19 @@ function draw() {
   }
 
   
-  var jsondata = {};
-  jsondata.spectrum = spectrum;
-  jsondata.t = millis() - t0;
-  jsondata.x = x;
-  jsondata.y = y;
-  jsondata.z = z;
-  json_data_array.push(jsondata);
+  if(scanMode){
+      var jsondata = {};
+      jsondata.spectrum = spectrum;
+      jsondata.t = millis() - t0;
+      jsondata.x = x;
+      jsondata.y = y;
+      jsondata.z = z;
+      json_data_array.push(jsondata);
+  }
 }
 
 function one(){ 
+    scanMode = false;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -495,6 +505,7 @@ function one(){
 }
 
 function two(){ 
+    scanMode = false;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -506,6 +517,7 @@ function two(){
 }
 
 function three(){
+    scanMode = false;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -519,6 +531,7 @@ function three(){
 
 
 function four(){
+    scanMode = false;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -531,6 +544,7 @@ function four(){
 }
 
 function five(){
+    scanMode = false;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -543,6 +557,7 @@ function five(){
 }
 
 function six(){
+    scanMode = false;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -555,6 +570,7 @@ function six(){
 }
 
 function run(){
+    scanMode = true;;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -567,6 +583,7 @@ function run(){
 }
 
 function stop(){
+    scanMode = false;
     duration = 2;
     frameIndex = 0;
     toneIndex = 0;
@@ -575,4 +592,42 @@ function stop(){
     x = 0;
     y = 0;
     z = 0;
+}
+
+function keyPressed(){
+    if(key == '1'){
+        one();
+    }
+    if(key == '2'){
+        two();
+    }
+    if(key == '3'){
+        three();
+    }
+    if(key == '4'){
+        four();
+    }
+    if(key == '5'){
+        five();
+    }
+    if(key == '6'){
+        six();
+    }
+    if(key == 'g' || key =='r'){
+        run();
+    }
+    if(key == 's'){
+        stop();
+    }
+
+}
+
+function savejson(){
+//    console.log(JSON.stringify(json_data_array));
+    timestamp = Math.round(Date.now()/1000).toString();
+    var url = "filesaver.php";        
+    var httpc = new XMLHttpRequest();
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("data="+encodeURIComponent(JSON.stringify(json_data_array,null,"    "))+"&filename=slimedata/json_data_array" + timestamp + ".txt");//send text to filesaver.php
 }

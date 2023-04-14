@@ -18,7 +18,7 @@ mkdir("iconsymbols");
 mkdir("jscode");
 mkdir("symbolfeed");
 mkdir("images");
-
+mkdir("slimedata");
 //mkdir("css");
 
 
