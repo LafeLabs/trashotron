@@ -41,6 +41,8 @@ scan = [];
 
 //z up and down, then move y away
 
+
+
 stepAway = [
   {
     "value":"3",//start z
@@ -214,6 +216,42 @@ xReturn = [
   }
 ]
 scan  = scan.concat(xReturn);
+
+
+scan = [
+  {
+    "value":"3",//start z
+    "duration":3
+  },
+  {
+    "value":"none",//go 30 frames
+    "duration":30
+  },
+  {
+    "value":"6",//reverse z
+    "duration":3
+  },
+  {
+    "value":"none",//go 30 frames
+    "duration":30
+  },
+  {
+    "value":"3",//stop z
+    "duration":3
+  },
+  {
+    "value":"none",//pause
+    "duration":3
+  },
+  {
+    "value":"6",//reverse z
+    "duration":3
+  },
+  {
+    "value":"none",//pause
+    "duration":3
+  }
+];
 
 pulse1 = [
     {
@@ -427,22 +465,22 @@ function draw() {
         
             n = 256;
             H = spectrum[i]*360/n;
-            z = 255*(1 - Math.abs((H/60)%2 - 1));
+            zed = 255*(1 - Math.abs((H/60)%2 - 1));
         
             if(H < 60){
                 redz = 255;
-                greenz = Math.round(z);
+                greenz = Math.round(zed);
                 bluez = 0;
             }
             if(H >= 60 && H < 120){
-                redz = Math.round(z);
+                redz = Math.round(zed);
                 greenz = 255;
                 bluez = 0;
             }
             if(H >= 120 && H < 180){
                 redz = 0;
                 greenz = 255;
-                bluez = Math.round(z);
+                bluez = Math.round(zed);
             }
             if(H >= 180 && H < 240){
                 redz = 0;    
@@ -450,14 +488,14 @@ function draw() {
                 bluez = 255;
             }
             if(H >= 240 && H < 300){
-                redz = Math.round(z);    
+                redz = Math.round(zed);    
                 greenz = 0;
                 bluez = 255;
             }
             if(H >= 300 && H < 360){
                 redz = 255;    
                 greenz = 0;
-                bluez = Math.round(z);
+                bluez = Math.round(zed);
             }    
         
         stroke(0);
@@ -478,29 +516,30 @@ function draw() {
   } 
   
   
-  if(en1 && !dir1){
-    x += 1/30;
-  }  
-  if(en1 && dir1){
-    x -= 1/30;
-  }
-  if(en2 && !dir2){
-    y += 1/30;
-  }  
-  if(en2 && dir2){
-    y -= 1/30;
-  }
-  if(en3 && !dir3){
-    z += 1/30;
-  }  
-  if(en3 && dir3){
-    z -= 1/30;
-  }
-
+  
   if(en3 && scanMode){
       var jsondata = {};
-      jsondata.spectrum = spectrum;
       jsondata.t = millis() - t0;
+      if(en1 && !dir1){
+        x += 1/30;
+      }  
+      if(en1 && dir1){
+        x -= 1/30;
+      }
+      if(en2 && !dir2){
+        y += 1/30;
+      }  
+      if(en2 && dir2){
+        y -= 1/30;
+      }
+      if(en3 == true && dir3 == false){
+        z += (1/30);
+      }  
+      if(en3 == true && dir3 == true){
+        z -= (1/30);
+      }
+      
+      jsondata.spectrum = spectrum;
       jsondata.x = x;
       jsondata.y = y;
       jsondata.z = z;
