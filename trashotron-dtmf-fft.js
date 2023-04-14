@@ -33,6 +33,7 @@ dir2 = false;
 dir3 = false;
 
 scanMode = false;
+fftMode = true;
 
 toneArray = [];
 
@@ -111,8 +112,8 @@ yReturn = [
     "duration":3
   },
   {
-    "value":"none",//move in y direction for 4 seconds
-    "duration":120
+    "value":"none",//move in y direction for 5 seconds = 5x30
+    "duration":150
   },
   {
     "value":"2",//stop y movement
@@ -281,7 +282,7 @@ pulse6 = [
 ];
 
 //toneArray = scan;
-
+//scan = stepAway;
 
 function setup() {
   frameRate(30);
@@ -330,6 +331,10 @@ function setup() {
   pressstop.position(170, 0);
   pressstop.mousePressed(stop)
 
+  pressspectrum = createButton('SPECTRUM');
+  pressspectrum.position(230, 0);
+  pressspectrum.mousePressed(spectrum)
+
 }
 
 function draw() {
@@ -337,9 +342,10 @@ function draw() {
   if(frameIndex > duration){
     frameIndex = 0;
     if(toneIndex < toneArray.length){
-      textSize(24);
-      textAlign(RIGHT);
-      text(toneArray[toneIndex].value, width - 20, 50);
+      //textSize(24);
+    //  textAlign(RIGHT);
+  //    fill(0,255,0);
+//      text(toneArray[toneIndex].value, width - 20, 50);
 
       duration = toneArray[toneIndex].duration;//in frame counts
       if(toneArray[toneIndex].value == "none"){
@@ -361,6 +367,12 @@ function draw() {
               freq1 = 697;
               freq2 = 1477;
               en3 = !en3;
+              if(en3){
+                  json_data_array = [];
+              }
+              if(!en3){
+                  savejson();
+              }
             }
             if(toneArray[toneIndex].value == "4"){
               freq1 = 770;
@@ -390,10 +402,9 @@ function draw() {
   }
     frameIndex++;
    
-  if(toneIndex == toneArray.length){
+  if(toneIndex == toneArray.length && fftMode == true && toneArray.length > 2){
         scanMode = false;
         savejson();
-        json_data_array = [];
   }  
   if(toneIndex > toneArray.length){
     amplitude = 0;
@@ -401,59 +412,65 @@ function draw() {
     osc2.amp(amplitude);
   }
   
-  spectrum = fft2.analyze();
-  nyquistFreq = sampleRate() / 2;
-  binFreq = nyquistFreq / (spectrum.length);
-  i1000 = Math.round(1000/binFreq);
-  stroke(0,255,0);
-  line(0,height - 3*i1000,width,height - 3*i1000);
+  if(fftMode){
+    
+      spectrum = fft2.analyze();
+      nyquistFreq = sampleRate() / 2;
+      binFreq = nyquistFreq / (spectrum.length);
+      i1000 = Math.round(1000/binFreq);
+      stroke(0,255,0);
+      line(0,height - 3*i1000,width,height - 3*i1000);
+    
+      strokeWeight(5);
+      for (let i = 0; i < spectrum.length; i++) {
+        //stroke(spectrum[i]);
+        
+            n = 256;
+            H = spectrum[i]*360/n;
+            z = 255*(1 - Math.abs((H/60)%2 - 1));
+        
+            if(H < 60){
+                redz = 255;
+                greenz = Math.round(z);
+                bluez = 0;
+            }
+            if(H >= 60 && H < 120){
+                redz = Math.round(z);
+                greenz = 255;
+                bluez = 0;
+            }
+            if(H >= 120 && H < 180){
+                redz = 0;
+                greenz = 255;
+                bluez = Math.round(z);
+            }
+            if(H >= 180 && H < 240){
+                redz = 0;    
+                greenz = Math.round(z);
+                bluez = 255;
+            }
+            if(H >= 240 && H < 300){
+                redz = Math.round(z);    
+                greenz = 0;
+                bluez = 255;
+            }
+            if(H >= 300 && H < 360){
+                redz = 255;    
+                greenz = 0;
+                bluez = Math.round(z);
+            }    
+        
+        stroke(0);
+        point(displayIndex,height - 3*i);
+    //     stroke('rgb(' + red + ',' + green + ',' + blue + ')');
+        stroke('rgba(' + redz + ',' + greenz + ',' + bluez + ',' + spectrum[i]/10 + ')');
+        
+        point(displayIndex,height - 3*i);
+      }
 
-  strokeWeight(5);
-  for (let i = 0; i < spectrum.length; i++) {
-    //stroke(spectrum[i]);
-    
-        n = 256;
-        H = spectrum[i]*360/n;
-        z = 255*(1 - Math.abs((H/60)%2 - 1));
-    
-        if(H < 60){
-            redz = 255;
-            greenz = Math.round(z);
-            bluez = 0;
-        }
-        if(H >= 60 && H < 120){
-            redz = Math.round(z);
-            greenz = 255;
-            bluez = 0;
-        }
-        if(H >= 120 && H < 180){
-            redz = 0;
-            greenz = 255;
-            bluez = Math.round(z);
-        }
-        if(H >= 180 && H < 240){
-            redz = 0;    
-            greenz = Math.round(z);
-            bluez = 255;
-        }
-        if(H >= 240 && H < 300){
-            redz = Math.round(z);    
-            greenz = 0;
-            bluez = 255;
-        }
-        if(H >= 300 && H < 360){
-            redz = 255;    
-            greenz = 0;
-            bluez = Math.round(z);
-        }    
-    
-    stroke(0);
-    point(displayIndex,height - 3*i);
-//     stroke('rgb(' + red + ',' + green + ',' + blue + ')');
-    stroke('rgba(' + redz + ',' + greenz + ',' + bluez + ',' + spectrum[i]/10 + ')');
-    
-    point(displayIndex,height - 3*i);
+      
   }
+
 
   displayIndex +=3; 
   if(displayIndex > innerWidth){
@@ -480,8 +497,7 @@ function draw() {
     z -= 1/30;
   }
 
-  
-  if(scanMode){
+  if(en3 && scanMode){
       var jsondata = {};
       jsondata.spectrum = spectrum;
       jsondata.t = millis() - t0;
@@ -570,6 +586,7 @@ function six(){
 }
 
 function run(){
+    json_data_array = [];
     scanMode = true;;
     duration = 2;
     frameIndex = 0;
@@ -619,8 +636,18 @@ function keyPressed(){
     if(key == 's'){
         stop();
     }
+    if(key == 'f'){
+        spectrum();
+    }
 
 }
+
+function spectrum(){
+    fftMode = !fftMode;
+    background(0);
+    displayIndex = 0;
+}
+
 
 function savejson(){
 //    console.log(JSON.stringify(json_data_array));
