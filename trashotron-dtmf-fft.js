@@ -217,7 +217,7 @@ xReturn = [
 ]
 scan  = scan.concat(xReturn);
 
-
+/*
 scan = [
   {
     "value":"3",//start z
@@ -252,6 +252,8 @@ scan = [
     "duration":3
   }
 ];
+*/
+
 
 pulse1 = [
     {
