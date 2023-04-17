@@ -2,52 +2,146 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
-    <script src="dtmfkeypad.js"></script>
+    <script src = "dtmfkeypad.js"></script>
   </head>
   <body>
-      <a href = "index.html">HOME</a>
+      <a style  = "position:absolute;left:0.25em;top:0.25em;color:#0000ff;font-family:Comic Sans MS;font-size:2em" href = "index.html">HOME</a>
     <main>
     </main>
     
-    <style>
-    a{
-        color:#ff2cb4;
+    <div id = "squarebox">
+        <div id = "onekey" class = "keydiv">1</div>
+        <div id = "twokey" class = "keydiv">2</div>
+        <div id = "threekey" class = "keydiv">3</div>
+        <div id = "Akey" class = "keydiv">A</div>
 
-    /*    color:#0000ff;*/
-    
-        font-size:1.5em;
-        font-family:Comic Sans MS;
-    }
+        <div id = "fourkey" class = "keydiv">4</div>
+        <div id = "fivekey" class = "keydiv">5</div>
+        <div id = "sixkey" class = "keydiv">6</div>
+        <div id = "Bkey" class = "keydiv">B</div>
+
+        <div id = "sevenkey" class = "keydiv">7</div>
+        <div id = "eightkey" class = "keydiv">8</div>
+        <div id = "ninekey" class = "keydiv">9</div>
+        <div id = "Ckey" class = "keydiv">C</div>
+
+        <div id = "starkey" class = "keydiv">*</div>
+        <div id = "zerokey" class = "keydiv">0</div>
+        <div id = "poundkey" class = "keydiv">#</div>
+        <div id = "Dkey" class = "keydiv">D</div>
+    </div>
+
+        <script>
+
+        keysize = 100;
+        squaresize = 500;
+        if(innerWidth > innerHeight){
+            squaresize = innerHeight;            
+            document.getElementById("squarebox").style.left = (0.5*(innerWidth - squaresize)).toString() + "px";
+            document.getElementById("squarebox").style.top  = "0px"; 
+        }
+        else{
+            squaresize = innerWidth;
+            document.getElementById("squarebox").style.top = (0.5*(innerHeight - squaresize)).toString() + "px";
+            document.getElementById("squarebox").style.left  = "0px";     
+        }
+        keysize = squaresize/5;
+            
+        document.getElementById("squarebox").style.width = (squaresize).toString() + "px";
+        document.getElementById("squarebox").style.height = (squaresize).toString() + "px";
+        
+
+        keydivs = document.getElementsByClassName("keydiv");
+
+        for(var index = 0;index < keydivs.length;index++){
+            keydivs[index].style.width = keysize.toString() + "px";
+            keydivs[index].style.fontSize = (0.6*keysize).toString() + "px";
+            keydivs[index].style.left = ((0.2 + 1.2*(index%4))*keysize).toString() + "px";
+            keydivs[index].style.top = ((0.2 + 1.2*(Math.floor(index/4)))*keysize).toString() + "px";
+        }
+
+
+        keydivs[0].onclick = function(){
+                one();
+        }
+        keydivs[1].onclick = function(){
+                two();
+        }
+        keydivs[2].onclick = function(){
+                three();
+        }
+        keydivs[3].onclick = function(){
+                A();
+        }
+        keydivs[4].onclick = function(){
+                four();
+        }
+        keydivs[5].onclick = function(){
+                five();
+        }
+
+        keydivs[6].onclick = function(){
+                six();
+        }
+        keydivs[7].onclick = function(){
+                B();
+        }
+        keydivs[8].onclick = function(){
+                seven();
+        }
+        keydivs[9].onclick = function(){
+                eight();
+        }
+        keydivs[10].onclick = function(){
+                nine();
+        }
+        keydivs[11].onclick = function(){
+                C();
+        }
+
+        keydivs[12].onclick = function(){
+                star();
+        }
+        keydivs[13].onclick = function(){
+                zero();
+        }
+        keydivs[14].onclick = function(){
+                pound();
+        }
+        keydivs[15].onclick = function(){
+                D();
+        }
+
+        
+        </script>
+    <style>
         body{
-/*            background-color:#9f8767;*/
-            background-color:black;
-        }
-        table{
-            background-color:#9f8767;
-            font-size:1.5em;
-            font-family:Comic Sans MS;
-            position:absolute;
-            right:0px;
-            top:0px;
-        }
-        input{
-            background-color:#9f8767;
-            font-family:Comic Sans MS;  
-            font-size:0.8em;
-            width:4em;
-        }
-        main{
-            position:absolute;
-            z-index:-1;
             overflow:hidden;
-            left:0px;
-            top:0px;
-            right:0px;
-            bottom:0px;
+            background-color:#9f8767;
         }
+        #main{
+            position:absolute;
+            z-index:-10;
+        }
+        #one{
+
+        }
+        #squarebox{
+            position:absolute;
+            
+            z-index:2;
+        }
+        .keydiv{
+            border:solid;
+            position:absolute;
+            border-width:4px;
+            border-radius:10px;
+            text-align:center;
+            font-family:Comic Sans MS;
+            z-index:3;
+            cursor:pointer;
+        }        
+        
     </style>
-    <script>
-    
-    </script>
   </body>
 </html>
