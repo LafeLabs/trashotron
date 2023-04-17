@@ -25,22 +25,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 </head>
 <body>
+<h1 id = "toptext" style = "font-size:4em;position:absolute;left:0px;top:0px;text-align:center;z-index:0;right:0px">TOP TEXT</h1>
+<H1 id = "bottomtext" style = "font-size:4em;position:absolute;left:0px;bottom:0px;text-align:center;z-index:0;right:0px">BOTTOM TEXT</H1>
+
+
+
 <a id = "readmelink" href  = "readme.html">ABOUT</a>
+
 <br>
+
+
 <input id  = "actioninput"/>
-<table id = "controltable">
-</table>
+
+<table id = "controltable"></table>
 
 <div id = "geometronbox">
 <canvas id = "maincanvas"></canvas>
 <div id = "linkbox"></div>
 </div>
+<img id = "map" src = "https://raw.githubusercontent.com/LafeLabs/tiles/main/trashmagic/map.png"/>
+
 
 <style>
 body{
     overflow:hidden;
-    background-color:#808080;
+    background-color:#9f8767;
+    font-family:Comic Sans MS;
 }
+#map{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    z-index:-3;
+}
+
 #readmelink{
     position:absolute;
     right:10px;
@@ -108,14 +127,7 @@ body{
 
 
 shapestack = [
-    "0220:0305,0350,0362,0203,0334,0334,0203,0334,0334,0334,0203,0334,0334,0203,0363,0334,0334,0334,0334,0311,0337,0313,0336,0330,",
-        "0221:0305,0350,0362,0203,0335,0335,0203,0335,0335,0335,0203,0335,0335,0203,0335,0335,0363,0335,0335,0311,0337,0313,0336,0330,",
-        "0222:0305,0350,0362,0203,0334,0203,0334,0334,0334,0334,0203,0334,0203,0363,0334,0334,0334,0334,0330,0334,0334,0334,0311,0336,0313,0336,0330,0337,",
-        "0223:0305,0350,0362,0203,0335,0203,0335,0335,0335,0335,0203,0335,0203,0363,0335,0335,0335,0335,0330,0335,0335,0335,0311,0336,0313,0336,0330,0337,",
-        "01220:0333,0200,0336,0330,0332,0336,0331,0337,0220,0313,0304,0336,0331,0333,0333,0337,0337,",
-        "01221:0333,0200,0336,0330,0332,0336,0331,0337,0221,0313,0304,0336,0331,0333,0333,0337,0337,",
-        "01222:0333,0200,0336,0330,0332,0336,0331,0337,0222,0304,0336,0331,0333,0333,0337,0337,",
-        "01223:0333,0200,0336,0330,0332,0336,0331,0337,0223,0313,0304,0336,0333,0331,0333,0337,0337,"
+    "0220:0304,0313,0327,0336,0331,0333,0337,0204,0336,0330,0332,0337,",
 ];
 
 
@@ -123,6 +135,13 @@ board = [];
 maincanvas = document.getElementById("maincanvas");
 
 square = 100;
+if(innerWidth > innerHeight){
+    square = innerHeight;
+}
+else{
+    square = innerWidth;
+}
+
 
 var mainGVM = new GVM(maincanvas,innerWidth,innerHeight);
 
@@ -237,8 +256,10 @@ mainGVM.style.fill3 = "#FFA50040";//orange
 mainGVM.style.fill4 = "#FFFF0040";//yellow
 mainGVM.style.fill5 = "#00ff0040";//green
 mainGVM.style.fill6 = "#0000ff40";//blue
+mainGVM.style.line6 = 10;
+mainGVM.style.color7 = "#FF00ff";//purple
 mainGVM.style.fill7 = "#FF00ff40";//purple
-
+mainGVM.style.line7 = 10;//purple
 
 myIndex = 0;
 
@@ -256,6 +277,19 @@ function update(){
     httpboard.open("GET", "fileloader.php?filename=data/board.txt", true);
     httpboard.send();        
 
+    var httpmap = new XMLHttpRequest();
+    httpmap.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+            mapjson = JSON.parse(this.responseText);
+            document.getElementById("map").src = mapjson.map;
+            document.getElementById("toptext").innerHTML = mapjson.toptext;
+            document.getElementById("bottomtext").innerHTML = mapjson.bottomtext;
+        
+        }
+    };
+    httpmap.open("GET", "fileloader.php?filename=data/mapjson.txt", true);
+    httpmap.send();   
+
 }
 
 var httpboard = new XMLHttpRequest();
@@ -269,35 +303,73 @@ httpboard.onreadystatechange = function(){
 httpboard.open("GET", "fileloader.php?filename=data/board.txt", true);
 httpboard.send();        
 
+imageScale = 10;
 
 function drawmain(){
+    document.getElementById("map").style.width = (imageScale*mainGVM.unit).toString() + "px";
+    document.getElementById("map").style.left = (mainGVM.x0 - 0.5*imageScale*mainGVM.unit).toString() + "px";
+    document.getElementById("map").style.top = (mainGVM.y0 - 0.5*imageScale*mainGVM.unit).toString() + "px";  
+    
+    document.getElementById("map").style.transform = "rotate("+ ((180*mainGVM.theta0/Math.PI) + 90).toString() + "deg)";
+    
     document.getElementById("linkbox").innerHTML = "";
     mainGVM.drawGlyph("0300,");
     for(var index = 0;index < board.length;index++){
-        mainGVM.actionSequence("0300,0305,0350,");
-        mainGVM.actionSequence(board[index].trajectory);
-        mainGVM.actionSequence(board[index].shape);
-        board[index].x = mainGVM.x;
-        board[index].y = mainGVM.y;
-        board[index].side = mainGVM.side;
-        if(board[index].side > 100){
-            var newa = document.createElement("A");
-            newa.href = board[index].url;
-            newa.innerHTML = board[index].name;
-            newa.style.left = board[index].x.toString() + "px";
-            newa.style.top = board[index].y.toString() + "px";
-            document.getElementById("linkbox").appendChild(newa);
-        }
-        if(board[index].side > 200){
-            var newspan = document.createElement("SPAN");
-            newspan.innerHTML = board[index].message;
-            newspan.style.left = board[index].x.toString() + "px";
-            newspan.style.top = (board[index].y - 50).toString() + "px";
-            document.getElementById("linkbox").appendChild(newspan);
+        if(index != myIndex){
+            mainGVM.actionSequence("0300,");
+            mainGVM.actionSequence(board[index].trajectory);
+            mainGVM.actionSequence(board[index].shape);
+            board[index].x = mainGVM.x;
+            board[index].y = mainGVM.y;
+            board[index].side = mainGVM.side;
+            if(board[index].side > 100){
+                var newa = document.createElement("A");
+                newa.href = board[index].url;
+                newa.innerHTML = board[index].name;
+                newa.style.left = (board[index].x - 0.5*mainGVM.unit).toString() + "px";
+                newa.style.top = (board[index].y - 0.5*mainGVM.unit).toString() + "px";
+                newa.style.fontSize = (Math.round(board[index].side/12)).toString() + "px";
+                document.getElementById("linkbox").appendChild(newa);
+            }
+            if(board[index].side > 200){
+                var newspan = document.createElement("SPAN");
+                newspan.innerHTML = board[index].message;
+                newspan.style.width = (Math.round(board[index].side)).toString() + "px";
+                newspan.style.left = (board[index].x - 0.5*board[index].side).toString() + "px";
+                newspan.style.top = (board[index].y - 0.3*board[index].side).toString() + "px";
+                newspan.style.fontSize = (Math.round(board[index].side/15)).toString() + "px";
+                document.getElementById("linkbox").appendChild(newspan);
+            }
+            
         }
     }
-}
+    mainGVM.actionSequence("0300,");
+    mainGVM.actionSequence(board[myIndex].trajectory);
+    mainGVM.actionSequence(board[myIndex].shape);
+    board[myIndex].x = mainGVM.x;
+    board[myIndex].y = mainGVM.y;
+    board[myIndex].side = mainGVM.side;
+    if(board[myIndex].side > 100){
+        var newa = document.createElement("A");
+        newa.href = board[myIndex].url;
+        newa.innerHTML = board[myIndex].name;
+        newa.style.left = (board[myIndex].x - 0.5*mainGVM.unit).toString() + "px";
+        newa.style.top = (board[myIndex].y - 0.5*mainGVM.unit).toString() + "px";
+        newa.style.fontSize = (Math.round(board[myIndex].side/12)).toString() + "px";        
+        document.getElementById("linkbox").appendChild(newa);
+    }
+    if(board[myIndex].side > 200){
+        var newspan = document.createElement("SPAN");
+        newspan.innerHTML = board[myIndex].message;
+        newspan.style.width = (Math.round(board[myIndex].side)).toString() + "px";
+        newspan.style.left = (board[myIndex].x - 0.5*board[myIndex].side).toString() + "px";
+        newspan.style.top = (board[myIndex].y - 0.3*board[myIndex].side).toString() + "px";
+        newspan.style.fontSize = (Math.round(board[myIndex].side/15)).toString() + "px";
+        document.getElementById("linkbox").appendChild(newspan);
+    }
 
+    
+}
 
 document.getElementById("actioninput").onkeypress = function(a) {
     var charCode = a.keyCode || a.which;
@@ -306,8 +378,7 @@ document.getElementById("actioninput").onkeypress = function(a) {
     this.value = "";
     mainGVM.clean();
     board[myIndex].trajectory = mainGVM.cleanGlyph;
-//    drawmain();
-    update();
+    drawmain();
 }
 
 
@@ -320,8 +391,7 @@ document.getElementById("actioninput").onkeydown = function(a) {
 
     mainGVM.clean();
     board[myIndex].trajectory = mainGVM.cleanGlyph;
-//    drawmain();
-    update();
+    drawmain(); 
 }
 
 if(innerWidth > innerHeight){
@@ -398,6 +468,18 @@ function draw(){
 }
 
 
+var httpmap = new XMLHttpRequest();
+httpmap.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        mapjson = JSON.parse(this.responseText);
+        document.getElementById("map").src = mapjson.map;
+        document.getElementById("toptext").innerHTML = mapjson.toptext;
+        document.getElementById("bottomtext").innerHTML = mapjson.bottomtext;
+    
+    }
+};
+httpmap.open("GET", "fileloader.php?filename=data/mapjson.txt", true);
+httpmap.send();   
 
 </script>
 </body>

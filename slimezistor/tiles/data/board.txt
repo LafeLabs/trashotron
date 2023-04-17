@@ -7,40 +7,7 @@
         "message": "WELCOME TO MIDDLE EARTH. THERE ARE MANY SYNTHESIZERS MADE OF TRASH HERE BUT THERE COULD BE MORE WITH YOUR HELP!",
         "url": "https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md",
         "x": 720,
-        "y": 437.5,
-        "side": 158.4
-    },
-    {
-        "index": 1,
-        "name": "TRASH SYNTHESIZER!",
-        "trajectory": "0333,",
-        "shape": "0220,",
-        "message": "WELCOME TO MIDDLE EARTH. THERE ARE MANY SYNTHESIZERS MADE OF TRASH HERE BUT THERE COULD BE MORE WITH YOUR HELP!",
-        "url": "https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md",
-        "x": 878.4,
-        "y": 437.5,
-        "side": 158.4
-    },
-    {
-        "index": 2,
-        "name": "TRASH SYNTHESIZER!",
-        "trajectory": "0333,0333,",
-        "shape": "0220,",
-        "message": "WELCOME TO MIDDLE EARTH. THERE ARE MANY SYNTHESIZERS MADE OF TRASH HERE BUT THERE COULD BE MORE WITH YOUR HELP!",
-        "url": "https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md",
-        "x": 1036.8,
-        "y": 437.5,
-        "side": 158.4
-    },
-    {
-        "index": 3,
-        "name": "TRASH SYNTHESIZER!",
-        "trajectory": "0333,0330,0333,",
-        "shape": "0220,",
-        "message": "WELCOME TO MIDDLE EARTH. THERE ARE MANY SYNTHESIZERS MADE OF TRASH HERE BUT THERE COULD BE MORE WITH YOUR HELP!",
-        "url": "https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md",
-        "x": 1036.8,
-        "y": 279.09999999999997,
-        "side": 158.4
+        "y": 437.50000000000006,
+        "side": 144
     }
 ]
