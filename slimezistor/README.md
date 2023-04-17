@@ -8,6 +8,11 @@
  - [buy the self-replicating book GEOMETRON MAGIC](https://www.lulu.com/shop/trash-robot/geometron-magic/paperback/product-y6p96w.html?page=1&pageSize=4)
  - [connect with TRASH ROBOT on mastodon](https://kolektiva.social/@trashrobot)
 
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/trashsynth.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/wanted.png)
+
+
 If you are in Denver, Boulder, or Jefferson County in Colorado just message TRASH ROBOT to get a synth and I'll drop it off somewhere in a hiding spot where you can find it.  All things are sliding scale, and barter is always accepted. I take food, coffee, medicine, art supplies, electronics supplies, and ESPECIALLY old laptops as barter for synthesizers.  I DO NOT SHIP. If you are not around the Denver Metro Area, find someone in your area who can do [TRASH MAGIC](https://www.trashrobot.org) and they'll make and deliver synthesizers for you.
 
 If you want to make synths, please do! I'll link from here to your info and you can sell them as well.
