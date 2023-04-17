@@ -9,5 +9,16 @@
         "x": 720,
         "y": 437.50000000000006,
         "side": 144
+    },
+    {
+        "index": 1,
+        "name": "TRASH SYNTHESIZER!",
+        "trajectory": "",
+        "shape": "0220,",
+        "message": "WELCOME TO MIDDLE EARTH. THERE ARE MANY SYNTHESIZERS MADE OF TRASH HERE BUT THERE COULD BE MORE WITH YOUR HELP!",
+        "url": "https://github.com/LafeLabs/trashotron/blob/main/slimezistor/README.md",
+        "x": 720,
+        "y": 720,
+        "side": 172.79999999999998
     }
 ]
