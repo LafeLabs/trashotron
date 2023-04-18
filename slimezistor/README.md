@@ -8,6 +8,18 @@
  - [buy the self-replicating book GEOMETRON MAGIC](https://www.lulu.com/shop/trash-robot/geometron-magic/paperback/product-y6p96w.html?page=1&pageSize=4)
  - [connect with TRASH ROBOT on mastodon](https://kolektiva.social/@trashrobot)
 
+## Tiktoks:
+
+ - [slime in bottom of bottle](https://www.tiktok.com/@trash_robot/video/7222698762861432107)
+ - [slime is eternal](https://www.tiktok.com/@trash_robot/video/7222729513539489067)
+ - [solar feedback loop](https://www.tiktok.com/@trash_robot/video/7222730343281872174)
+ - [links back to this scroll](https://www.tiktok.com/@trash_robot/video/7222732088871554346)
+ - [south platte river slime](https://www.tiktok.com/@trash_robot/video/7223094983900056878)
+ - [more south platte river slime](https://www.tiktok.com/@trash_robot/video/7217537522228907307)
+ - [slime in sloans lake](https://www.tiktok.com/@trash_robot/video/7208650808185998635)
+ - [star distribution](https://www.tiktok.com/@trash_robot/video/7185616318559718702)
+ - [sloanslake dot art](https://www.tiktok.com/@trash_robot/video/7179693654599060778)
+
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/trashsynth.png)
 
 ![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/slimezistor/trashmagic/wanted.png)
