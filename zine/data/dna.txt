@@ -2,6 +2,8 @@
     "html": [
         "README.md",
         "index.html",
+        "qrcode-page.html",
+        "qrcode.html",
         "readme.html",
         "readmeeditor.html",
         "trashmagic.css",
@@ -11,7 +13,6 @@
     "data": [
         "dna.txt"
     ],
-    "javascript": [],
     "php": [
         "deletefile.txt",
         "dir.txt",
@@ -22,7 +23,5 @@
         "mkdir.txt",
         "replicator.txt",
         "text2php.txt"
-    ],
-    "scrolls": [],
-    "iconsymbols": []
+    ]
 }

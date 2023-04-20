@@ -22,3 +22,9 @@ cd html
 php replicator.php
 sudo chmod -R 0777 *
 ```
+
+PUT ZINES IN THE FOLDER /var/www/html/zines.  THEY WILL APPEAR ON THE HOME PAGE.
+
+Share the server on shared wifi networks via QR Code which points to the IP address.
+
+Put songs in the songs folder.
