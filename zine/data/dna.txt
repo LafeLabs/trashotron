@@ -1,0 +1,28 @@
+{
+    "html": [
+        "README.md",
+        "index.html",
+        "readme.html",
+        "readmeeditor.html",
+        "trashmagic.css",
+        "trashmagic.js",
+        "webeditor.html"
+    ],
+    "data": [
+        "dna.txt"
+    ],
+    "javascript": [],
+    "php": [
+        "deletefile.txt",
+        "dir.txt",
+        "dnagenerator.txt",
+        "editor.txt",
+        "fileloader.txt",
+        "filesaver.txt",
+        "mkdir.txt",
+        "replicator.txt",
+        "text2php.txt"
+    ],
+    "scrolls": [],
+    "iconsymbols": []
+}
