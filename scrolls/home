@@ -9,7 +9,9 @@ This is a [TRASHBOOK](https://github.com/LafeLabs/trashbook/) which replicates t
 TRASHOTRON is a self-replicating set consisting of:
 
  - [trashotron-dtmf-fft](trashotron-dtmf-fft.html)
+ - [trashotron-dtmf-ascii-fft.html](trashotron-dtmf-ascii-fft.html)
  - [dtmfkeypad.html](dtmfkeypad.html)
+ - [dtmf keypad at editor.p5js.org](https://editor.p5js.org/trashrobot/sketches/i9CPl4G6a)
  - [Optical Neuron](scrolls/neuron)
  - [Trashotron Driver](scrolls/driver)
  - [SlimeZistor](scrolls/slimezistor)

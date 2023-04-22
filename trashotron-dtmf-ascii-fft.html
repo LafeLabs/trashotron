@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!--
+
+        EVERYTHING IS PHYSICAL
+        EVERYTHING IS FRACTAL
+        EVERYTHING IS RECURSIVE
+        NO MONEY
+        MO MINING
+        NO PROPERTY
+        LOOK AT THE INSECTS
+        LOOK AT THE FUNGI
+        LANGUAGE IS HOW THE MIND PARSES REALITY
+
+    -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
+    
+</head>
+<body>    
+<script>
+    /*
+NO MONEY
+NO MINING
+NO PROPERTY
+EVERYTHING IS PHYSICAL
+EVERYTHING IS FRACTAL 
+EVERYTHING IS RECURSIVE
+LOOK AT THE INSECTS
+LOOK AT THE FUNGI 
+LANGUAGE IS HOW THE MIND PARSES REALITY
+
+TRASHOTRON ASCI/DTMF
+
+AN ASCII STRING REPRESENTS A SEQUENCE OF GEOMETRIC ACTIONS, WHICH ARE CARRIED OUT BY SENDING DTMF TONES TO THE DTMF DECODER WHICH CONTROLS THE THREE STEPPER MOTORS WHICH SET THE POSTION OF THE SLIMEZISTOR ELECTRODE. 
+*/
+let osc, fft;
+
+frameIndex = 0;
+toneIndex = 0;
+stepLength = 0;
+side = 32;
+
+tone = "";
+
+scan = "3_6_3.2_2.6.3_6_3.2_2.6.3_6_3.2_2.6.3_6_3.2_2.6.";//ascii representation of the program
+
+scan = "+1_1.4.2_2.1_1.5.2_2.4.5.-3_3+"
+scan = "1_1.2_2.3_3."
+glyph = "";
+
+
+x = 0;
+y = 0;
+z = 0;
+t = 0;
+en1 = false;
+en2 = false;
+en3 = false;
+dir1 = false;
+dir2 = false;
+dir3 = false;
+t0 = 0;
+
+jsonarray = [];
+jsondata = {};
+
+function setup() {
+
+  
+  t0 = millis();
+
+  frameRate(32);
+  createCanvas(innerWidth, innerHeight);
+//  background(159,135,103);
+
+  osc = new p5.SinOsc(); // set frequency and type
+  osc.amp(0);
+  osc2 = new p5.SinOsc(); // set frequency and type
+  osc2.amp(0);
+  fft = new p5.FFT();
+  osc.start();
+  osc2.start();
+  freq = 697;
+  osc.freq(freq);  
+  
+  
+  mic = new p5.AudioIn();
+  mic.start();
+  fft2 = new p5.FFT();
+  fft2.setInput(mic);
+
+  inp = createInput('glyph:');
+  inp.position(0,0);
+  inp.size(200);
+  inp.input(myInputEvent);
+  document.getElementsByTagName("input")[0].style.backgroundColor = "black";
+  document.getElementsByTagName("input")[0].style.color = "#00ff00";
+  document.getElementsByTagName("input")[0].value = scan;
+
+
+  inp2 = createInput('[]');
+  inp2.position(width-200,0);
+  inp2.size(200);
+  document.getElementsByTagName("input")[1].value = "[]";
+  document.getElementsByTagName("input")[1].style.backgroundColor = "black"; 
+  document.getElementsByTagName("input")[1].style.color = "#00ff00";
+
+  
+  pressinit = createButton('I');
+  pressinit.position(300, 0);
+  pressinit.mousePressed(initialize)
+  pressstart = createButton('G');
+  pressstart.position(300, 0);
+  pressstart.mousePressed(start)  
+  pressstop = createButton('S');
+  pressstop.position(300, 0);
+  pressstop.mousePressed(stop)
+
+  
+  press1 = createButton('1');
+  press1.position(0, 0);
+  press1.mousePressed(one);
+  press2 = createButton('2');
+  press2.position(100, 0);
+  press2.mousePressed(two)
+  press3 = createButton('3');
+  press3.position(200, 0);
+  press3.mousePressed(three)
+
+  
+  press4 = createButton('4');
+  press4.position(0, 150);
+  press4.mousePressed(four)
+  press5 = createButton('5');
+  press5.position(100, 150);
+  press5.mousePressed(five)
+  press6 = createButton('6');
+  press6.position(200, 150);
+  press6.mousePressed(six)
+
+  
+
+  buttons =  document.getElementsByTagName("button");
+  
+  
+  deltax = 100;
+  xmargin = 20;
+  deltay = 100;
+  ymargin = 20;
+
+  displayIndex = 0;
+  for(var index = 0;index < buttons.length;index++){
+
+    
+    buttons[index].style.fontSize = "50px";
+    buttons[index].style.color = "white";
+    buttons[index].style.backgroundColor = "blue";
+    buttons[index].style.cursor = "pointer";
+    buttons[index].style.left = (xmargin + (deltax + xmargin)*(index%3)).toString() + "px";
+    buttons[index].style.top = (ymargin + (deltay + ymargin)*Math.floor(index/3)).toString() + "px";
+    
+    buttons[index].style.width = deltax.toString() + "px";
+    buttons[index].style.height = deltay.toString() + "px";
+    buttons[index].style.border = "solid";
+    buttons[index].style.borderColor = "black";
+    buttons[index].style.borderWidth = "8px";
+    buttons[index].style.borderRadius = xmargin.toString() + "px";
+    
+  }  
+  
+}
+
+
+function draw() {
+    
+
+  if(frameIndex > stepLength){
+  
+      frameIndex = 0;
+      tone = glyph.charAt(toneIndex);
+      setTone();
+      toneIndex++;
+  }
+  if(frameIndex <= stepLength && en1 && dir1){
+    x -= 1;
+  }
+  if(frameIndex <= stepLength && en1 && !dir1){
+    x += 1;
+  }
+  if(frameIndex <= stepLength && en2 && dir2){
+    y -= 1;
+  }
+  if(frameIndex <= stepLength && en2 && !dir2){
+    y += 1;
+  }
+
+  if(frameIndex <= stepLength && en3 && dir3){
+    z -= 1;
+  }
+  if(frameIndex <= stepLength && en3 && !dir3){
+    z += 1;
+  }
+
+
+
+  
+  frameIndex++;
+  
+  spectrum = fft2.analyze();
+
+  
+  if(en1 || en2 || en3){
+    var jsondata = {};
+    jsondata.spectrum = spectrum;
+    jsondata.t = millis() - t0;
+    jsondata.x = x;
+    jsondata.y = y;
+    jsondata.z = z;
+    jsonarray.push(jsondata);
+    console.log(jsondata);        
+  }
+
+ 
+  nyquistFreq = sampleRate() / 2;
+  binFreq = nyquistFreq / (spectrum.length);
+  i1000 = Math.round(1000/binFreq);
+
+  stroke(0,255,0);
+  line(0,height - 3*i1000,width,height - 3*i1000);
+  strokeWeight(5);
+  for (let i = 0; i < spectrum.length; i++) {
+    //stroke(spectrum[i]);
+    
+        n = 256;
+        H = spectrum[i]*360/n;
+        zed = 255*(1 - Math.abs((H/60)%2 - 1));
+    
+        if(H < 60){
+            redz = 255;
+            greenz = Math.round(zed);
+            bluez = 0;
+        }
+        if(H >= 60 && H < 120){
+            redz = Math.round(zed);
+            greenz = 255;
+            bluez = 0;
+        }
+        if(H >= 120 && H < 180){
+            redz = 0;
+            greenz = 255;
+            bluez = Math.round(zed);
+        }
+        if(H >= 180 && H < 240){
+            redz = 0;    
+            greenz = Math.round(zed);
+            bluez = 255;
+        }
+        if(H >= 240 && H < 300){
+            redz = Math.round(zed);    
+            greenz = 0;
+            bluez = 255;
+        }
+        if(H >= 300 && H < 360){
+            redz = 255;    
+            greenz = 0;
+            bluez = Math.round(zed);
+        }    
+    
+    stroke(0);
+    point(displayIndex,height - 3*i);
+//     stroke('rgb(' + red + ',' + green + ',' + blue + ')');
+    stroke('rgba(' + redz + ',' + greenz + ',' + bluez + ',' + spectrum[i]/10 + ')');
+    
+    point(displayIndex,height - 3*i); 
+  }
+
+    displayIndex +=3; 
+  if(displayIndex > innerWidth){
+      displayIndex = 0;
+  } 
+
+}
+
+
+function setTone(){
+  
+ 
+  if(tone == "1"){
+    osc.freq(697);
+    osc.amp(0.5);
+    osc2.freq(1209);  
+    osc2.amp(0.5);    
+    stepLength = 3;
+    en1 = !en1;
+    if(en1 == false){
+      savejson();
+    }
+    else{
+      jsonarray = [];
+    }
+    
+  }
+  if(tone == "2"){
+    osc.freq(697);
+    osc.amp(0.5);
+    osc2.freq(1336);  
+    osc2.amp(0.5);    
+    stepLength = 3;
+    en2 = !en2;
+    if(en2 == false){
+      savejson();
+    }
+    else{
+      jsonarray = [];
+    }
+ 
+  }
+  if(tone == "3"){
+    osc.freq(697);
+    osc.amp(0.5);
+    osc2.freq(1477);  
+    osc2.amp(0.5);    
+    stepLength = 3;
+    en3 = !en3;
+    if(en3 == false){
+      savejson();
+    }
+    else{
+      jsonarray = [];
+    }
+
+  }
+  if(tone == "4"){
+    osc.freq(770);
+    osc.amp(0.5);
+    osc2.freq(1209);  
+    osc2.amp(0.5);    
+    stepLength = 3;
+    dir1 = !dir1;
+  }
+  if(tone == "5"){
+    osc.freq(770);
+    osc.amp(0.5);
+    osc2.freq(1336);  
+    osc2.amp(0.5);    
+    stepLength = 3;
+    dir2 = !dir2;
+  }
+  if(tone == "6"){
+    osc.freq(770);
+    osc.amp(0.5);
+    osc2.freq(1477);  
+    osc2.amp(0.5);    
+    stepLength = 3;
+    dir3 = !dir3;
+  }
+  if(tone == "."){
+    osc.amp(0);
+    osc2.amp(0);    
+    stepLength = 3;    
+  }
+  if(tone == "_"){
+    osc.amp(0);
+    osc2.amp(0);    
+    stepLength = side;    
+  }
+  if(tone == "-"){
+    side /= 2;
+  }
+  if(tone == "+"){
+    side *= 2;
+  }
+  if(tone == ""){
+    osc.amp(0);
+    osc2.amp(0);    
+  }
+  
+}
+
+
+function initialize(){
+  osc.start();
+  osc2.start();
+  osc.amp(0);
+  osc2.amp(0);    
+}
+
+function start(){
+  glyph = scan;
+  toneIndex = 0;
+  side = 32;
+}
+function stop(){
+  glyph = "";
+  toneIndex = 0;
+  side = 32;
+}
+
+function one(){
+  glyph = "1";
+  toneIndex = 0;
+  stepLength = 3;
+}
+
+function two(){
+  glyph = "2";
+  toneIndex = 0;
+  stepLength = 3;
+}
+
+function three(){
+  glyph = "3";
+  toneIndex = 0;
+  stepLength = 3;
+}
+
+function four(){
+  glyph = "4";
+  toneIndex = 0;
+  stepLength = 3;
+}
+
+function five(){
+  glyph = "5";
+  toneIndex = 0;
+  stepLength = 3;
+}
+
+function six(){
+  glyph = "6";
+  toneIndex = 0;
+  stepLength = 3;
+}
+
+function myInputEvent(){
+  scan = this.value();
+  
+}
+
+function savejson(){
+
+    today = year() + "_" + month() + "_" + day();
+    
+    document.getElementsByTagName("input")[1].value = JSON.stringify(jsonarray,null,"    ");
+        timestamp = Math.round(Date.now()/1000).toString();
+    var url = "filesaver.php";        
+    var httpc = new XMLHttpRequest();
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("data="+encodeURIComponent(JSON.stringify(jsonarray,null,"    "))+"&filename=slimedata/" + today + "/slime" + timestamp + ".txt");//send text to filesaver.php
+    
+
+
+}
+
+</script>
+</body>
+</html>

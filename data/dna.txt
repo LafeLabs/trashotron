@@ -72,6 +72,8 @@
         "trashmagic.css",
         "trashmagic.html",
         "trashmagic.js",
+        "trashotron-dtmf-ascii-fft.html",
+        "trashotron-dtmf-ascii-fft.js",
         "trashotron-dtmf-fft.html",
         "trashotron-dtmf-fft.js",
         "trashotron-hypercube.html",
