@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!--
+
+        EVERYTHING IS PHYSICAL
+        EVERYTHING IS FRACTAL
+        EVERYTHING IS RECURSIVE
+        NO MONEY
+        MO MINING
+        NO PROPERTY
+        LOOK AT THE INSECTS
+        LOOK AT THE FUNGI
+        LANGUAGE IS HOW THE MIND PARSES REALITY
+
+    -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+
+<script>
+        function setup() {
+              createCanvas(innerWidth, innerHeight);
+              background(0);
+        }
+
+        function draw(){
+            
+        }
+</script>
+    
+</head>
+<body>    
+<h1>SLIME DATA BROWSER</h1>
+
+<div id = "folderscroll"></div>
+<div id = "datascroll"></div>
+<textarea id = "textio"></textarea>
+<script>
+
+folders = [];
+folder ="";
+datafilename = "";
+files  = [];
+data = [];
+
+var httpcfolders = new XMLHttpRequest();
+httpcfolders.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        folders = JSON.parse(this.responseText);
+        for(var index = 0;index < folders.length;index++){
+            if(!folders[index].includes(".")){
+                var newdiv = document.createElement("DIV");
+                newdiv.innerHTML = folders[index];
+                document.getElementById("folderscroll").appendChild(newdiv);
+                newdiv.onclick = function(){
+                    folder = this.innerHTML;
+                    loadfolder();
+                }
+            }
+        }
+    }
+};
+httpcfolders.open("GET", "dir.php?filename=slimedata", true);
+httpcfolders.send();
+function loadfolder(){
+    
+    var httpcfolder = new XMLHttpRequest();
+    httpcfolder.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            files = JSON.parse(this.responseText);
+            for(var index = 0;index < files.length;index++){
+                var newdiv = document.createElement("DIV");
+                newdiv.innerHTML = files[index];
+                document.getElementById("datascroll").appendChild(newdiv);
+                newdiv.onclick = function(){
+                    datafilename = this.innerHTML;
+                    loaddata();
+                }
+            }
+        }
+    };
+    httpcfolder.open("GET", "dir.php?filename=slimedata/"+ folder, true);
+    httpcfolder.send();
+    
+}
+document.getElementById("textio").value = "";
+function loaddata(){
+    
+    var httpcdata = new XMLHttpRequest();
+    httpcdata.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            data = JSON.parse(this.responseText);
+            document.getElementById("textio").value = this.responseText;
+            plotdata();
+        }
+    };
+    httpcdata.open("GET", "fileloader.php?filename=slimedata/"+ folder + "/" + datafilename, true);
+    httpcdata.send();
+    
+}
+
+function plotdata(){
+    strokeWeight(5);
+    background(0);
+
+    for(var j = 0;j < data.length;j++){
+        for (var i = 0; i < data[j].spectrum.length; i++) {
+            n = 256;
+            H = data[j].spectrum[i]*360/n;
+            zed = 255*(1 - Math.abs((H/60)%2 - 1));
+        
+            if(H < 60){
+                red = 255;
+                green = Math.round(zed);
+                blue = 0;
+            }
+            if(H >= 60 && H < 120){
+                red = Math.round(zed);
+                green = 255;
+                blue = 0;
+            }
+            if(H >= 120 && H < 180){
+                red = 0;
+                green = 255;
+                blue = Math.round(zed);
+            }
+            if(H >= 180 && H < 240){
+                red = 0;    
+                green = Math.round(zed);
+                blue = 255;
+            }
+            if(H >= 240 && H < 300){
+                red = Math.round(zed);    
+                green = 0;
+                blue = 255;
+            }
+            if(H >= 300 && H < 360){
+                red = 255;    
+                green = 0;
+                blue = Math.round(zed);
+            }    
+        
+            stroke(0);
+            point(j,height - i);
+            //     stroke('rgb(' + red + ',' + green + ',' + blue + ')');
+            stroke('rgba(' + red + ',' + green + ',' + blue + ',' + data[j].spectrum[i]/10 + ')');
+            
+            point(3*j,height - 3*i);
+        }
+    }
+}
+
+</script>
+<style>
+body{
+    font-family:Comic Sans MS;
+    color:#00ff00;
+    font-size:2em;
+    background-color:black;
+}
+main{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
+}
+#folderscroll{
+    overflow:scroll;
+    height:4em;
+}
+#datascroll{
+    overflow:scroll;
+    height:4em;
+}
+#textio{
+    background-color:black;
+    color:#00ff00;
+    font-family:courier;
+}
+</style>
+</body>
+</html>

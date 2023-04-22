@@ -37,7 +37,7 @@ function draw() {
 
   line(0,height - 3*i1000,width,height - 3*i1000);
 
-  strokeWeight(5);
+  strokeWeight(8);
   for (let i = 0; i < spectrum.length; i++) {
     //stroke(spectrum[i]);
     
@@ -77,11 +77,11 @@ function draw() {
         }    
     
     stroke(0);
-    point(frameIndex,height - 3*i);
+    point(frameIndex,height - 5*i);
 //     stroke('rgb(' + red + ',' + green + ',' + blue + ')');
     stroke('rgba(' + red + ',' + green + ',' + blue + ',' + spectrum[i]/10 + ')');
     
-    point(frameIndex,height - 3*i);
+    point(frameIndex,height - 5*i);
   }
 
 //  i1000 = 
