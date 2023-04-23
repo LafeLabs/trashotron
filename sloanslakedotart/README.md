@@ -26,3 +26,9 @@ php replicator.php
 sudo chmod -R 0777 *
 ```
 Share the server on shared wifi networks via QR Code which points to the IP address.
+
+
+need to add port forwarding, use of domains and how to use nginx proxy manager to build the MAGIC DUMP.  We don't host content we host links to content.  We are the connectors!
+
+we use physical spaces to link social media accounts.
+
