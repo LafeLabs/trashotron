@@ -5,6 +5,8 @@
 
     <!--
 
+SLIME DATA BROWSER
+
         EVERYTHING IS PHYSICAL
         EVERYTHING IS FRACTAL
         EVERYTHING IS RECURSIVE
@@ -69,10 +71,20 @@ httpcfolders.open("GET", "dir.php?filename=slimedata", true);
 httpcfolders.send();
 function loadfolder(){
     
+    document.getElementById("datascroll").innerHTML = "";
     var httpcfolder = new XMLHttpRequest();
     httpcfolder.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             files = JSON.parse(this.responseText);
+            var tempfiles = [];
+            
+            for(var index = 0;index < files.length;index++){
+                if(files[index] != "files.txt"){
+                    tempfiles.push(files[index]);
+                }
+            }
+            
+            files = tempfiles;
             for(var index = 0;index < files.length;index++){
                 var newdiv = document.createElement("DIV");
                 newdiv.innerHTML = files[index];
@@ -82,6 +94,12 @@ function loadfolder(){
                     loaddata();
                 }
             }
+            
+            //save files to slimedata/folder/list.txt
+            var httpclist = new XMLHttpRequest();
+            httpclist.open("POST", "filesaver.php", true);
+            httpclist.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            httpclist.send("data="+encodeURIComponent(JSON.stringify(files,null,"    "))+"&filename=slimedata/" + folder + "/files.txt");//send text to filesaver.php
         }
     };
     httpcfolder.open("GET", "dir.php?filename=slimedata/"+ folder, true);
